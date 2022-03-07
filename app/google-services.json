@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "445626152706",
+    "firebase_url": "https://medical-instruments-686f3.firebaseio.com",
+    "project_id": "medical-instruments-686f3",
+    "storage_bucket": "medical-instruments-686f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445626152706:android:ae19f0c95eac4b907b341b",
+        "android_client_info": {
+          "package_name": "com.decorator1889.instruments"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445626152706-1u9ria0eqs4kbcinp0cp5u6un67t8qp9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDiKMvUZGO2b_-aNcVt2S4JjJ4S-LhjPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445626152706-1u9ria0eqs4kbcinp0cp5u6un67t8qp9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
