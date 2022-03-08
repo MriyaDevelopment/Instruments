@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!-- Margin -->
+    <dimen name="margin16">16dp</dimen>
+    <dimen name="margin26">26dp</dimen>
+    <dimen name="margin45">45dp</dimen>
+    <!-- Size -->
+    <dimen name="size14">14sp</dimen>
+    <dimen name="size16">16sp</dimen>
+    <!-- Corners -->
+    <dimen name="corner14">14dp</dimen>
+    <!-- Padding -->
+    <dimen name="padding8">8dp</dimen>
+</resources>

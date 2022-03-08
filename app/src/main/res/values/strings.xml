@@ -3,4 +3,10 @@
     <string name="networkErrorMessage">Произошла неизвестная ошибка при взаимодействии с сервером.</string>
     <string name="networkFailureMessage">Не удалось загрузить данные. Проверьте соединение с интернетом и повторите попытку.</string>
     <string name="networkButtonOk">Ок</string>
+    <!-- OnBoarding_Screen -->
+    <string name="onBoardingTitle">Начни изучать хирургию вместе с мобильным справочником медицинских инструментов</string>
+    <string name="onBoardingSingIn">Войти</string>
+    <string name="onBoardingSingUp">Еще нет аккаунта? <b><u>Зарегистрироваться</u></b></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

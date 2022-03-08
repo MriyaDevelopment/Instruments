@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextDarkNormal14Style" parent="TextDarkNormalStyle">
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+</resources>
