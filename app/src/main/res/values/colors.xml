@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#84B8DF</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="colorBlue">#2577DC</color>
-    <color name="colorTrueAnswer">#3cf067</color>
-    <color name="colorFalseAnswer">#FA4848</color>
-    <color name="colorNeutral">#7ca1fa</color>
-    <color name="colorTextBtn">#FFFFFF</color>
-    <color name="colorLogo">#1d8eff</color>
-    <color name="colorBorder">#0685DA</color>
-    <color name="colorScore">#e6edff</color>
-    <color name="colorTitleText">#acadbc</color>
-    <color name="colorTestBtnText">#484849</color>
-    <color name="colorTestBorderBtn">#DFDFDF</color>
+    <color name="blue_5B67CA">#5B67CA</color>
+    <color name="blue_405B67CA">#405B67CA</color>
+    <color name="white_FFFFFFFF">#FFFFFFFF</color>
+    <color name="teal_200">#FF5B67CA</color>
+    <color name="teal_700">#FF5B67CA</color>
+    <color name="black">#FF000000</color>
+    <color name="white_ffffff">#ffffff</color>
 </resources>
