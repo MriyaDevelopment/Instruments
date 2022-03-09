@@ -6,7 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.decorator1889.instruments.R
+import com.decorator1889.instruments.databinding.FragmentOnBoardingBinding
+import com.decorator1889.instruments.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
 
+    private lateinit var binding: FragmentSignInBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = FragmentSignInBinding.inflate(inflater, container, false).apply {
+        binding = this
+    }.root
 }

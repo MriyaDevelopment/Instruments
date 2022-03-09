@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main_graph"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/signInFragment">
 
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.decorator1889.instruments.fragments.OnBoardingFragment"
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding" />
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.decorator1889.instruments.fragments.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
 </navigation>

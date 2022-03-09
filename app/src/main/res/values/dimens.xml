@@ -7,6 +7,7 @@
     <!-- Size -->
     <dimen name="size14">14sp</dimen>
     <dimen name="size16">16sp</dimen>
+    <dimen name="size18">18sp</dimen>
     <!-- Corners -->
     <dimen name="corner14">14dp</dimen>
     <!-- Padding -->
