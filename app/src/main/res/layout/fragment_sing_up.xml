@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_ffffff"
-    tools:context=".fragments.SignInFragment">
+    tools:context=".fragments.SingUpFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             app:layout_collapseMode="pin"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/signInTitle"
+            app:title="@string/signUpTitle"
             app:titleTextColor="@color/blue_5B67CA" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -31,12 +31,12 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/margin18"
+        android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputLayoutLogin"
+            android:id="@+id/inputLayoutName"
             style="@style/TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,12 +49,35 @@
             app:startIconTint="@color/background_input">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login"
+                android:id="@+id/name"
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/signInEmail"
+                android:hint="@string/singUpName"
                 android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutEmail"
+            style="@style/TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin26"
+            android:textColorHint="@color/light_blue_CCB2B7E4"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeColor="@color/background_selector_line"
+            app:startIconDrawable="@drawable/ic_mail"
+            app:startIconTint="@color/background_input">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                style="@style/TextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/singUpEmail"
+                android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,33 +107,22 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/forgotPassword"
-            style="@style/OnlyTextButton"
-            android:textColor="@color/blue_5B67CA"
-            android:textSize="@dimen/size14"
-            android:layout_gravity="end"
-            android:text="@string/signInPasswordPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/height25" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/signIn"
+            android:id="@+id/signUp"
             style="@style/DefaultBlueButton"
-            android:text="@string/signInTitle"
+            android:text="@string/signUpTitle"
             android:textStyle="bold"
-            android:layout_marginTop="@dimen/margin18"
+            android:layout_marginTop="@dimen/margin40"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signUp"
+        android:id="@+id/signIn"
         style="@style/OnlyTextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="@string/onBoardingSingUp"
+        android:text="@string/singUpSignIn"
         android:textColor="@color/blue_5B67CA"
         app:rippleColor="@color/blue_405B67CA" />
 

@@ -7,16 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.decorator1889.instruments.R
-import com.decorator1889.instruments.databinding.FragmentOnBoardingBinding
+import com.decorator1889.instruments.databinding.FragmentSignInBinding
+import com.decorator1889.instruments.databinding.FragmentSingUpBinding
 
-class OnBoardingFragment : Fragment() {
+class SingUpFragment : Fragment() {
 
-    private lateinit var binding: FragmentOnBoardingBinding
+    private lateinit var binding: FragmentSingUpBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = FragmentOnBoardingBinding.inflate(inflater, container, false).apply {
+    ): View = FragmentSingUpBinding.inflate(inflater, container, false).apply {
         binding = this
         setListeners()
     }.root
@@ -24,10 +25,10 @@ class OnBoardingFragment : Fragment() {
     private fun setListeners() {
         binding.run {
             signIn.setOnClickListener {
-                findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToSignInFragment())
+                findNavController().navigate(SingUpFragmentDirections.actionSingUpFragmentToSignInFragment())
             }
-            signUp.setOnClickListener {
-                findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToSingUpFragment())
+            toolbar.setNavigationOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }

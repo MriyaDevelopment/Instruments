@@ -4,13 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/background_input_layout.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/background_surgery.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/drawable_cursor.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/favorite_selector.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/hint_selector.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/home_selector.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/on_boarding_image.xml" value="0.13957824707031252" />
+        <entry key="app/src/main/res/drawable/profile_selector.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.1505" />
+        <entry key="app/src/main/res/drawable/test_selector.xml" value="0.211" />
         <entry key="app/src/main/res/layout-v28/fragment_on_boarding.xml" value="0.2006340579710145" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4451114558181651" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.5361702127659574" />
         <entry key="app/src/main/res/layout/fragment_on_boarding.xml" value="0.3786354617796082" />
+        <entry key="app/src/main/res/layout/fragment_recovery.xml" value="0.4381035403928895" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.5149863760217984" />
+        <entry key="app/src/main/res/layout/fragment_sing_up.xml" value="0.42930837437726455" />
+        <entry key="app/src/main/res/layout/view_catalog.xml" value="0.4095419376454455" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2953125" />
       </map>
     </option>
   </component>

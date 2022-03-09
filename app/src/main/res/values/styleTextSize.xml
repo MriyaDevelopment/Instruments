@@ -3,4 +3,20 @@
     <style name="TextDarkNormal14Style" parent="TextDarkNormalStyle">
         <item name="android:textSize">@dimen/size14</item>
     </style>
+
+    <style name="TextDarkNormal12Style" parent="TextDarkNormalStyle">
+        <item name="android:textSize">@dimen/size12</item>
+    </style>
+
+    <style name="TextDarkNormal10Style" parent="TextDarkNormalStyle">
+        <item name="android:textSize">@dimen/size10</item>
+    </style>
+
+    <style name="TextBlueNormal18Style" parent="TextBlueNormalStyle">
+        <item name="android:textSize">@dimen/size18</item>
+    </style>
+
+    <style name="TextDarkBold12Style" parent="TextDarkBoldStyle">
+        <item name="android:textSize">@dimen/size12</item>
+    </style>
 </resources>

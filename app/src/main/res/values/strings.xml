@@ -10,4 +10,24 @@
     <!-- SignIn_Screen-->
     <string name="signInTitle">Вход</string>
     <string name="signInEmail">Имя пользователя или E-mail</string>
+    <string name="signInPassword">Пароль</string>
+    <string name="signInPasswordPassword">Забыли пароль?</string>
+    <!-- SignUp_Screen -->
+    <string name="signUpTitle">Регистрация</string>
+    <string name="singUpName">Имя пользователя</string>
+    <string name="singUpEmail">E-mail</string>
+    <string name="singUpSignIn">Уже есть аккаунт? <b><u>Войти</u></b></string>
+    <!-- Recovery_Screen -->
+    <string name="recoveryTitle">Восстановление пароля</string>
+    <string name="recoverySubTitle">Введи свой E-mail и мы отправим  письмо с даннами необходимыми для входа!</string>
+    <string name="recoverySend">Отправить</string>
+    <!-- Main_Screen -->
+    <string name="mainHome">Главная</string>
+    <string name="mainTest">Испытание</string>
+    <string name="mainFavorite">Избранное</string>
+    <string name="mainProfile">Профиль</string>
+    <string name="mainSubscribe">Оформить подписку</string>
+    <string name="mainTitle">Что будем изучать сегодня?</string>
+    <string name="mainName">Привет, %s!</string>
+    <string name="mainCount">Инструментарий: %s</string>
 </resources>
