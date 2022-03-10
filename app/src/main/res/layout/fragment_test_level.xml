@@ -19,6 +19,7 @@
             android:id="@+id/title"
             style="@style/TextBlueNormal18Style"
             android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/margin15"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin21"
             android:text="@string/testLevelTitle" />

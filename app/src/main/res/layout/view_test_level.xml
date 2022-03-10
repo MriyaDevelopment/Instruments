@@ -57,6 +57,7 @@
             app:layout_constraintTop_toBottomOf="@+id/nameTest" />
 
         <TextView
+            android:id="@+id/run"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/padding3"
@@ -65,7 +66,7 @@
             android:textStyle="normal"
             android:layout_marginEnd="@dimen/margin20"
             android:layout_marginBottom="@dimen/margin9"
-            app:drawableEndCompat="@drawable/ic_arrow_test"
+            app:drawableEndCompat="@drawable/ic_arrow_easy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:textColor="@color/blue_5B67CA" />

@@ -37,4 +37,5 @@
     <string name="testLevelTitle">Проверь свои знания</string>
     <string name="testLevelSubTitle">Выбери подходящий уровень сложности </string>
     <string name="testLevelChangeCategory">Выбрать категории и начать</string>
+    <string name="testLevelQuestion">%s вопросов</string>
 </resources>

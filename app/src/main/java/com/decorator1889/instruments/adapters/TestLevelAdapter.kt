@@ -12,9 +12,7 @@ import com.decorator1889.instruments.databinding.ViewDetailCatalogBinding
 import com.decorator1889.instruments.databinding.ViewTestLevelBinding
 import com.decorator1889.instruments.models.DetailCatalog
 import com.decorator1889.instruments.models.TestLevel
-import com.decorator1889.instruments.util.easy
-import com.decorator1889.instruments.util.getLevelBgr
-import com.decorator1889.instruments.util.getLevelIcon
+import com.decorator1889.instruments.util.*
 
 class TestLevelAdapter(
     private val onClickTestCategory: (String) -> Unit = {}
@@ -37,6 +35,9 @@ class TestLevelAdapter(
                 icon.setImageResource(getLevelIcon(item.name))
                 bgr.setImageResource(getLevelBgr(item.name))
                 nameTest.text = item.name
+                count.text = str(R.string.testLevelQuestion, item.count)
+                run.setTextColor(ContextCompat.getColor(root.context, getColorLevel(item.name)))
+                run.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, getArrowTestCategory(item.name), 0);
                 root.setOnClickListener {
                     onClickTestCategory(item.name)
                 }

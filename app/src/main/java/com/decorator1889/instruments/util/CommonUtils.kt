@@ -203,6 +203,34 @@ fun getLevelBgr(type: String): Int {
     }
 }
 
+fun getColorLevel(type: String): Int {
+    return when (type) {
+        easy -> {
+            R.color.blue_5B67CA
+        }
+        middle -> {
+            R.color.light_blue_7EC3DF
+        }
+        else -> {
+            R.color.red_E77D7D
+        }
+    }
+}
+
+fun getArrowTestCategory(type: String): Int {
+    return when (type) {
+        easy -> {
+            R.drawable.ic_arrow_easy
+        }
+        middle -> {
+            R.drawable.ic_arrow_middle
+        }
+        else -> {
+            R.drawable.ic_arrow_hard
+        }
+    }
+}
+
 const val easy = "Легкий уровень"
 const val middle = "Средний уровень"
 const val hard = "Сложный уровень"
