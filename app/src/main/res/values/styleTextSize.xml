@@ -16,6 +16,10 @@
         <item name="android:textSize">@dimen/size18</item>
     </style>
 
+    <style name="TextBlueBold16Style" parent="TextBlueBoldStyle">
+        <item name="android:textSize">@dimen/size16</item>
+    </style>
+
     <style name="TextDarkBold12Style" parent="TextDarkBoldStyle">
         <item name="android:textSize">@dimen/size12</item>
     </style>

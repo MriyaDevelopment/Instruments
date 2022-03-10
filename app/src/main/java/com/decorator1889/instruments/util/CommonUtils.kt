@@ -2,9 +2,12 @@ package com.decorator1889.instruments.util
 
 import android.content.Context
 import android.graphics.Rect
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.AnimRes
 import androidx.annotation.DimenRes
 import androidx.annotation.IntegerRes
 import androidx.annotation.StringRes
@@ -12,9 +15,41 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.GenericTransitionOptions
+import com.bumptech.glide.Glide
 import com.decorator1889.instruments.App
 import com.decorator1889.instruments.R
+import com.facebook.shimmer.Shimmer
+import com.facebook.shimmer.ShimmerDrawable
 import com.google.android.material.snackbar.Snackbar
+
+fun ImageView.glide(url: String, @AnimRes withAnim: Int? = null) {
+    Glide
+        .with(this)
+        .load(url)
+        .transition(
+            if (withAnim != null) GenericTransitionOptions.with(withAnim)
+            else GenericTransitionOptions.withNoTransition()
+        )
+        .placeholder(getDefaultShimmer(this.context))
+        .into(this)
+}
+
+fun getDefaultShimmer(context: Context): Drawable {
+    val shimmer = Shimmer.ColorHighlightBuilder().setBaseColor(
+        ContextCompat.getColor(context, R.color.backgroundDefaultShimmer)
+    ).setHighlightColor(
+        ContextCompat.getColor(context, R.color.shimmer)
+    ).setDuration(1000)
+        .setBaseAlpha(1f)
+        .setHighlightAlpha(1f)
+        .setDirection(Shimmer.Direction.LEFT_TO_RIGHT)
+        .setAutoStart(true)
+        .build()
+    return ShimmerDrawable().apply {
+        setShimmer(shimmer)
+    }
+}
 
 fun createSnackbar(
     anchorView: View,

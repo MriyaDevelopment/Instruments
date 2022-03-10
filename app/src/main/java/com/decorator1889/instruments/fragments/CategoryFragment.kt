@@ -70,7 +70,6 @@ class CategoryFragment : Fragment() {
     }
 
     private val onClickCatalog:(type: String, name: String) -> Unit = { type: String, name: String ->
-
+        findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToDetailCatalogFragment(subject = args.name, section = name))
     }
-
 }

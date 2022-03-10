@@ -91,5 +91,29 @@
         <argument
             android:name="name"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_categoryFragment_to_detailCatalogFragment"
+            app:destination="@id/detailCatalogFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter"
+            app:popExitAnim="@anim/fragment_exit"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailCatalogFragment"
+        android:name="com.decorator1889.instruments.fragments.DetailCatalogFragment"
+        android:label="fragment_detail_catalog"
+        tools:layout="@layout/fragment_detail_catalog" >
+
+        <argument
+            android:name="subject"
+            app:argType="string" />
+
+        <argument
+            android:name="section"
+            app:argType="string"/>
+
+
     </fragment>
 </navigation>

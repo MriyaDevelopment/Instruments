@@ -12,6 +12,14 @@
         <item name="fontWeight">500</item>
     </style>
 
+    <style name="TextBlueBoldStyle">
+        <item name="lineHeight">19dp</item>
+        <item name="android:textColor">@color/blue_5B67CA</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontStyle">normal</item>
+        <item name="fontWeight">700</item>
+    </style>
+
     <style name="TextDarkNormalStyle">
         <item name="lineHeight">17dp</item>
         <item name="android:textColor">@color/dark_1E1F25</item>
@@ -99,6 +107,20 @@
         <item name="android:paddingStart">0dp</item>
         <item name="android:paddingEnd">0dp</item>
         <item name="android:textCursorDrawable">@drawable/cursor_color</item>
+    </style>
+
+    <style name="Widget.AppCompat.Button.TextButton.IconOnly" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:minWidth">24dp</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="background">@android:color/transparent</item>
+        <item name="cornerRadius">6dp</item>
+        <item name="iconTint">@color/black</item>
     </style>
 
     <style name="TextHintAppearance">

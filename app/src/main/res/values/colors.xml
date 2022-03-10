@@ -12,5 +12,7 @@
     <color name="light_blue_B2B7E4">#B2B7E4</color>
     <color name="light_blue_CCB2B7E4">#CCB2B7E4</color>
     <color name="mainBackground">#E5E5E5</color>
+    <color name="shimmer">#ffffff</color>
+    <color name="backgroundDefaultShimmer">#f6f3f9</color>
 
 </resources>

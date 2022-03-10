@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin16"
+    app:cardCornerRadius="@dimen/corner20"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin22">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/favorite"
+            style="@style/Widget.AppCompat.Button.TextButton.IconOnly"
+            android:layout_width="@dimen/weight32"
+            android:layout_marginEnd="@dimen/margin9"
+            android:layout_marginTop="@dimen/margin17"
+            android:layout_height="@dimen/height32"
+            app:iconSize="@dimen/sizeFavorite16"
+            android:backgroundTint="@color/white_FFFFFFFF"
+            android:elevation="@dimen/margin5"
+            app:cornerRadius="100dp"
+            app:icon="@drawable/ic_heart_inactive"
+            app:iconTint="@color/blue_5B67CA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@color/blue_5B67CA" />
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/TextBlueBold16Style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="Лигатурная игла Купера"
+            android:layout_marginHorizontal="@dimen/margin20"
+            android:layout_marginTop="@dimen/margin12"
+            app:layout_constraintEnd_toStartOf="@+id/favorite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin13"
+            android:scaleType="center"
+            android:layout_marginHorizontal="@dimen/margin25"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/description"
+            style="@style/TextDarkNormal14Style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin10"
+            android:layout_marginStart="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/image"
+            tools:text="Хирургический инструмент для проведения шовного материала под кровеносные сосуды" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin40"
+            android:background="@drawable/bgr_view_line_blue"
+            app:layout_constraintBottom_toBottomOf="@+id/description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/description"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
