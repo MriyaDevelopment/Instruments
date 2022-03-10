@@ -9,18 +9,46 @@ import androidx.recyclerview.widget.RecyclerView
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.databinding.ViewCatalogBinding
 import com.decorator1889.instruments.databinding.ViewDetailCatalogBinding
+import com.decorator1889.instruments.databinding.ViewDetailFavoriteBinding
 import com.decorator1889.instruments.models.Catalog
 import com.decorator1889.instruments.models.DetailCatalog
 import com.decorator1889.instruments.util.glide
 
-class DetailCatalogAdapter: ListAdapter<DetailCatalog, DetailCatalogAdapter.DetailCatalogViewHolder>(DetailCatalogDiffUtilCallback()) {
+sealed class DetailCatalogItem(val itemId: Long) {
+    data class DetailCatalogWrap(val detailCatalog: DetailCatalog) : DetailCatalogItem(detailCatalog.id)
+    object DetailCatalogFavoriteButton: DetailCatalogItem(-1)
+}
+class DetailCatalogAdapter(
+    private val onClickFavorite:() -> Unit = {}
+): ListAdapter<DetailCatalogItem, RecyclerView.ViewHolder>(DetailCatalogDiffUtilCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailCatalogViewHolder {
-        return DetailCatalogViewHolder.getViewHolder(parent)
+    override fun getItemViewType(position: Int): Int {
+        return when (getItem(position)) {
+            is DetailCatalogItem.DetailCatalogWrap -> DETAIL_CATALOG.hashCode()
+            is DetailCatalogItem.DetailCatalogFavoriteButton -> DETAIL_FAVORITE.hashCode()
+            else -> {
+                throw Exception("Invalid type detail catalog")
+            }
+        }
     }
 
-    override fun onBindViewHolder(holder: DetailCatalogViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            DETAIL_CATALOG.hashCode() -> DetailCatalogViewHolder.getViewHolder(parent)
+            DETAIL_FAVORITE.hashCode() -> DetailFavoriteViewHolder.getViewHolder(parent)
+            else -> throw Exception("Not found view holder type")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when(val item = getItem(position)) {
+            is DetailCatalogItem.DetailCatalogWrap -> {
+                (holder as DetailCatalogViewHolder).bind(item.detailCatalog)
+            }
+            is DetailCatalogItem.DetailCatalogFavoriteButton -> {
+                (holder as DetailFavoriteViewHolder).bind(onClickFavorite)
+            }
+        }
     }
 
     class DetailCatalogViewHolder(
@@ -61,8 +89,34 @@ class DetailCatalogAdapter: ListAdapter<DetailCatalog, DetailCatalogAdapter.Deta
         }
     }
 
-    class DetailCatalogDiffUtilCallback : DiffUtil.ItemCallback<DetailCatalog>() {
-        override fun areItemsTheSame(oldItem: DetailCatalog, newItem: DetailCatalog): Boolean = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: DetailCatalog, newItem: DetailCatalog): Boolean = oldItem == newItem
+    class DetailFavoriteViewHolder(
+        private val binding: ViewDetailFavoriteBinding
+    ): RecyclerView.ViewHolder(binding.root) {
+        fun bind(onClickFavorite: () -> Unit) {
+            binding.favorite.setOnClickListener {
+                onClickFavorite()
+            }
+        }
+
+        companion object {
+            fun getViewHolder(parent: ViewGroup): DetailFavoriteViewHolder {
+                val binding = ViewDetailFavoriteBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+                return DetailFavoriteViewHolder(binding)
+            }
+        }
+    }
+
+    class DetailCatalogDiffUtilCallback : DiffUtil.ItemCallback<DetailCatalogItem>() {
+        override fun areItemsTheSame(oldItem: DetailCatalogItem, newItem: DetailCatalogItem): Boolean = oldItem.itemId == newItem.itemId
+        override fun areContentsTheSame(oldItem: DetailCatalogItem, newItem: DetailCatalogItem): Boolean = oldItem == newItem
+    }
+
+    companion object {
+        const val DETAIL_CATALOG = 1
+        const val DETAIL_FAVORITE = 2
     }
 }

@@ -38,4 +38,8 @@
     <string name="testLevelSubTitle">Выбери подходящий уровень сложности </string>
     <string name="testLevelChangeCategory">Выбрать категории и начать</string>
     <string name="testLevelQuestion">%s вопросов</string>
+    <!-- TestCategory_Screen-->
+    <string name="testCategoryFavorite">Тест по избранному</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

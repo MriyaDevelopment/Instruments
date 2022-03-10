@@ -44,11 +44,13 @@
     <dimen name="padding3">3dp</dimen>
     <dimen name="padding8">8dp</dimen>
     <dimen name="padding16">16dp</dimen>
+    <dimen name="padding80">80dp</dimen>
     <!-- Height -->
     <dimen name="height25">25dp</dimen>
     <dimen name="height30">30dp</dimen>
     <dimen name="height32">32dp</dimen>
     <dimen name="height40">40dp</dimen>
+    <dimen name="height52">52dp</dimen>
     <dimen name="height60">60dp</dimen>
     <!-- Weight -->
     <dimen name="weight32">32dp</dimen>

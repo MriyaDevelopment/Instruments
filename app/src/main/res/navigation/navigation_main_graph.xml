@@ -120,4 +120,9 @@
         android:name="com.decorator1889.instruments.fragments.TestLevelFragment"
         android:label="fragment_test_level"
         tools:layout="@layout/fragment_test_level" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.decorator1889.instruments.fragments.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>

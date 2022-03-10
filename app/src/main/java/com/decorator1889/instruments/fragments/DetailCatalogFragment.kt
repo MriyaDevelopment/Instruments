@@ -10,8 +10,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.DetailCatalogAdapter
+import com.decorator1889.instruments.adapters.DetailCatalogItem
 import com.decorator1889.instruments.databinding.FragmentCategoryBinding
 import com.decorator1889.instruments.databinding.FragmentDetailCatalogBinding
+import com.decorator1889.instruments.models.DetailCatalog
 import com.decorator1889.instruments.models.getDetailCatalog
 import com.decorator1889.instruments.util.GridDecorations
 import com.decorator1889.instruments.util.str
@@ -50,7 +52,13 @@ class DetailCatalogFragment : Fragment() {
     private fun loadAdapter() {
         val adapter = DetailCatalogAdapter()
         binding.recycler.adapter = adapter
-        adapter.submitList(getDetailCatalog())
+        val data = mutableListOf<DetailCatalogItem>()
+        getDetailCatalog().let {
+            data.addAll(it.map { detail ->
+                DetailCatalogItem.DetailCatalogWrap(detail) }
+            )
+        }
+        adapter.submitList(data)
     }
 
     private fun setTitleToolbar() {
