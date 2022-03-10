@@ -20,3 +20,13 @@ fun getCatalogList() : List<Catalog> {
         Catalog(6, otorhinolaryngology, "otorhinolaryngology", "24", false),
     )
 }
+
+fun getCatalogCategoryList() : List<Catalog> {
+    return listOf(
+        Catalog(1, "Разъединяющие", "surgery", "40", true),
+        Catalog(2, "Соединяющие", "surgery", "24", true),
+        Catalog(3, "Оттесняющие, раздвигающие", "surgery", "37", true),
+        Catalog(4, "Удерживающие", "surgery", "18", false),
+        Catalog(5, "Колющие", "surgery", "12", false),
+    )
+}

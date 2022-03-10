@@ -1,10 +1,14 @@
 package com.decorator1889.instruments
 
+import android.animation.ValueAnimator
 import android.os.Bundle
+import android.view.ViewGroup.MarginLayoutParams
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.findNavController
 import com.decorator1889.instruments.databinding.ActivityMainBinding
+import com.decorator1889.instruments.util.gone
+import com.decorator1889.instruments.util.visible
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -33,5 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateByLogin() {
         TODO("Not yet implemented")
+    }
+
+    fun hideBottomNavigationView(){
+        binding.layoutBnv.gone()
+    }
+
+    fun showBottomNavigationView() {
+        binding.layoutBnv.visible()
     }
 }

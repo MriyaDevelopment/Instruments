@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
+import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.CatalogAdapter
 import com.decorator1889.instruments.databinding.FragmentMainBinding
@@ -31,10 +33,15 @@ class MainFragment : Fragment() {
         binding.recycler.addItemDecoration(
             GridDecorations(
                 sideMargins = R.dimen.margin0,
-                elementsMargins = R.dimen.margin16,
+                elementsMargins = R.dimen.margin25,
                 horizontalMargins = R.dimen.margin0
             )
         )
+    }
+
+    override fun onStart() {
+        super.onStart()
+        (activity as MainActivity).showBottomNavigationView()
     }
 
     private fun checkIsLoadData() {
@@ -58,7 +65,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    private val onClickCatalog: (type: String) -> Unit = { type ->
-
+    private val onClickCatalog: (type: String, name: String) -> Unit = { type, name ->
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToCategoryFragment(type = type, name = name))
     }
 }

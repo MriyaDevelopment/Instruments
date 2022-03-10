@@ -13,7 +13,7 @@ import com.decorator1889.instruments.util.getInstrumentsIcon
 import com.decorator1889.instruments.util.str
 
 class CatalogAdapter(
-    private val onClickCatalog: (type: String) -> Unit = {}
+    private val onClickCatalog: (type: String, name: String) -> Unit = { type: String, name: String -> }
 ): ListAdapter<Catalog, CatalogAdapter.CatalogViewHolder>(CatalogDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatalogViewHolder {
@@ -28,7 +28,7 @@ class CatalogAdapter(
         private val binding: ViewCatalogBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Catalog, onClickCatalog: (type: String) -> Unit) {
+        fun bind(item: Catalog, onClickCatalog: (type: String, name: String) -> Unit) {
             binding.run {
                 name.text = item.name
                 bgr.setImageResource(getInstrumentsBgr(item.name))
@@ -38,7 +38,7 @@ class CatalogAdapter(
                 else arrowLock.setImageResource(R.drawable.ic_lock_catalog)
                 root.setOnClickListener {
                     if (!item.lock) return@setOnClickListener
-                    onClickCatalog(item.type)
+                    onClickCatalog(item.type, item.name)
                 }
             }
         }
