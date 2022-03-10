@@ -27,8 +27,10 @@
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.5149863760217984" />
         <entry key="app/src/main/res/layout/fragment_sing_up.xml" value="0.42930837437726455" />
         <entry key="app/src/main/res/layout/fragment_test_category.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/fragment_test_level.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/view_catalog.xml" value="0.4095419376454455" />
         <entry key="app/src/main/res/layout/view_detail_catalog.xml" value="0.472937685762569" />
+        <entry key="app/src/main/res/layout/view_test_level.xml" value="0.2930000858030457" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2953125" />
       </map>
     </option>

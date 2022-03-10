@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
     private fun initBnv() {
         binding.bnv.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> findNavController(R.id.nav_host_fragment)
-                R.id.test -> findNavController(R.id.nav_host_fragment)
+                R.id.home -> findNavController(R.id.nav_host_fragment).navigate(R.id.mainFragment)
+                R.id.test -> findNavController(R.id.nav_host_fragment).navigate(R.id.testLevelFragment)
                 R.id.favorite -> findNavController(R.id.nav_host_fragment)
                 R.id.profile -> findNavController(R.id.nav_host_fragment)
                 else -> navigateByLogin()
@@ -40,10 +40,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun hideBottomNavigationView(){
-        binding.layoutBnv.gone()
+        binding.run {
+            val i = resources.getDimensionPixelSize(R.dimen.margin8)
+            layoutBnv.animate().translationY(layoutBnv.height.toFloat() + i)
+        }
     }
 
     fun showBottomNavigationView() {
-        binding.layoutBnv.visible()
+        binding.run {
+            layoutBnv.animate().translationY(0f)
+        }
     }
 }

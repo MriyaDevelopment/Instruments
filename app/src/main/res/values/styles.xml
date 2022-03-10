@@ -28,6 +28,14 @@
         <item name="fontWeight">400</item>
     </style>
 
+    <style name="Text50DarkNormalStyle">
+        <item name="lineHeight">17dp</item>
+        <item name="android:textColor">@color/dark_801E1F25</item>
+        <item name="android:textStyle">normal</item>
+        <item name="fontStyle">normal</item>
+        <item name="fontWeight">400</item>
+    </style>
+
     <style name="TextDarkBoldStyle">
         <item name="lineHeight">17dp</item>
         <item name="android:textColor">@color/dark_1E1F25</item>

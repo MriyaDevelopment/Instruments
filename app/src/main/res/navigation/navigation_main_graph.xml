@@ -114,6 +114,10 @@
             android:name="section"
             app:argType="string"/>
 
-
     </fragment>
+    <fragment
+        android:id="@+id/testLevelFragment"
+        android:name="com.decorator1889.instruments.fragments.TestLevelFragment"
+        android:label="fragment_test_level"
+        tools:layout="@layout/fragment_test_level" />
 </navigation>

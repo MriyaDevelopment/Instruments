@@ -41,6 +41,7 @@
             android:paddingTop="@dimen/padding16"
             android:paddingHorizontal="@dimen/padding16"
             android:paddingBottom="@dimen/padding16"
+            android:layoutAnimation="@anim/layout_anim_down_to_up_linear_rv"
             android:clipToPadding="false"
             android:splitMotionEvents="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

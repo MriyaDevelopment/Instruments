@@ -175,6 +175,38 @@ fun View.gone() {
     this.visibility = View.GONE
 }
 
+fun getLevelIcon(type: String): Int {
+    return when (type) {
+        easy -> {
+            R.drawable.ic_easy
+        }
+        middle -> {
+            R.drawable.ic_middle
+        }
+        else -> {
+            R.drawable.ic_hard
+        }
+    }
+}
+
+fun getLevelBgr(type: String): Int {
+    return when (type) {
+        easy -> {
+            R.drawable.bgr_easy
+        }
+        middle -> {
+            R.drawable.bgr_middle
+        }
+        else -> {
+            R.drawable.bgr_hard
+        }
+    }
+}
+
+const val easy = "Легкий уровень"
+const val middle = "Средний уровень"
+const val hard = "Сложный уровень"
+
 const val dentistry = "Стоматология"
 const val neurosurgery = "Нейрохирургия"
 const val surgery = "Общая хирургия"

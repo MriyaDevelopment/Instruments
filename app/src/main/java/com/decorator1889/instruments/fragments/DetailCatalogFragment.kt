@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.DetailCatalogAdapter
@@ -36,6 +37,9 @@ class DetailCatalogFragment : Fragment() {
             swipeRefresh.setColorSchemeColors(
                 ContextCompat.getColor(requireContext(), R.color.blue_5B67CA)
             )
+            toolbar.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
         }
     }
 

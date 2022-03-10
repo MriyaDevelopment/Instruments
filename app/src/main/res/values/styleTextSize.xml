@@ -8,6 +8,14 @@
         <item name="android:textSize">@dimen/size12</item>
     </style>
 
+    <style name="TextDarkNormal16Style" parent="TextDarkNormalStyle">
+        <item name="android:textSize">@dimen/size16</item>
+    </style>
+
+    <style name="Text50DarkNormal14Style" parent="Text50DarkNormalStyle">
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+
     <style name="TextDarkNormal10Style" parent="TextDarkNormalStyle">
         <item name="android:textSize">@dimen/size10</item>
     </style>
