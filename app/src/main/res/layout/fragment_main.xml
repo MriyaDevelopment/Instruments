@@ -16,44 +16,68 @@
         app:elevation="0dp"
         app:liftOnScroll="true">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapseLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin21"
-            android:layout_marginTop="@dimen/margin16"
-            android:layout_marginEnd="@dimen/margin16"
-            android:orientation="horizontal">
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:titleEnabled="false">
 
-            <TextView
-                android:id="@+id/name"
-                style="@style/TextBlueNormal18Style"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="@dimen/margin8"
-                android:layout_weight="1"
-                tools:text="Привет, Ксения!" />
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/materialToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/subscribe"
-                style="@style/OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height30"
-                android:layout_gravity="center"
-                android:text="@string/mainSubscribe" />
+                <LinearLayout
+                    android:id="@+id/containerTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin21"
+                        android:layout_marginTop="@dimen/margin16"
+                        android:layout_marginEnd="@dimen/margin16"
+                        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/title"
-            style="@style/TextDarkNormal14Style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin21"
-            android:layout_marginTop="@dimen/margin21"
-            android:layout_marginEnd="@dimen/margin16"
-            android:text="@string/mainTitle" />
+                        <TextView
+                            android:id="@+id/name"
+                            style="@style/TextBlueNormal18Style"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/margin8"
+                            android:layout_weight="1"
+                            tools:text="Привет, Ксения!" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/subscribe"
+                            style="@style/OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/height30"
+                            android:layout_gravity="center"
+                            android:text="@string/mainSubscribe" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/title"
+                        style="@style/TextDarkNormal14Style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin21"
+                        android:layout_marginTop="@dimen/margin21"
+                        android:layout_marginEnd="@dimen/margin16"
+                        android:text="@string/mainTitle" />
+
+                </LinearLayout>
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -64,8 +88,8 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -73,9 +97,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layoutAnimation="@anim/layout_anim_grid_rv"
                 android:clipToPadding="false"
                 android:paddingTop="@dimen/padding16"
+                android:paddingBottom="@dimen/padding70"
                 android:splitMotionEvents="false"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2" />

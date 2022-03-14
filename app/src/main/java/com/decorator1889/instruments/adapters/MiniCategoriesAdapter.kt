@@ -5,12 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.decorator1889.instruments.databinding.ViewDetailFavoriteBinding
-import com.decorator1889.instruments.databinding.ViewMiniCategoryBinding
+import com.decorator1889.instruments.databinding.ViewMiniCategoriesBinding
 import com.decorator1889.instruments.models.MiniCategory
-import com.decorator1889.instruments.models.TestLevel
 
-class MiniCategoryAdapter: ListAdapter<MiniCategory, MiniCategoryAdapter.MiniCategoryViewHolder>(MiniCategoryDiffUtilCallback()) {
+class MiniCategoriesAdapter: ListAdapter<MiniCategory, MiniCategoriesAdapter.MiniCategoryViewHolder>(MiniCategoryDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MiniCategoryViewHolder {
         return MiniCategoryViewHolder.getViewHolder(parent)
@@ -21,7 +19,7 @@ class MiniCategoryAdapter: ListAdapter<MiniCategory, MiniCategoryAdapter.MiniCat
     }
 
     class MiniCategoryViewHolder(
-        private val binding: ViewMiniCategoryBinding
+        private val binding: ViewMiniCategoriesBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: MiniCategory) {
@@ -32,7 +30,7 @@ class MiniCategoryAdapter: ListAdapter<MiniCategory, MiniCategoryAdapter.MiniCat
 
         companion object {
             fun getViewHolder(parent: ViewGroup): MiniCategoryViewHolder {
-                val binding = ViewMiniCategoryBinding.inflate(
+                val binding = ViewMiniCategoriesBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false

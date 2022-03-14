@@ -3,6 +3,7 @@
     <string name="networkErrorMessage">Произошла неизвестная ошибка при взаимодействии с сервером.</string>
     <string name="networkFailureMessage">Не удалось загрузить данные. Проверьте соединение с интернетом и повторите попытку.</string>
     <string name="networkButtonOk">Ок</string>
+    <string name="functionalityIsInDevelopment">Functionality is in development</string>
     <!-- OnBoarding_Screen -->
     <string name="onBoardingTitle">Начни изучать хирургию вместе с мобильным справочником медицинских инструментов</string>
     <string name="onBoardingSingIn">Войти</string>
@@ -44,4 +45,6 @@
     <string name="profileExit">Выйти</string>
     <string name="profileResult">Ваш последний результат</string>
     <string name="profileNext">Пройти тест заново</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/coordinator"
-    android:background="@color/white_ffffff"
-    tools:context=".fragments.CategoryFragment">
+    tools:context=".fragments.InstrumentsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -14,16 +13,21 @@
         android:layout_height="wrap_content"
         android:background="@color/white_FFFFFFFF"
         app:elevation="0dp"
-        app:liftOnScroll="false">
+        app:liftOnScroll="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             style="@style/Default.Toolbar"
+            app:layout_scrollFlags="scroll|enterAlways"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_collapseMode="pin"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:titleTextColor="@color/blue_5B67CA" />
+            app:subtitleTextColor="@color/blue_5B67CA"
+            app:titleTextColor="@color/blue_5B67CA"
+            tools:subtitle="Раздел: Соединяющие"
+            tools:title="Тема: Общая хирургия" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -32,24 +36,16 @@
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:clipToPadding="false"
-                android:layoutAnimation="@anim/layout_anim_grid_rv"
-                android:paddingTop="@dimen/padding16"
-                android:splitMotionEvents="false"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2" />
-
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/padding16"
+            android:paddingHorizontal="@dimen/padding16"
+            android:paddingBottom="@dimen/padding16"
+            android:clipToPadding="false"
+            android:splitMotionEvents="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

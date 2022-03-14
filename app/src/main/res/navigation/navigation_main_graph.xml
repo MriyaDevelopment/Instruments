@@ -70,19 +70,26 @@
         tools:layout="@layout/fragment_main" >
 
         <action
-            android:id="@+id/action_mainFragment_to_categoryFragment"
-            app:destination="@id/categoryFragment"
+            android:id="@+id/action_mainFragment_to_subCategoriesFragment"
+            app:destination="@id/subCategoriesFragment"
             app:enterAnim="@anim/fragment_enter"
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
             app:popExitAnim="@anim/fragment_exit" />
+        <action
+            android:id="@+id/action_mainFragment_to_instrumentsFragment"
+            app:destination="@id/instrumentsFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter"
+            app:popExitAnim="@anim/fragment_exit"/>
 
     </fragment>
     <fragment
-        android:id="@+id/categoryFragment"
-        android:name="com.decorator1889.instruments.fragments.CategoryFragment"
-        android:label="fragment_category"
-        tools:layout="@layout/fragment_category" >
+        android:id="@+id/subCategoriesFragment"
+        android:name="com.decorator1889.instruments.fragments.SubCategoriesFragment"
+        android:label="fragment_sub_categories"
+        tools:layout="@layout/fragment_sub_categories" >
 
         <argument
             android:name="type"
@@ -93,18 +100,18 @@
             app:argType="string" />
 
         <action
-            android:id="@+id/action_categoryFragment_to_detailCatalogFragment"
-            app:destination="@id/detailCatalogFragment"
+            android:id="@+id/action_categoryFragment_to_instrumentsFragment"
+            app:destination="@id/instrumentsFragment"
             app:enterAnim="@anim/fragment_enter"
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
             app:popExitAnim="@anim/fragment_exit"/>
     </fragment>
     <fragment
-        android:id="@+id/detailCatalogFragment"
-        android:name="com.decorator1889.instruments.fragments.DetailCatalogFragment"
-        android:label="fragment_detail_catalog"
-        tools:layout="@layout/fragment_detail_catalog" >
+        android:id="@+id/instrumentsFragment"
+        android:name="com.decorator1889.instruments.fragments.InstrumentsFragment"
+        android:label="fragment_instruments"
+        tools:layout="@layout/fragment_instruments" >
 
         <argument
             android:name="subject"
@@ -112,7 +119,19 @@
 
         <argument
             android:name="section"
-            app:argType="string"/>
+            app:argType="string" />
+
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue=""/>
+
+        <argument
+            android:name="surgery"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_instrumentsFragment_to_instrumentsGalleryFragment"
+            app:destination="@id/instrumentsGalleryFragment" />
 
     </fragment>
     <fragment
@@ -125,4 +144,18 @@
         android:name="com.decorator1889.instruments.fragments.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/instrumentsGalleryFragment"
+        android:name="com.decorator1889.instruments.fragments.InstrumentsGalleryFragment"
+        android:label="fragment_instruments_gallery"
+        tools:layout="@layout/fragment_instruments_gallery" >
+
+        <argument
+            android:name="position"
+            app:argType="integer" />
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

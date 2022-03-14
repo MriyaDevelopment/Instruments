@@ -3,6 +3,7 @@ package com.decorator1889.instruments.util
 import android.content.Context
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
@@ -23,10 +24,14 @@ import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
 import com.google.android.material.snackbar.Snackbar
 
+fun getUriForBackendImagePath(imagePath: String?): Uri {
+    return Uri.parse("http://ovz2.j04713753.pqr7m.vps.myjino.ru/image/$imagePath")
+}
+
 fun ImageView.glide(url: String, @AnimRes withAnim: Int? = null) {
     Glide
         .with(this)
-        .load(url)
+        .load(getUriForBackendImagePath(url))
         .transition(
             if (withAnim != null) GenericTransitionOptions.with(withAnim)
             else GenericTransitionOptions.withNoTransition()
@@ -65,6 +70,8 @@ fun createSnackbar(
         text.toString(),
         Snackbar.LENGTH_SHORT
     )
+    val i = App.getInstance().resources.getDimensionPixelSize(R.dimen.padding70)
+    snackbar.view.animate().translationY((-i).toFloat())
     snackbar.setBackgroundTint(ContextCompat.getColor(App.getInstance(), R.color.blue_5B67CA))
     snackbar.setTextColor(ContextCompat.getColor(App.getInstance(), android.R.color.white))
     snackbar.setActionTextColor(ContextCompat.getColor(App.getInstance(), android.R.color.white))
@@ -92,46 +99,22 @@ fun getInstrumentsIcon(type: String): Int {
         surgery -> {
             return R.drawable.ic_surgery
         }
-        neurosurgery -> {
+        neuro -> {
             return R.drawable.ic_neurosurgery
         }
-        dentistry -> {
+        stomatology -> {
             return R.drawable.ic_dentistry
         }
-        obstetrics_gynecology -> {
+        gynecology -> {
             return R.drawable.ic_obstetrics_gynecology
         }
         ophthalmology -> {
             return R.drawable.ic_ophthalmology
         }
-        otorhinolaryngology -> {
+        lor -> {
             return  R.drawable.ic_otorhinolaryngology
         }
         else -> return R.drawable.ic_surgery
-    }
-}
-
-fun getInstrumentsBgr(type: String): Int {
-    when (type) {
-        surgery -> {
-            return R.drawable.bgr_surgery
-        }
-        neurosurgery -> {
-            return R.drawable.bgr_neurosurgery
-        }
-        dentistry -> {
-            return R.drawable.bgr_dentistry
-        }
-        obstetrics_gynecology -> {
-            return R.drawable.bgr_obstetrics_gynecology
-        }
-        ophthalmology -> {
-            return R.drawable.bgr_ophthalmology
-        }
-        otorhinolaryngology -> {
-            return  R.drawable.bgr_otorhinolaryngology
-        }
-        else -> return R.drawable.bgr_surgery
     }
 }
 
@@ -162,6 +145,32 @@ class GridDecorations(
         outRect.set(leftMargin, topMargin, rightMargin, bottomMargin)
     }
 }
+
+fun getInstrumentsBgr(type: String): Int {
+    when (type) {
+        surgery -> {
+            return R.drawable.bgr_surgery
+        }
+        neuro -> {
+            return R.drawable.bgr_neurosurgery
+        }
+        stomatology -> {
+            return R.drawable.bgr_dentistry
+        }
+        gynecology -> {
+            return R.drawable.bgr_obstetrics_gynecology
+        }
+        ophthalmology -> {
+            return R.drawable.bgr_ophthalmology
+        }
+        lor -> {
+            return  R.drawable.bgr_otorhinolaryngology
+        }
+        else -> return R.drawable.bgr_surgery
+    }
+}
+
+
 
 fun View.visible() {
     this.visibility = View.VISIBLE
@@ -235,9 +244,11 @@ const val easy = "Легкий уровень"
 const val middle = "Средний уровень"
 const val hard = "Сложный уровень"
 
-const val dentistry = "Стоматология"
-const val neurosurgery = "Нейрохирургия"
-const val surgery = "Общая хирургия"
-const val obstetrics_gynecology = "Акушерство и гинекология"
-const val ophthalmology = "Офтальмология"
-const val otorhinolaryngology = "Оториноларингология"
+const val surgery = "surgery"
+const val stomatology = "stomatology"
+const val gynecology = "gynecology"
+const val neuro = "neuro"
+const val lor = "lor"
+const val urology = "urology"
+const val ophthalmology = "ophthalmology"
+const val anesthesiology = "anesthesiology"

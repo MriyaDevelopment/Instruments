@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.decorator1889.instruments.R
-import com.decorator1889.instruments.databinding.FragmentCategoryBinding
 import com.decorator1889.instruments.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {

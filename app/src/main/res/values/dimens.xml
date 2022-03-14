@@ -28,6 +28,8 @@
     <dimen name="margin38">38dp</dimen>
     <dimen name="margin40">40dp</dimen>
     <dimen name="margin45">45dp</dimen>
+    <dimen name="margin170">170dp</dimen>
+    <dimen name="margin250">250dp</dimen>
     <!-- Size -->
     <dimen name="size5">5sp</dimen>
     <dimen name="size8">8sp</dimen>
@@ -45,11 +47,13 @@
     <dimen name="corner8">8dp</dimen>
     <dimen name="corner14">14dp</dimen>
     <dimen name="corner15">15dp</dimen>
+    <dimen name="corner16">16dp</dimen>
     <dimen name="corner20">20dp</dimen>
     <!-- Padding -->
     <dimen name="padding3">3dp</dimen>
     <dimen name="padding8">8dp</dimen>
     <dimen name="padding16">16dp</dimen>
+    <dimen name="padding70">70dp</dimen>
     <dimen name="padding80">80dp</dimen>
     <!-- Height -->
     <dimen name="height25">25dp</dimen>
@@ -59,8 +63,9 @@
     <dimen name="height52">52dp</dimen>
     <dimen name="height60">60dp</dimen>
     <dimen name="height65">65dp</dimen>
-    <!-- Weight -->
-    <dimen name="weight32">32dp</dimen>
-    <dimen name="weight40">40dp</dimen>
-    <dimen name="weight65">65dp</dimen>
+    <dimen name="height250">250dp</dimen>
+    <!-- Width -->
+    <dimen name="width32">32dp</dimen>
+    <dimen name="width40">40dp</dimen>
+    <dimen name="width65">65dp</dimen>
 </resources>

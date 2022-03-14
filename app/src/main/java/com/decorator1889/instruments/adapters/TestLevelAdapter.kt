@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.decorator1889.instruments.R
-import com.decorator1889.instruments.databinding.ViewDetailCatalogBinding
 import com.decorator1889.instruments.databinding.ViewTestLevelBinding
-import com.decorator1889.instruments.models.DetailCatalog
 import com.decorator1889.instruments.models.TestLevel
 import com.decorator1889.instruments.util.*
 

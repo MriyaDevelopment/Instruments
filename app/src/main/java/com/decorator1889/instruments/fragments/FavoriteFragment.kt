@@ -5,12 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.decorator1889.instruments.R
-import com.decorator1889.instruments.adapters.DetailCatalogAdapter
-import com.decorator1889.instruments.adapters.DetailCatalogItem
-import com.decorator1889.instruments.databinding.FragmentDetailCatalogBinding
 import com.decorator1889.instruments.databinding.FragmentFavoriteBinding
-import com.decorator1889.instruments.models.getDetailCatalog
 
 class FavoriteFragment : Fragment() {
 
@@ -29,16 +24,16 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun loadAdapter() {
-        val data = mutableListOf<DetailCatalogItem>()
-        val adapter = DetailCatalogAdapter(onClickFavorite = onClickFavorite)
-        binding.recycler.adapter = adapter
-        data.add(DetailCatalogItem.DetailCatalogFavoriteButton)
-        getDetailCatalog().let {
-            data.addAll(it.map { detailCatalog ->
-                DetailCatalogItem.DetailCatalogWrap(detailCatalog)
-            })
-        }
-        adapter.submitList(data)
+//        val data = mutableListOf<DetailCatalogItem>()
+//        val adapter = DetailCatalogAdapter(onClickFavorite = onClickFavorite)
+//        binding.recycler.adapter = adapter
+//        data.add(DetailCatalogItem.DetailCatalogFavoriteButton)
+//        getDetailCatalog().let {
+//            data.addAll(it.map { detailCatalog ->
+//                DetailCatalogItem.DetailCatalogWrap(detailCatalog)
+//            })
+//        }
+//        adapter.submitList(data)
     }
 
     private val onClickFavorite: () -> Unit = {
