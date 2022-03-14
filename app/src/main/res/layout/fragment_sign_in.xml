@@ -49,11 +49,12 @@
             app:startIconTint="@color/background_input">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login"
+                android:id="@+id/email"
                 style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signInEmail"
+                android:imeOptions="actionNext"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -79,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signInPassword"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -93,14 +95,38 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/height25" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/signIn"
-            style="@style/DefaultBlueButton"
-            android:text="@string/signInTitle"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/margin18"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin18">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signIn"
+                style="@style/DefaultBlueButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/signInTitle"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/loader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:indicatorColor="@color/blue_5B67CA"
+                app:indicatorSize="@dimen/margin40"
+                app:layout_constraintBottom_toBottomOf="@+id/signIn"
+                app:layout_constraintEnd_toEndOf="@+id/signIn"
+                app:layout_constraintStart_toStartOf="@+id/signIn"
+                app:layout_constraintTop_toTopOf="@+id/signIn"
+                app:trackThickness="@dimen/margin6" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

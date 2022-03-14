@@ -22,6 +22,8 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var onCategoriesEvent: DefaultNetworkEventObserver
+    private lateinit var onProfileEvent: DefaultNetworkEventObserver
+    private lateinit var onMainPageEvent: DefaultNetworkEventObserver
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,20 +39,31 @@ class MainFragment : Fragment() {
     private fun initializeObservers() {
         onCategoriesEvent = DefaultNetworkEventObserver(
             anchorView = binding.root,
+            doOnSuccess = {
+                loadCategoriesAdapter()
+            }
+        )
+        onProfileEvent = DefaultNetworkEventObserver(
+            anchorView = binding.root,
+            doOnSuccess = {
+                bindProfileData()
+            }
+        )
+        onMainPageEvent = DefaultNetworkEventObserver(
+            anchorView = binding.root,
             doOnLoading = {
                 hideCategoriesMain()
             },
             doOnSuccess = {
-                loadCategoriesAdapter()
                 showCategoriesMain()
             },
-            doOnError = {
-                mainViewModel.loadCategories()
-            },
-            doOnFailure = {
-                mainViewModel.loadCategories()
-            }
         )
+    }
+
+    private fun bindProfileData() {
+        mainViewModel.profile.value?.let { user ->
+            binding.name.text = str(R.string.mainName, user.name)
+        }
     }
 
     private fun hideCategoriesMain() {
@@ -58,11 +71,13 @@ class MainFragment : Fragment() {
             swipeRefresh.isRefreshing = true
             containerTitle.alpha = 0f
             recycler.alpha = 0f
+            recycler.gone()
         }
     }
 
     private fun showCategoriesMain() {
         binding.run {
+            recycler.visible()
             swipeRefresh.isRefreshing = false
             containerTitle.animate().alpha(1f)
             recycler.animate().alpha(1f)
@@ -72,6 +87,8 @@ class MainFragment : Fragment() {
     private fun setObservers() {
         mainViewModel.run {
             categoriesResultEvent.observe(viewLifecycleOwner, onCategoriesEvent)
+            profileResultEvent.observe(viewLifecycleOwner, onProfileEvent)
+            mainPageLoading.observe(viewLifecycleOwner, onMainPageEvent)
         }
     }
 
@@ -88,19 +105,24 @@ class MainFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         checkIsLoadData()
-        (activity as MainActivity).showBottomNavigationView()
+        (activity as MainActivity).run {
+            visibleBottomNav()
+            showBottomNavigationView()
+        }
     }
 
     private fun checkIsLoadData() {
         mainViewModel.run {
-            if (categoriesResultEvent.value?.peekContent() != State.SUCCESS) loadCategories()
-            else loadCategoriesAdapter()
+            if (mainPageLoading.value?.peekContent() != State.SUCCESS) loadMainData()
+            else {
+                bindProfileData()
+                loadCategoriesAdapter()
+            }
         }
     }
 
     private fun loadCategoriesAdapter() {
         binding.run {
-            name.text = str(R.string.mainName, "Гость")
             val adapter = CategoriesAdapter(onClickCatalog = onClickCatalog)
             recycler.adapter = adapter
             mainViewModel.categoriesList.value?.let { categories ->
@@ -115,7 +137,7 @@ class MainFragment : Fragment() {
                 ContextCompat.getColor(requireContext(), R.color.blue_5B67CA)
             )
             swipeRefresh.setOnRefreshListener {
-                mainViewModel.loadCategories()
+                mainViewModel.loadMainData()
             }
             subscribe.setOnClickListener {
                 createSnackbar(
@@ -128,9 +150,21 @@ class MainFragment : Fragment() {
 
     private val onClickCatalog: (type: String, name: String) -> Unit = { type, name ->
         if (type == surgery) {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToSubCategoriesFragment(type, name))
+            findNavController().navigate(
+                MainFragmentDirections.actionMainFragmentToSubCategoriesFragment(
+                    type,
+                    name
+                )
+            )
         } else {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToInstrumentsFragment(section = name, subject = "", type = type, surgery = false))
+            findNavController().navigate(
+                MainFragmentDirections.actionMainFragmentToInstrumentsFragment(
+                    section = name,
+                    subject = "",
+                    type = type,
+                    surgery = false
+                )
+            )
         }
     }
 }

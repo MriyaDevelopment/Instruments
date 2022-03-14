@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initBnv()
+        loginInOnce()
     }
 
     private fun initBnv() {
@@ -29,14 +30,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.test -> findNavController(R.id.nav_host_fragment).navigate(R.id.testLevelFragment)
                 R.id.favorite -> findNavController(R.id.nav_host_fragment).navigate(R.id.favoriteFragment)
                 R.id.profile -> findNavController(R.id.nav_host_fragment)
-                else -> navigateByLogin()
             }
             true
         }
     }
 
-    private fun navigateByLogin() {
-        TODO("Not yet implemented")
+    private fun loginInOnce() {
+        if (App.getInstance().userToken?.isEmpty() == true) {
+            findNavController(R.id.nav_host_fragment).navigate(R.id.onBoardingFragment)
+        }
     }
 
     fun hideBottomNavigationView(){
@@ -44,6 +46,14 @@ class MainActivity : AppCompatActivity() {
             val i = resources.getDimensionPixelSize(R.dimen.margin10)
             layoutBnv.animate().translationY(layoutBnv.height.toFloat() + i)
         }
+    }
+
+    fun goneBottomNav() {
+        binding.layoutBnv.gone()
+    }
+
+    fun visibleBottomNav() {
+        binding.layoutBnv.visible()
     }
 
     fun showBottomNavigationView() {

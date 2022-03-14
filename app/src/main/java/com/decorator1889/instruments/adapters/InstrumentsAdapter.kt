@@ -17,7 +17,8 @@ sealed class InstrumentsItem(val itemId: Long) {
     object InstrumentsFavoriteButton: InstrumentsItem(-1)
 }
 class InstrumentsAdapter(
-    private val onClickFavorite:() -> Unit = {},
+    private val onClickLike:(Long, Boolean) -> Unit = {instrument_is, is_liked ->},
+    private val onClickTestFavorite:() -> Unit = {},
     private val onClickImage: (Int, ImageView) -> Unit = { position: Int, imageView: ImageView -> }
 ): ListAdapter<InstrumentsItem, RecyclerView.ViewHolder>(DetailCatalogDiffUtilCallback()) {
 
@@ -42,10 +43,10 @@ class InstrumentsAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(val item = getItem(position)) {
             is InstrumentsItem.InstrumentsWrap -> {
-                (holder as InstrumentsViewHolder).bind(item.instruments, onClickImage)
+                (holder as InstrumentsViewHolder).bind(item.instruments, onClickImage, onClickLike)
             }
             is InstrumentsItem.InstrumentsFavoriteButton-> {
-                (holder as InstrumentsFavoriteViewHolder).bind(onClickFavorite)
+                (holder as InstrumentsFavoriteViewHolder).bind(onClickTestFavorite)
             }
         }
     }
@@ -54,7 +55,11 @@ class InstrumentsAdapter(
         private val binding: ViewInstrumentsBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Instruments, onClickImage: (Int, ImageView) -> Unit) {
+        fun bind(
+            item: Instruments,
+            onClickImage: (Int, ImageView) -> Unit,
+            onClickLike: (Long, Boolean) -> Unit
+        ) {
             binding.run {
                 title.text = item.title
                 description.text = item.full_text
@@ -66,11 +71,7 @@ class InstrumentsAdapter(
                 if (item.is_liked) favorite.icon = ContextCompat.getDrawable(root.context, R.drawable.ic_favorite_active)
                 else favorite.icon = ContextCompat.getDrawable(root.context, R.drawable.ic_favorite_inactive)
                 favorite.setOnClickListener {
-                    if (item.is_liked) {
-                        favorite.icon = ContextCompat.getDrawable(root.context, R.drawable.ic_favorite_inactive)
-                    } else {
-                        favorite.icon = ContextCompat.getDrawable(root.context, R.drawable.ic_favorite_active)
-                    }
+                    onClickLike(item.id, item.is_liked)
                 }
             }
         }
@@ -90,9 +91,9 @@ class InstrumentsAdapter(
     class InstrumentsFavoriteViewHolder(
         private val binding: ViewInstrumentsBinding
     ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(onClickFavorite: () -> Unit) {
+        fun bind(onClickTestFavorite: () -> Unit) {
             binding.favorite.setOnClickListener {
-                onClickFavorite()
+                onClickTestFavorite()
             }
         }
 

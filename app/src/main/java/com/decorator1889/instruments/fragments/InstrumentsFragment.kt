@@ -1,6 +1,7 @@
 package com.decorator1889.instruments.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +13,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.decorator1889.instruments.App
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.InstrumentsAdapter
 import com.decorator1889.instruments.adapters.InstrumentsItem
 import com.decorator1889.instruments.databinding.FragmentInstrumentsBinding
+import com.decorator1889.instruments.models.Instruments
 import com.decorator1889.instruments.util.DefaultNetworkEventObserver
 import com.decorator1889.instruments.util.enums.State
 import com.decorator1889.instruments.util.str
@@ -32,6 +35,10 @@ class InstrumentsFragment : Fragment() {
     private val galleryViewModel: GalleryViewModel by activityViewModels()
     private lateinit var onInstrumentsEvent: DefaultNetworkEventObserver
 
+    private val instrumentsAdapter by lazy {
+        InstrumentsAdapter(onClickImage = onClickImage, onClickLike = onClickLike)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,9 +47,14 @@ class InstrumentsFragment : Fragment() {
         initializeObservers()
         setObservers()
         setTitleToolbar()
+        setAdapter()
         setListeners()
         postponeTransition()
     }.root
+
+    private fun setAdapter() {
+        binding.recycler.adapter = instrumentsAdapter
+    }
 
     private fun postponeTransition() {
         postponeEnterTransition()
@@ -62,7 +74,9 @@ class InstrumentsFragment : Fragment() {
                 hideInstruments()
             },
             doOnSuccess = {
-                loadAdapter()
+                instrumentsViewModel.instruments.value?.let { instrumentsList ->
+                    loadAdapter(instrumentsList)
+                }
                 showInstruments()
             },
             doOnError = {
@@ -117,27 +131,59 @@ class InstrumentsFragment : Fragment() {
 
     private fun checkIsLoadData() {
         if (instrumentsViewModel.instrumentsResultEvent.value?.peekContent() != State.SUCCESS) loadInstruments()
-        else loadAdapter()
+        else instrumentsViewModel.instruments.value?.let { instrumentsList ->
+            loadAdapter(instrumentsList)
+        }
     }
 
-    private fun loadAdapter() {
-        val adapter = InstrumentsAdapter(onClickImage = onClickImage)
-        binding.recycler.adapter = adapter
+    private fun loadAdapter(instrumentsList: List<Instruments>) {
         val data = mutableListOf<InstrumentsItem>()
-        instrumentsViewModel.instruments.value?.let { instrumentsList ->
-            data.addAll(instrumentsList.map { instruments ->
-                InstrumentsItem.InstrumentsWrap(instruments)
-            })
-            galleryViewModel.setInstrumentsGalleryList(instrumentsList)
-        }
-        adapter.submitList(data)
+        data.addAll(instrumentsList.map { instruments ->
+            InstrumentsItem.InstrumentsWrap(instruments)
+        })
+        galleryViewModel.setInstrumentsGalleryList(instrumentsList)
+        instrumentsViewModel.instrumentsList = instrumentsList
+        instrumentsAdapter.submitList(data)
     }
 
     private val onClickImage: (Int, ImageView) -> Unit = { position, imageView ->
         val transitionExtras = FragmentNavigatorExtras(
             imageView to "quick_image_transition",
         )
-        findNavController().navigate(InstrumentsFragmentDirections.actionInstrumentsFragmentToInstrumentsGalleryFragment(position = position, title = args.section), navigatorExtras = transitionExtras)
+        findNavController().navigate(
+            InstrumentsFragmentDirections.actionInstrumentsFragmentToInstrumentsGalleryFragment(
+                position = position,
+                title = args.section
+            ), navigatorExtras = transitionExtras
+        )
+    }
+
+    private val onClickLike: (Long, Boolean) -> Unit = { instrument_id, is_liked ->
+        if (is_liked) {
+            removeLike(instrument_id)
+        } else {
+            setLike(instrument_id)
+        }
+    }
+
+    private fun removeLike(instrumentId: Long) {
+        instrumentsViewModel.run {
+            if (args.section == "Общая хирургия") {
+                removeLike(instrumentId, true)
+            } else {
+                removeLike(instrumentId, false)
+            }
+        }
+    }
+
+    private fun setLike(instrument_id: Long) {
+        instrumentsViewModel.run {
+            if (args.section == "Общая хирургия") {
+                setLike(instrument_id, true)
+            } else {
+                setLike(instrument_id, false)
+            }
+        }
     }
 
     private fun setTitleToolbar() {

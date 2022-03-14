@@ -10,7 +10,7 @@
     <string name="onBoardingSingUp">Еще нет аккаунта? <b><u>Зарегистрироваться</u></b></string>
     <!-- SignIn_Screen-->
     <string name="signInTitle">Вход</string>
-    <string name="signInEmail">Имя пользователя или E-mail</string>
+    <string name="signInEmail">E-mail</string>
     <string name="signInPassword">Пароль</string>
     <string name="signInPasswordPassword">Забыли пароль?</string>
     <!-- SignUp_Screen -->

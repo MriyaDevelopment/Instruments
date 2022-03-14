@@ -4,6 +4,8 @@ import android.content.Context
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.os.IBinder
+import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
@@ -38,6 +40,17 @@ fun ImageView.glide(url: String, @AnimRes withAnim: Int? = null) {
         )
         .placeholder(getDefaultShimmer(this.context))
         .into(this)
+}
+
+fun checkSpacesOrNotEmpty(input: String): Boolean {
+    return !TextUtils.isEmpty(input.trim())
+}
+
+fun hideKeyboard(token: IBinder) {
+    val context = App.getInstance().applicationContext
+    val imm =
+        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS)
 }
 
 fun getDefaultShimmer(context: Context): Drawable {

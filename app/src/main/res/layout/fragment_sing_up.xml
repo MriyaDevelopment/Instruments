@@ -51,6 +51,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name"
                 style="@style/TextInputEditText"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/singUpName"
@@ -74,6 +75,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 style="@style/TextInputEditText"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/singUpEmail"
@@ -99,6 +101,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 style="@style/TextInputEditText"
+                android:imeOptions="actionDone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signInPassword"
@@ -106,14 +109,39 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/signUp"
-            style="@style/DefaultBlueButton"
-            android:text="@string/signUpTitle"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/margin40"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/loader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:indicatorColor="@color/blue_5B67CA"
+                app:indicatorSize="@dimen/margin40"
+                app:layout_constraintBottom_toBottomOf="@+id/signUp"
+                app:layout_constraintEnd_toEndOf="@+id/signUp"
+                app:layout_constraintStart_toStartOf="@+id/signUp"
+                app:layout_constraintTop_toTopOf="@+id/signUp"
+                app:trackThickness="@dimen/margin6" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signUp"
+                style="@style/DefaultBlueButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/signUpTitle"
+                android:textStyle="bold"
+                android:enabled="false"
+                android:layout_marginTop="@dimen/margin40"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton

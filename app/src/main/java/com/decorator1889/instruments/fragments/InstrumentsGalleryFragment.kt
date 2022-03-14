@@ -29,21 +29,17 @@ class InstrumentsGalleryFragment : Fragment() {
         sharedElementEnterTransition = transition
         sharedElementReturnTransition = transition
         binding = this
-        setTitleToolbar()
         loadGalleryAdapter()
         setListeners()
     }.root
 
     private fun setListeners() {
         binding.run {
-            toolbar.setNavigationOnClickListener {
+            toolbar.setNavigationOnClickListener  {
                 findNavController().popBackStack()
             }
+            toolbar.title = arg.title
         }
-    }
-
-    private fun setTitleToolbar() {
-        binding.toolbar.title = arg.title
     }
 
     private fun loadGalleryAdapter() {
