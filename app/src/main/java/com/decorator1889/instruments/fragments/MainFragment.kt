@@ -61,7 +61,11 @@ class MainFragment : Fragment() {
     }
 
     private fun bindProfileData() {
-        mainViewModel.profile.value?.let { user ->
+        mainViewModel.profile.value?.let { profile ->
+            if (profile.isEmpty()) {
+                return
+            }
+            val user = profile[0]
             binding.name.text = str(R.string.mainName, user.name)
         }
     }

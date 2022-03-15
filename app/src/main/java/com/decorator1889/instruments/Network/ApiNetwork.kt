@@ -56,7 +56,7 @@ interface ApiNetwork {
     @POST("public/api/getProfileData")
     fun getProfileDataAsync(
         @Field("user_token") user_token: String?,
-    ): Deferred<LoginResponse>
+    ): Deferred<ProfileResponse>
 
     @FormUrlEncoded
     @POST("public/api/setLike")

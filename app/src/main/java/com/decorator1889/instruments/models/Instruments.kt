@@ -8,7 +8,7 @@ data class Instruments(
     val type: String,
     val image: String,
     val full_text: String,
-    val is_liked: Boolean
+    var is_liked: Boolean
 )
 
 fun List<InstrumentsResponse.Instruments>.toInstruments(): List<Instruments> {

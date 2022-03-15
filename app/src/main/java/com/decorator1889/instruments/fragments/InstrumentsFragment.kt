@@ -21,6 +21,7 @@ import com.decorator1889.instruments.adapters.InstrumentsItem
 import com.decorator1889.instruments.databinding.FragmentInstrumentsBinding
 import com.decorator1889.instruments.models.Instruments
 import com.decorator1889.instruments.util.DefaultNetworkEventObserver
+import com.decorator1889.instruments.util.OneTimeEvent
 import com.decorator1889.instruments.util.enums.State
 import com.decorator1889.instruments.util.str
 import com.decorator1889.instruments.viewModels.GalleryViewModel
@@ -53,7 +54,10 @@ class InstrumentsFragment : Fragment() {
     }.root
 
     private fun setAdapter() {
-        binding.recycler.adapter = instrumentsAdapter
+        binding.run {
+            recycler.adapter = instrumentsAdapter
+            recycler.itemAnimator = null
+        }
     }
 
     private fun postponeTransition() {
@@ -64,6 +68,9 @@ class InstrumentsFragment : Fragment() {
     private fun setObservers() {
         instrumentsViewModel.run {
             instrumentsResultEvent.observe(viewLifecycleOwner, onInstrumentsEvent)
+            errorLikeEvent.observe(viewLifecycleOwner, OneTimeEvent.Observer {
+                loadInstruments(args.type)
+            })
         }
     }
 
@@ -74,9 +81,7 @@ class InstrumentsFragment : Fragment() {
                 hideInstruments()
             },
             doOnSuccess = {
-                instrumentsViewModel.instruments.value?.let { instrumentsList ->
-                    loadAdapter(instrumentsList)
-                }
+                loadAdapter()
                 showInstruments()
             },
             doOnError = {
@@ -131,18 +136,17 @@ class InstrumentsFragment : Fragment() {
 
     private fun checkIsLoadData() {
         if (instrumentsViewModel.instrumentsResultEvent.value?.peekContent() != State.SUCCESS) loadInstruments()
-        else instrumentsViewModel.instruments.value?.let { instrumentsList ->
-            loadAdapter(instrumentsList)
-        }
+        else loadAdapter()
     }
 
-    private fun loadAdapter(instrumentsList: List<Instruments>) {
+    private fun loadAdapter() {
         val data = mutableListOf<InstrumentsItem>()
-        data.addAll(instrumentsList.map { instruments ->
-            InstrumentsItem.InstrumentsWrap(instruments)
-        })
-        galleryViewModel.setInstrumentsGalleryList(instrumentsList)
-        instrumentsViewModel.instrumentsList = instrumentsList
+        instrumentsViewModel.instruments.value?.let { instrumentsList ->
+            data.addAll(instrumentsList.map { instruments ->
+                InstrumentsItem.InstrumentsWrap(instruments)
+            })
+            galleryViewModel.setInstrumentsGalleryList(instrumentsList)
+        }
         instrumentsAdapter.submitList(data)
     }
 
@@ -159,39 +163,43 @@ class InstrumentsFragment : Fragment() {
     }
 
     private val onClickLike: (Long, Boolean) -> Unit = { instrument_id, is_liked ->
-        if (is_liked) {
-            removeLike(instrument_id)
-        } else {
-            setLike(instrument_id)
+        if (is_liked) removeLike(instrument_id)
+        else setLike(instrument_id)
+        val newInstrumentsList = instrumentsViewModel.instruments.value?.map { instruments ->
+            Instruments(
+                id = instruments.id,
+                title = instruments.title,
+                type = instruments.type,
+                image = instruments.image,
+                full_text = instruments.full_text,
+                is_liked = instruments.is_liked
+            )
+        }?.toList()
+        newInstrumentsList?.firstOrNull { it.id == instrument_id }?.is_liked = !is_liked
+        newInstrumentsList?.let {
+            instrumentsViewModel.setNewInstrumentsList(it)
         }
+        loadAdapter()
     }
 
     private fun removeLike(instrumentId: Long) {
         instrumentsViewModel.run {
-            if (args.section == "Общая хирургия") {
-                removeLike(instrumentId, true)
-            } else {
-                removeLike(instrumentId, false)
-            }
+            if (args.surgery) removeLike(instrumentId, true)
+            else removeLike(instrumentId, false)
         }
     }
 
     private fun setLike(instrument_id: Long) {
         instrumentsViewModel.run {
-            if (args.section == "Общая хирургия") {
-                setLike(instrument_id, true)
-            } else {
-                setLike(instrument_id, false)
-            }
+            if (args.surgery) setLike(instrument_id, true)
+            else setLike(instrument_id, false)
         }
     }
 
     private fun setTitleToolbar() {
         binding.run {
             toolbar.title = str(R.string.detailCatalogTitle, args.section)
-            if (args.subject.isEmpty()) {
-                return
-            }
+            if (args.subject.isEmpty()) return
             toolbar.subtitle = str(R.string.detailCatalogSubtitle, args.subject)
         }
     }

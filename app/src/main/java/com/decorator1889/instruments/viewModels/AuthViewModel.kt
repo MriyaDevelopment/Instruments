@@ -8,8 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.decorator1889.instruments.App
 import com.decorator1889.instruments.Network.ApiNetwork
 import com.decorator1889.instruments.models.User
+import com.decorator1889.instruments.models.toLogin
 import com.decorator1889.instruments.models.toRegister
-import com.decorator1889.instruments.models.toUser
 import com.decorator1889.instruments.util.NetworkEvent
 import com.decorator1889.instruments.util.OneTimeEvent
 import com.decorator1889.instruments.util.enums.State
@@ -58,7 +58,7 @@ class AuthViewModel : ViewModel() {
             try {
                 val response = ApiNetwork.API.loginAsync(email = email, password = password).await()
                 if (response.result == "success") {
-                    _loginUser.value = response.user?.toUser()
+                    _loginUser.value = response.user?.toLogin()
                     loginUser.value?.api_token?.let { App.getInstance().logIn(it) }
                     _loginResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {

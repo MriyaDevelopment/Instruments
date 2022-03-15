@@ -18,7 +18,6 @@ class InstrumentsViewModel : ViewModel() {
     val instruments: LiveData<List<Instruments>> = _instruments
     private val _instrumentsResultEvent = MutableLiveData<NetworkEvent<State>>()
     val instrumentsResultEvent: LiveData<NetworkEvent<State>> = _instrumentsResultEvent
-    var instrumentsList: List<Instruments>? = null
 
     fun loadInstruments(type: String) {
         viewModelScope.launch {
@@ -113,5 +112,9 @@ class InstrumentsViewModel : ViewModel() {
                 errorLikeEvent.value = OneTimeEvent()
             }
         }
+    }
+
+    fun setNewInstrumentsList(newInstrumentsList: List<Instruments>) {
+        _instruments.value = newInstrumentsList
     }
 }

@@ -6,10 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.decorator1889.instruments.App
 import com.decorator1889.instruments.Network.ApiNetwork
-import com.decorator1889.instruments.models.Categories
-import com.decorator1889.instruments.models.User
-import com.decorator1889.instruments.models.toCategories
-import com.decorator1889.instruments.models.toUser
+import com.decorator1889.instruments.models.*
 import com.decorator1889.instruments.util.NetworkEvent
 import com.decorator1889.instruments.util.OneTimeEvent
 import com.decorator1889.instruments.util.enums.State
@@ -23,8 +20,8 @@ class MainViewModel : ViewModel() {
     private val _categoriesResultEvent = MutableLiveData<NetworkEvent<State>>()
     val categoriesResultEvent: LiveData<NetworkEvent<State>> = _categoriesResultEvent
 
-    private val _profile = MutableLiveData<User>()
-    val profile: LiveData<User> = _profile
+    private val _profile = MutableLiveData<List<User>>()
+    val profile: LiveData<List<User>> = _profile
     private val _profileResultEvent = MutableLiveData<NetworkEvent<State>>()
     val profileResultEvent: LiveData<NetworkEvent<State>> = _profileResultEvent
 
@@ -85,14 +82,14 @@ class MainViewModel : ViewModel() {
             _profileResultEvent.value = NetworkEvent(State.LOADING)
             mainPageLoadingMap[PROFILE] = State.LOADING
             try {
-//                val response = ApiNetwork.API.getProfileDataAsync(App.getInstance().userToken).await()
-//                if (response.result == "success") {
-//                    _profile.value = response.user?.toUser()
+                val response = ApiNetwork.API.getProfileDataAsync(App.getInstance().userToken).await()
+                if (response.result == "success") {
+                    _profile.value = response.user?.toListUser()
                     _profileResultEvent.value = NetworkEvent(State.SUCCESS)
                     mainPageLoadingMap[PROFILE] = State.SUCCESS
-//                } else {
-//                    mainPageLoadingMap[PROFILE] = State.ERROR
-//                }
+                } else {
+                    mainPageLoadingMap[PROFILE] = State.ERROR
+                }
             } catch (e: Exception) {
                 mainPageLoadingMap[PROFILE] = State.FAILURE
             }
