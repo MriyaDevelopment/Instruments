@@ -1,7 +1,7 @@
 package com.decorator1889.instruments.Network
 
 import com.decorator1889.instruments.Network.response.*
-import com.decorator1889.instruments.models.RemoveLikeResponse
+import com.decorator1889.instruments.Network.response.RemoveLikeResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -73,6 +73,15 @@ interface ApiNetwork {
         @Field("instrument_id") instrument_id: Long?,
         @Field("is_surgery") is_surgery: Boolean?,
     ): Deferred<RemoveLikeResponse>
+
+    @POST("public/api/getLevels")
+    fun getLevelsAsync(): Deferred<LevelsResponse>
+
+    @FormUrlEncoded
+    @POST("public/api/getFavourites")
+    fun getFavoritesAsync(
+        @Field("user_token") user_token: String?
+    ): Deferred<FavoritesResponse>
 
     companion object {
         const val baseUrl = "http://ovz2.j04713753.pqr7m.vps.myjino.ru/"

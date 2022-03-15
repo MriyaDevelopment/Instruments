@@ -144,15 +144,19 @@
 
     </fragment>
     <fragment
-        android:id="@+id/testLevelFragment"
-        android:name="com.decorator1889.instruments.fragments.TestLevelFragment"
-        android:label="fragment_test_level"
-        tools:layout="@layout/fragment_test_level" />
+        android:id="@+id/levelsFragment"
+        android:name="com.decorator1889.instruments.fragments.LevelsFragment"
+        android:label="fragment_levels"
+        tools:layout="@layout/fragment_levels" />
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.decorator1889.instruments.fragments.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_instrumentsGalleryFragment"
+            app:destination="@id/instrumentsGalleryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/instrumentsGalleryFragment"
         android:name="com.decorator1889.instruments.fragments.InstrumentsGalleryFragment"
@@ -167,4 +171,9 @@
             android:name="title"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.decorator1889.instruments.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

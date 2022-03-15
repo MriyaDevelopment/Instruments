@@ -1,4 +1,4 @@
-package com.decorator1889.instruments.models
+package com.decorator1889.instruments.Network.response
 
 import com.decorator1889.instruments.Network.response.LikeResponse
 

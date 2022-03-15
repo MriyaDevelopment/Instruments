@@ -7,20 +7,25 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.decorator1889.instruments.App
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.databinding.ViewInstrumentsBinding
+import com.decorator1889.instruments.fragments.InstrumentsFragment
 import com.decorator1889.instruments.models.Instruments
 import com.decorator1889.instruments.util.glide
 
 sealed class InstrumentsItem(val itemId: Long) {
-    data class InstrumentsWrap(val instruments: Instruments) :InstrumentsItem(instruments.id)
-    object InstrumentsFavoriteButton: InstrumentsItem(-1)
+    data class InstrumentsWrap(val instruments: Instruments) : InstrumentsItem(instruments.id)
+    object InstrumentsFavoriteButton : InstrumentsItem(-1)
 }
+
 class InstrumentsAdapter(
-    private val onClickLike:(Long, Boolean) -> Unit = {instrument_is, is_liked ->},
-    private val onClickTestFavorite:() -> Unit = {},
-    private val onClickImage: (Int, ImageView) -> Unit = { position: Int, imageView: ImageView -> }
-): ListAdapter<InstrumentsItem, RecyclerView.ViewHolder>(DetailCatalogDiffUtilCallback()) {
+    private val typeInstruments: (String),
+    private val onClickLike: (Long, Boolean) -> Unit = { instrument_is, is_liked -> },
+    private val onClickTestFavorite: () -> Unit = {},
+    private val onClickImage: (Int, ImageView) -> Unit = { position: Int, imageView: ImageView -> },
+    private val onClickDeleteLike: (Instruments) -> Unit = {}
+) : ListAdapter<InstrumentsItem, RecyclerView.ViewHolder>(DetailCatalogDiffUtilCallback()) {
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
@@ -41,11 +46,17 @@ class InstrumentsAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(val item = getItem(position)) {
+        when (val item = getItem(position)) {
             is InstrumentsItem.InstrumentsWrap -> {
-                (holder as InstrumentsViewHolder).bind(item.instruments, onClickImage, onClickLike)
+                (holder as InstrumentsViewHolder).bind(
+                    item.instruments,
+                    onClickImage,
+                    onClickLike,
+                    onClickDeleteLike,
+                    typeInstruments
+                )
             }
-            is InstrumentsItem.InstrumentsFavoriteButton-> {
+            is InstrumentsItem.InstrumentsFavoriteButton -> {
                 (holder as InstrumentsFavoriteViewHolder).bind(onClickTestFavorite)
             }
         }
@@ -53,12 +64,14 @@ class InstrumentsAdapter(
 
     class InstrumentsViewHolder(
         private val binding: ViewInstrumentsBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
             item: Instruments,
             onClickImage: (Int, ImageView) -> Unit,
-            onClickLike: (Long, Boolean) -> Unit
+            onClickLike: (Long, Boolean) -> Unit,
+            onClickDeleteLike: (Instruments) -> Unit,
+            typeInstruments: String
         ) {
             binding.run {
                 title.text = item.title
@@ -71,7 +84,14 @@ class InstrumentsAdapter(
                 if (item.is_liked) favorite.icon = ContextCompat.getDrawable(root.context, R.drawable.ic_favorite_active)
                 else favorite.icon = ContextCompat.getDrawable(root.context, R.drawable.ic_favorite_inactive)
                 favorite.setOnClickListener {
-                    onClickLike(item.id, item.is_liked)
+                    if (typeInstruments == InstrumentsFragment.INSTRUMENTS) onClickLike(
+                        item.id,
+                        item.is_liked
+                    )
+                    else {
+                        favorite.icon = ContextCompat.getDrawable(root.context, R.drawable.ic_favorite_inactive)
+                        onClickDeleteLike(item)
+                    }
                 }
             }
         }
@@ -90,7 +110,7 @@ class InstrumentsAdapter(
 
     class InstrumentsFavoriteViewHolder(
         private val binding: ViewInstrumentsBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(onClickTestFavorite: () -> Unit) {
             binding.favorite.setOnClickListener {
                 onClickTestFavorite()
@@ -110,8 +130,13 @@ class InstrumentsAdapter(
     }
 
     class DetailCatalogDiffUtilCallback : DiffUtil.ItemCallback<InstrumentsItem>() {
-        override fun areItemsTheSame(oldItem: InstrumentsItem, newItem: InstrumentsItem): Boolean = oldItem.itemId == newItem.itemId
-        override fun areContentsTheSame(oldItem: InstrumentsItem, newItem: InstrumentsItem): Boolean = oldItem == newItem
+        override fun areItemsTheSame(oldItem: InstrumentsItem, newItem: InstrumentsItem): Boolean =
+            oldItem.itemId == newItem.itemId
+
+        override fun areContentsTheSame(
+            oldItem: InstrumentsItem,
+            newItem: InstrumentsItem
+        ): Boolean = oldItem == newItem
     }
 
     companion object {

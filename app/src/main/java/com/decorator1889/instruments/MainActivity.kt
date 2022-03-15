@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         binding.bnv.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> findNavController(R.id.nav_host_fragment).navigate(R.id.mainFragment)
-                R.id.test -> findNavController(R.id.nav_host_fragment).navigate(R.id.testLevelFragment)
+                R.id.test -> findNavController(R.id.nav_host_fragment).navigate(R.id.levelsFragment)
                 R.id.favorite -> findNavController(R.id.nav_host_fragment).navigate(R.id.favoriteFragment)
-                R.id.profile -> findNavController(R.id.nav_host_fragment)
+                R.id.profile -> findNavController(R.id.nav_host_fragment).navigate(R.id.profileFragment)
             }
             true
         }

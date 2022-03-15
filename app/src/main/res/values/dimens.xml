@@ -22,6 +22,7 @@
     <dimen name="margin21">21dp</dimen>
     <dimen name="margin22">22dp</dimen>
     <dimen name="margin23">23dp</dimen>
+    <dimen name="margin24">24dp</dimen>
     <dimen name="margin25">25dp</dimen>
     <dimen name="margin26">26dp</dimen>
     <dimen name="margin29">29dp</dimen>
@@ -35,6 +36,7 @@
     <dimen name="size5">5sp</dimen>
     <dimen name="size8">8sp</dimen>
     <dimen name="size10">10sp</dimen>
+    <dimen name="size11">10sp</dimen>
     <dimen name="size12">12sp</dimen>
     <dimen name="size14">14sp</dimen>
     <dimen name="size16">16sp</dimen>
@@ -64,6 +66,7 @@
     <dimen name="height52">52dp</dimen>
     <dimen name="height60">60dp</dimen>
     <dimen name="height65">65dp</dimen>
+    <dimen name="height100">100dp</dimen>
     <dimen name="height250">250dp</dimen>
     <!-- Width -->
     <dimen name="width32">32dp</dimen>

@@ -1,5 +1,6 @@
 package com.decorator1889.instruments.models
 
+import com.decorator1889.instruments.Network.response.FavoritesResponse
 import com.decorator1889.instruments.Network.response.InstrumentsResponse
 
 data class Instruments(
@@ -24,12 +25,15 @@ fun List<InstrumentsResponse.Instruments>.toInstruments(): List<Instruments> {
     }
 }
 
-//fun getDetailCatalog(): List<DetailCatalog> {
-//    return listOf(
-//        DetailCatalog(1, "Лигатурная игла Купера", "Лигатурная игла Купера", "http://invaservice.com.ua/upload/shop_1/4/0/4/item_4043/shop_items_catalog_image4043.jpg", "Хирургический инструмент для проведения шовного материала под кровеносные сосуды", false),
-//        DetailCatalog(2, "Лигатурная игла Купера", "Лигатурная игла Купера", "http://invaservice.com.ua/upload/shop_1/4/0/4/item_4043/shop_items_catalog_image4043.jpg", "Хирургический инструмент для проведения шовного материала под кровеносные сосуды", false),
-//        DetailCatalog(2, "Лигатурная игла Купера", "Лигатурная игла Купера", "http://invaservice.com.ua/upload/shop_1/4/0/4/item_4043/shop_items_catalog_image4043.jpg", "Хирургический инструмент для проведения шовного материала под кровеносные сосуды", true),
-//        DetailCatalog(2, "Лигатурная игла Купера", "Лигатурная игла Купера", "http://invaservice.com.ua/upload/shop_1/4/0/4/item_4043/shop_items_catalog_image4043.jpg", "Хирургический инструмент для проведения шовного материала под кровеносные сосуды", false),
-//        DetailCatalog(2, "Лигатурная игла Купера", "Лигатурная игла Купера", "http://invaservice.com.ua/upload/shop_1/4/0/4/item_4043/shop_items_catalog_image4043.jpg", "Хирургический инструмент для проведения шовного материала под кровеносные сосуды", true),
-//    )
-//}
+fun List<FavoritesResponse.Instruments>.toFavorites(): List<Instruments> {
+    return this.map { favorites ->
+        Instruments(
+            id = favorites.id ?: 0L,
+            title = favorites.title ?: "",
+            type = favorites.type ?: "",
+            image = favorites.image ?: "",
+            full_text = favorites.full_text ?: "",
+            is_liked = favorites.is_liked ?: true
+        )
+    }
+}

@@ -125,9 +125,12 @@ fun getInstrumentsIcon(type: String): Int {
             return R.drawable.ic_ophthalmology
         }
         lor -> {
-            return  R.drawable.ic_otorhinolaryngology
+            return R.drawable.ic_otorhinolaryngology
         }
-        else -> return R.drawable.ic_surgery
+        anesthesiology -> {
+            return R.drawable.ic_anesthesiology
+        }
+        else -> return R.drawable.ic_urology
     }
 }
 
@@ -177,12 +180,11 @@ fun getInstrumentsBgr(type: String): Int {
             return R.drawable.bgr_ophthalmology
         }
         lor -> {
-            return  R.drawable.bgr_otorhinolaryngology
+            return R.drawable.bgr_otorhinolaryngology
         }
         else -> return R.drawable.bgr_surgery
     }
 }
-
 
 
 fun View.visible() {
@@ -214,13 +216,13 @@ fun getLevelIcon(type: String): Int {
 fun getLevelBgr(type: String): Int {
     return when (type) {
         easy -> {
-            R.drawable.bgr_easy
+            R.color.blue_405B67CA
         }
         middle -> {
-            R.drawable.bgr_middle
+            R.color.light_blue_407FC9E7
         }
         else -> {
-            R.drawable.bgr_hard
+            R.color.red_40E77D7D
         }
     }
 }

@@ -100,8 +100,8 @@ class MainFragment : Fragment() {
         binding.recycler.addItemDecoration(
             GridDecorations(
                 sideMargins = R.dimen.margin0,
-                elementsMargins = R.dimen.margin25,
-                horizontalMargins = R.dimen.margin0
+                elementsMargins = R.dimen.margin16,
+                horizontalMargins = R.dimen.margin16
             )
         )
     }

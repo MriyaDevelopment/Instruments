@@ -28,10 +28,10 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4451114558181651" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/fragment_detail_catalog.xml" value="0.29972249744007884" />
-        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.326015527697577" />
         <entry key="app/src/main/res/layout/fragment_instruments.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/fragment_instruments_gallery.xml" value="0.2622505740842958" />
-        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.5361702127659574" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.3844200296604887" />
         <entry key="app/src/main/res/layout/fragment_on_boarding.xml" value="0.3786354617796082" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.35669790074445173" />
         <entry key="app/src/main/res/layout/fragment_recovery.xml" value="0.4381035403928895" />
@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/fragment_test_category.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/fragment_test_level.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/view_catalog.xml" value="0.4095419376454455" />
+        <entry key="app/src/main/res/layout/view_categories.xml" value="0.27091146275617084" />
         <entry key="app/src/main/res/layout/view_detail_catalog.xml" value="0.472937685762569" />
         <entry key="app/src/main/res/layout/view_detail_favorite.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/view_gallery.xml" value="0.19192281529523325" />
@@ -48,7 +49,7 @@
         <entry key="app/src/main/res/layout/view_instruments.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/view_instruments_favorite.xml" value="0.1453125" />
         <entry key="app/src/main/res/layout/view_mini_category.xml" value="0.7195992068967958" />
-        <entry key="app/src/main/res/layout/view_test_level.xml" value="0.2930000858030457" />
+        <entry key="app/src/main/res/layout/view_test_level.xml" value="0.5839524517087668" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2953125" />
       </map>
     </option>

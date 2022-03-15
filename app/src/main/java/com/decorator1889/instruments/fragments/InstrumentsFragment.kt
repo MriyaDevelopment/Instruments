@@ -20,10 +20,8 @@ import com.decorator1889.instruments.adapters.InstrumentsAdapter
 import com.decorator1889.instruments.adapters.InstrumentsItem
 import com.decorator1889.instruments.databinding.FragmentInstrumentsBinding
 import com.decorator1889.instruments.models.Instruments
-import com.decorator1889.instruments.util.DefaultNetworkEventObserver
-import com.decorator1889.instruments.util.OneTimeEvent
+import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.util.enums.State
-import com.decorator1889.instruments.util.str
 import com.decorator1889.instruments.viewModels.GalleryViewModel
 import com.decorator1889.instruments.viewModels.InstrumentsViewModel
 
@@ -37,7 +35,7 @@ class InstrumentsFragment : Fragment() {
     private lateinit var onInstrumentsEvent: DefaultNetworkEventObserver
 
     private val instrumentsAdapter by lazy {
-        InstrumentsAdapter(onClickImage = onClickImage, onClickLike = onClickLike)
+        InstrumentsAdapter(onClickImage = onClickImage, onClickLike = onClickLike, typeInstruments = INSTRUMENTS)
     }
 
     override fun onCreateView(
@@ -83,12 +81,6 @@ class InstrumentsFragment : Fragment() {
             doOnSuccess = {
                 loadAdapter()
                 showInstruments()
-            },
-            doOnError = {
-                loadInstruments()
-            },
-            doOnFailure = {
-                loadInstruments()
             }
         )
     }
@@ -102,8 +94,9 @@ class InstrumentsFragment : Fragment() {
 
     private fun showInstruments() {
         binding.run {
-            swipeRefresh.isRefreshing = false
+            recycler.visible()
             recycler.animate().alpha(1f)
+            swipeRefresh.isRefreshing = false
         }
     }
 
@@ -111,6 +104,7 @@ class InstrumentsFragment : Fragment() {
         binding.run {
             swipeRefresh.isRefreshing = true
             recycler.alpha = 0f
+            recycler.gone()
         }
     }
 
@@ -202,5 +196,9 @@ class InstrumentsFragment : Fragment() {
             if (args.subject.isEmpty()) return
             toolbar.subtitle = str(R.string.detailCatalogSubtitle, args.subject)
         }
+    }
+
+    companion object {
+        const val INSTRUMENTS = "instruments"
     }
 }

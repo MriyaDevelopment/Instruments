@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.decorator1889.instruments.App
 import com.decorator1889.instruments.Network.ApiNetwork
+import com.decorator1889.instruments.Network.response.RemoveLikeResponse
 import com.decorator1889.instruments.models.*
 import com.decorator1889.instruments.util.NetworkEvent
 import com.decorator1889.instruments.util.OneTimeEvent

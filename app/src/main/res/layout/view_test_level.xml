@@ -2,26 +2,19 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin16"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height100"
+    android:layout_marginHorizontal="@dimen/margin16"
     app:rippleColor="@color/blue_5B67CA"
+    android:layout_marginBottom="@dimen/margin24"
+    app:cardElevation="0dp"
     app:cardCornerRadius="@dimen/corner15">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerTest"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/bgr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription"
-            tools:src="@drawable/bgr_easy" />
+        android:layout_height="match_parent"
+        tools:background="@color/blue_405B67CA">
 
         <ImageView
             android:id="@+id/icon"

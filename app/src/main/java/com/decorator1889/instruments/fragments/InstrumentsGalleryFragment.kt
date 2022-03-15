@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
+import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.adapters.InstrumentsGalleryAdapter
 import com.decorator1889.instruments.databinding.FragmentInstrumentsGalleryBinding
 import com.decorator1889.instruments.viewModels.GalleryViewModel
@@ -32,6 +33,11 @@ class InstrumentsGalleryFragment : Fragment() {
         loadGalleryAdapter()
         setListeners()
     }.root
+
+    override fun onStart() {
+        super.onStart()
+        (activity as MainActivity).hideBottomNavigationView()
+    }
 
     private fun setListeners() {
         binding.run {
