@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/signInEmail"
                 android:imeOptions="actionNext"
-                android:inputType="text" />
+                android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

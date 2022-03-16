@@ -8,10 +8,9 @@ import com.decorator1889.instruments.App
 import com.decorator1889.instruments.Network.ApiNetwork
 import com.decorator1889.instruments.models.*
 import com.decorator1889.instruments.util.NetworkEvent
-import com.decorator1889.instruments.util.OneTimeEvent
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
-import java.lang.Exception
+import kotlin.Exception
 
 class MainViewModel : ViewModel() {
 
@@ -24,6 +23,11 @@ class MainViewModel : ViewModel() {
     val profile: LiveData<List<User>> = _profile
     private val _profileResultEvent = MutableLiveData<NetworkEvent<State>>()
     val profileResultEvent: LiveData<NetworkEvent<State>> = _profileResultEvent
+
+    private val _result = MutableLiveData<List<Result>>()
+    val result: LiveData<List<Result>> = _result
+    private val _resultResultEvent = MutableLiveData<NetworkEvent<State>>()
+    val resultResultEvent: LiveData<NetworkEvent<State>> = _resultResultEvent
 
     private val _mainPageLoading = MutableLiveData<NetworkEvent<State>>()
     val mainPageLoading: LiveData<NetworkEvent<State>> = _mainPageLoading
@@ -40,6 +44,7 @@ class MainViewModel : ViewModel() {
         resetMainPageLoadingMap()
         loadCategories()
         getProfileData()
+        getResultData()
     }
 
     private fun checkIsMainPageReady() {
@@ -77,7 +82,7 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    private fun getProfileData() {
+    fun getProfileData() {
         viewModelScope.launch {
             _profileResultEvent.value = NetworkEvent(State.LOADING)
             mainPageLoadingMap[PROFILE] = State.LOADING
@@ -97,8 +102,29 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun getResultData() {
+        viewModelScope.launch {
+            _resultResultEvent.value = NetworkEvent(State.LOADING)
+            mainPageLoadingMap[RESULT] = State.LOADING
+            try {
+                val response = ApiNetwork.API.getResultAsync(App.getInstance().userToken).await()
+                if (response.result == "success") {
+                    _result.value = response.levels?.toResult()
+                    _resultResultEvent.value = NetworkEvent(State.SUCCESS)
+                    mainPageLoadingMap[RESULT] = State.SUCCESS
+                } else {
+                    mainPageLoadingMap[RESULT] = State.ERROR
+                }
+            } catch (e: Exception) {
+                mainPageLoadingMap[RESULT] = State.ERROR
+            }
+            checkIsMainPageReady()
+        }
+    }
+
     companion object {
         const val CATEGORIES = "CATEGORIES"
         const val PROFILE = "PROFILE"
+        const val RESULT = "RESULT"
     }
 }

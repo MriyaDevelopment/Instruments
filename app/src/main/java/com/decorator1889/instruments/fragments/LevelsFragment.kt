@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.LevelsAdapter
 import com.decorator1889.instruments.databinding.FragmentLevelsBinding
@@ -84,6 +85,10 @@ class LevelsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         checkIsLoadData()
+        (activity as MainActivity).run {
+            checkBnvMenuItem(R.id.test)
+            showBottomNavigationView()
+        }
     }
 
     private fun checkIsLoadData() {

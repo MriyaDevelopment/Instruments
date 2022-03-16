@@ -83,6 +83,12 @@ interface ApiNetwork {
         @Field("user_token") user_token: String?
     ): Deferred<FavoritesResponse>
 
+    @FormUrlEncoded
+    @POST("public/api/getResult")
+    fun getResultAsync(
+        @Field("user_token") user_token: String?
+    ): Deferred<ResultResponse>
+
     companion object {
         const val baseUrl = "http://ovz2.j04713753.pqr7m.vps.myjino.ru/"
 

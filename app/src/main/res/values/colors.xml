@@ -20,4 +20,21 @@
     <color name="shimmer">#ffffff</color>
     <color name="backgroundDefaultShimmer">#f6f3f9</color>
 
+    <color name="surgery">#7EC3DF</color>
+    <color name="anesthesiology">#BF7DE7</color>
+    <color name="stomatology">#5B67CA</color>
+    <color name="gynecology">#E77D7D</color>
+    <color name="neuro">#81E89E</color>
+    <color name="lor">#E880CB</color>
+    <color name="urology">#DBA57E</color>
+    <color name="ophthalmology">#EAC566</color>
+
+    <color name="surgery25">#407EC3DF</color>
+    <color name="anesthesiology25">#40BF7DE7</color>
+    <color name="stomatology25">#405B67CA</color>
+    <color name="gynecology25">#40E77D7D</color>
+    <color name="neuro25">#4081E89E</color>
+    <color name="lor25">#40E880CB</color>
+    <color name="urology25">#40DBA57E</color>
+    <color name="ophthalmology25">#40EAC566</color>
 </resources>

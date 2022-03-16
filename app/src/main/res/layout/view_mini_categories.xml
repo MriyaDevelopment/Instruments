@@ -5,17 +5,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="@dimen/corner3"
     app:cardElevation="0dp"
-    app:cardBackgroundColor="@color/red_40E77D7D"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        style="@style/TextStyleMiniCategory"
-        android:layout_marginHorizontal="@dimen/margin7"
-        android:layout_marginVertical="@dimen/margin4"
-        tools:textColor="@color/red_E77D7D"
-        tools:text="Акушерство и гинекология"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red_40E77D7D">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            style="@style/TextStyleMiniCategory"
+            android:layout_marginHorizontal="@dimen/margin7"
+            android:layout_marginVertical="@dimen/margin4"
+            tools:textColor="@color/red_E77D7D"
+            tools:text="Акушерство и гинекология"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

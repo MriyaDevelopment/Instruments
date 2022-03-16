@@ -63,7 +63,6 @@ class FavoriteFragment : Fragment() {
     private fun setAdapter() {
         binding.run {
             recycler.adapter = favoritesAdapter
-            recycler.itemAnimator = null
         }
     }
 
@@ -90,7 +89,7 @@ class FavoriteFragment : Fragment() {
         binding.run {
             swipeRefresh.isRefreshing = true
             recycler.alpha = 0f
-            binding.emptyView.gone()
+            emptyView.gone()
             recycler.gone()
         }
     }
@@ -106,7 +105,10 @@ class FavoriteFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         checkIsLoadData()
-        (activity as MainActivity).showBottomNavigationView()
+        (activity as MainActivity).run {
+            checkBnvMenuItem(R.id.favorite)
+            showBottomNavigationView()
+        }
     }
 
     private fun checkIsLoadData() {

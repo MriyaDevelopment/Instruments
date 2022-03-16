@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.decorator1889.instruments.App
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.databinding.ViewInstrumentsBinding
+import com.decorator1889.instruments.databinding.ViewInstrumentsFavoriteBinding
 import com.decorator1889.instruments.fragments.InstrumentsFragment
 import com.decorator1889.instruments.models.Instruments
 import com.decorator1889.instruments.util.glide
@@ -109,7 +110,7 @@ class InstrumentsAdapter(
     }
 
     class InstrumentsFavoriteViewHolder(
-        private val binding: ViewInstrumentsBinding
+        private val binding: ViewInstrumentsFavoriteBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(onClickTestFavorite: () -> Unit) {
             binding.favorite.setOnClickListener {
@@ -119,7 +120,7 @@ class InstrumentsAdapter(
 
         companion object {
             fun getViewHolder(parent: ViewGroup): InstrumentsFavoriteViewHolder {
-                val binding = ViewInstrumentsBinding.inflate(
+                val binding = ViewInstrumentsFavoriteBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false

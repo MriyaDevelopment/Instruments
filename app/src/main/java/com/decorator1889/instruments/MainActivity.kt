@@ -6,7 +6,9 @@ import android.view.ViewGroup.MarginLayoutParams
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.decorator1889.instruments.databinding.ActivityMainBinding
+import com.decorator1889.instruments.databinding.FragmentOnBoardingBinding
 import com.decorator1889.instruments.util.gone
 import com.decorator1889.instruments.util.visible
 
@@ -38,6 +40,8 @@ class MainActivity : AppCompatActivity() {
     private fun loginInOnce() {
         if (App.getInstance().userToken?.isEmpty() == true) {
             findNavController(R.id.nav_host_fragment).navigate(R.id.onBoardingFragment)
+        } else {
+            findNavController(R.id.nav_host_fragment).navigate(R.id.mainFragment)
         }
     }
 
@@ -60,5 +64,20 @@ class MainActivity : AppCompatActivity() {
         binding.run {
             layoutBnv.animate().translationY(0f)
         }
+    }
+
+    fun userLogOut() {
+        App.getInstance().logOut()
+        viewModelStore.clear()
+        val navController = findNavController(R.id.nav_host_fragment)
+        val navHostFragment: NavHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val inflater = navHostFragment.navController.navInflater
+        val navGraph = inflater.inflate(R.navigation.navigation_main_graph)
+        navController.graph = navGraph
+    }
+
+    fun checkBnvMenuItem(itemId: Int) {
+        binding.bnv.menu.findItem(itemId).isChecked = true
     }
 }

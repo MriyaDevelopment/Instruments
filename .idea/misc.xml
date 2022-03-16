@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/background_input_layout.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/background_surgery.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/bgr_dentistry.xml" value="0.155" />
+        <entry key="app/src/main/res/drawable/bgr_dialog.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/bgr_easy.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/bgr_hard.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/bgr_profile_img.xml" value="0.211" />
@@ -26,6 +27,7 @@
         <entry key="app/src/main/res/drawable/test_selector.xml" value="0.211" />
         <entry key="app/src/main/res/layout-v28/fragment_on_boarding.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4451114558181651" />
+        <entry key="app/src/main/res/layout/dialog_exit.xml" value="0.3106743411741395" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/fragment_detail_catalog.xml" value="0.29972249744007884" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.326015527697577" />
@@ -48,6 +50,7 @@
         <entry key="app/src/main/res/layout/view_header_categories.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/view_instruments.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/view_instruments_favorite.xml" value="0.1453125" />
+        <entry key="app/src/main/res/layout/view_mini_categories.xml" value="0.6140739993772645" />
         <entry key="app/src/main/res/layout/view_mini_category.xml" value="0.7195992068967958" />
         <entry key="app/src/main/res/layout/view_test_level.xml" value="0.5839524517087668" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2953125" />

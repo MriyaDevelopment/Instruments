@@ -29,7 +29,7 @@ class App: Application()  {
         prefs.edit()
             .remove(PREF_USER_TOKEN)
             .apply()
-        userToken = null
+        userToken = ""
     }
 
     companion object {

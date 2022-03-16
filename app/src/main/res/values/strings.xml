@@ -46,6 +46,8 @@
     <string name="profileExit">Выйти</string>
     <string name="profileResult">Ваш последний результат</string>
     <string name="profileNext">Пройти тест заново</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Exit_Dialog-->
+    <string name="exitTitle">Выйти из аккаунта?</string>
+    <string name="exitNo">Нет</string>
+    <string name="exitYes">Да</string>
 </resources>

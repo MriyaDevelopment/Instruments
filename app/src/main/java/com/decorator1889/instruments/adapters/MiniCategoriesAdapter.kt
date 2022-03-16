@@ -2,13 +2,18 @@ package com.decorator1889.instruments.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.decorator1889.instruments.databinding.ViewMiniCategoriesBinding
-import com.decorator1889.instruments.models.MiniCategory
+import com.decorator1889.instruments.util.getColor25MiniCategories
+import com.decorator1889.instruments.util.getColorMiniCategories
+import com.decorator1889.instruments.util.getLevelBgr
+import com.decorator1889.instruments.util.getNameMiniCategories
 
-class MiniCategoriesAdapter: ListAdapter<MiniCategory, MiniCategoriesAdapter.MiniCategoryViewHolder>(MiniCategoryDiffUtilCallback()) {
+class MiniCategoriesAdapter(
+): ListAdapter<String, MiniCategoriesAdapter.MiniCategoryViewHolder>(MiniCategoryDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MiniCategoryViewHolder {
         return MiniCategoryViewHolder.getViewHolder(parent)
@@ -22,9 +27,11 @@ class MiniCategoriesAdapter: ListAdapter<MiniCategory, MiniCategoriesAdapter.Min
         private val binding: ViewMiniCategoriesBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: MiniCategory) {
+        fun bind(item: String) {
             binding.run {
-                name.text = item.name
+                name.text = getNameMiniCategories(item)
+                container.background = ContextCompat.getDrawable(root.context, getColor25MiniCategories(item))
+                name.setTextColor(getColorMiniCategories(item))
             }
         }
 
@@ -40,8 +47,8 @@ class MiniCategoriesAdapter: ListAdapter<MiniCategory, MiniCategoriesAdapter.Min
         }
     }
 
-    class MiniCategoryDiffUtilCallback : DiffUtil.ItemCallback<MiniCategory>() {
-        override fun areItemsTheSame(oldItem: MiniCategory, newItem: MiniCategory): Boolean = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: MiniCategory, newItem: MiniCategory): Boolean = oldItem == newItem
+    class MiniCategoryDiffUtilCallback : DiffUtil.ItemCallback<String>() {
+        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean = oldItem == newItem
+        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean = oldItem == newItem
     }
 }

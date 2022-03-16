@@ -1,193 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ProfileFragment">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/exit"
-        style="@style/OnlyTextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
-        android:layout_marginEnd="@dimen/margin15"
-        android:text="@string/profileExit"
-        android:textColor="@color/blue_5B67CA"
-        android:textSize="@dimen/size16"
-        android:textStyle="normal"
-        app:icon="@drawable/ic_logout"
-        app:iconGravity="textStart"
-        app:iconTint="@color/blue_5B67CA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/circleImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin30"
-        android:background="@drawable/bgr_profile_img"
-        android:elevation="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exit"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/name"
-        style="@style/TextBlueBold20Style"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin30"
-        android:layout_marginTop="@dimen/margin16"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImg"
-        tools:text="Ксения" />
-
-    <TextView
-        android:id="@+id/email"
-        style="@style/TextDarkNormal14Style"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="@+id/name"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:text="aovseenk@gmail.com" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/result"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin16"
-        android:layout_marginHorizontal="@dimen/margin16"
-        app:cardCornerRadius="@dimen/corner8"
-        app:cardElevation="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email">
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerProfile"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/progress"
-                android:layout_width="@dimen/width65"
-                android:layout_height="@dimen/height65"
-                android:layout_marginStart="@dimen/margin20"
-                android:progress="50"
-                android:layout_marginTop="@dimen/margin15"
-                app:indicatorColor="@color/blue_5B67CA"
-                app:indicatorSize="@dimen/height65"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:trackColor="@color/blue_405B67CA"
-                app:trackCornerRadius="@dimen/corner3"
-                app:trackThickness="@dimen/size5" />
-
-            <LinearLayout
-                android:id="@+id/containerProgress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/progress"
-                app:layout_constraintEnd_toEndOf="@+id/progress"
-                app:layout_constraintStart_toStartOf="@+id/progress"
-                app:layout_constraintTop_toTopOf="@+id/progress">
-
-                <TextView
-                    android:id="@+id/percents"
-                    style="@style/TextBlueBold14Style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    tools:text="65%"/>
-
-                <TextView
-                    android:id="@+id/answers"
-                    style="@style/TextBlueNormal12Style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    tools:text="12/15"/>
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="2dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="@dimen/margin20"
-                android:background="@drawable/bgr_view_line_blue"
-                app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
-                app:layout_constraintStart_toEndOf="@+id/progress"
-                app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin10"
-                android:orientation="vertical"
-                android:layout_marginEnd="@dimen/margin15"
-                app:layout_constraintBottom_toBottomOf="@+id/progress"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/view"
-                app:layout_constraintTop_toTopOf="@+id/progress">
-
-                <TextView
-                    style="@style/TextDarkNormal14Style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/profileResult" />
-
-                <TextView
-                    android:id="@+id/level"
-                    style="@style/Text50DarkNormal12Style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Легкий уровень" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:clipToPadding="false"
-                android:layout_marginTop="@dimen/margin38"
-                android:splitMotionEvents="false"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-                app:spanCount="2" />
-
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/again"
+                android:id="@+id/exit"
                 style="@style/OnlyTextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/margin10"
-                android:layout_marginEnd="@dimen/margin10"
-                android:text="@string/profileNext"
+                android:layout_marginTop="@dimen/margin10"
+                android:layout_marginEnd="@dimen/margin15"
+                android:text="@string/profileExit"
                 android:textColor="@color/blue_5B67CA"
-                android:textStyle="bold"
-                app:cornerRadius="@dimen/corner15"
-                app:icon="@drawable/ic_arrow_again"
-                app:iconGravity="textEnd"
+                android:textSize="@dimen/size16"
+                android:textStyle="normal"
+                app:icon="@drawable/ic_logout"
+                app:iconGravity="textStart"
                 app:iconTint="@color/blue_5B67CA"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycler" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/circleImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin30"
+                android:background="@drawable/bgr_profile_img"
+                android:elevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/exit"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/TextBlueBold20Style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin30"
+                android:layout_marginTop="@dimen/margin16"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/circleImg"
+                tools:text="Ксения" />
+
+            <TextView
+                android:id="@+id/email"
+                style="@style/TextDarkNormal14Style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="@+id/name"
+                app:layout_constraintStart_toStartOf="@+id/name"
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                tools:text="aovseenk@gmail.com" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin16"
+                android:layout_marginTop="@dimen/margin16"
+                app:cardCornerRadius="@dimen/corner8"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/blockTest"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/progress"
+                        android:layout_width="@dimen/width65"
+                        android:layout_height="@dimen/height65"
+                        android:layout_marginStart="@dimen/margin20"
+                        android:layout_marginTop="@dimen/margin15"
+                        app:indicatorColor="@color/blue_5B67CA"
+                        app:indicatorSize="@dimen/height65"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:trackColor="@color/blue_405B67CA"
+                        app:trackCornerRadius="@dimen/corner3"
+                        app:trackThickness="@dimen/size5" />
+
+                    <LinearLayout
+                        android:id="@+id/containerProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/progress"
+                        app:layout_constraintEnd_toEndOf="@+id/progress"
+                        app:layout_constraintStart_toStartOf="@+id/progress"
+                        app:layout_constraintTop_toTopOf="@+id/progress">
+
+                        <TextView
+                            android:id="@+id/percents"
+                            style="@style/TextBlueBold14Style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            tools:text="65%" />
+
+                        <TextView
+                            android:id="@+id/answers"
+                            style="@style/TextBlueNormal12Style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            tools:text="12/15" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="@dimen/margin20"
+                        android:background="@drawable/bgr_view_line_blue"
+                        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+                        app:layout_constraintStart_toEndOf="@+id/progress"
+                        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:layout_marginEnd="@dimen/margin15"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/progress"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/view"
+                        app:layout_constraintTop_toTopOf="@+id/progress">
+
+                        <TextView
+                            style="@style/TextDarkNormal14Style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/profileResult" />
+
+                        <TextView
+                            android:id="@+id/level"
+                            style="@style/Text50DarkNormal12Style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Легкий уровень" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/containerRv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/margin38"
+                        android:paddingHorizontal="@dimen/margin14"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:clipToPadding="false"
+                            android:splitMotionEvents="false"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:spanCount="2"
+                            tools:ignore="RtlHardcoded" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/again"
+                        style="@style/OnlyTextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/margin10"
+                        android:layout_marginEnd="@dimen/margin10"
+                        android:text="@string/profileNext"
+                        android:textColor="@color/blue_5B67CA"
+                        android:textStyle="bold"
+                        app:cornerRadius="@dimen/corner15"
+                        app:icon="@drawable/ic_arrow_again"
+                        app:iconGravity="textEnd"
+                        app:iconTint="@color/blue_5B67CA"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/containerRv" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -25,6 +25,7 @@ import com.decorator1889.instruments.R
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
 import com.google.android.material.snackbar.Snackbar
+import java.util.ArrayList
 
 fun getUriForBackendImagePath(imagePath: String?): Uri {
     return Uri.parse("http://ovz2.j04713753.pqr7m.vps.myjino.ru/image/$imagePath")
@@ -267,3 +268,123 @@ const val lor = "lor"
 const val urology = "urology"
 const val ophthalmology = "ophthalmology"
 const val anesthesiology = "anesthesiology"
+
+enum class Types(val types: String) {
+    SURGERY("Общая хирургия"),
+    STOMATOLOGY("Стоматология"),
+    GYNECOLOGY("Акушерство и гинекология"),
+    NEURO("Нейрохирургия"),
+    LOR("Оториноларингология"),
+    UROLOGY("Урология"),
+    OPHTHALMOLOGY("Офтальмология"),
+    ANESTHESIOLOGY("Анестезиология")
+}
+
+enum class TypesColor(val color: Int) {
+    SURGERY(R.color.surgery),
+    STOMATOLOGY(R.color.stomatology),
+    GYNECOLOGY(R.color.gynecology),
+    NEURO(R.color.neuro),
+    LOR(R.color.lor),
+    UROLOGY(R.color.urology),
+    OPHTHALMOLOGY(R.color.ophthalmology),
+    ANESTHESIOLOGY(R.color.anesthesiology)
+}
+
+enum class TypesColor25(val color: Int) {
+    SURGERY(R.color.surgery25),
+    STOMATOLOGY(R.color.stomatology25),
+    GYNECOLOGY(R.color.gynecology25),
+    NEURO(R.color.neuro25),
+    LOR(R.color.lor25),
+    UROLOGY(R.color.urology25),
+    OPHTHALMOLOGY(R.color.ophthalmology25),
+    ANESTHESIOLOGY(R.color.anesthesiology25)
+}
+
+fun getNameMiniCategories(type: String): String {
+    when (type) {
+        surgery -> {
+            return Types.SURGERY.types
+        }
+        stomatology -> {
+            return Types.STOMATOLOGY.types
+        }
+        gynecology -> {
+            return Types.GYNECOLOGY.types
+        }
+        neuro -> {
+            return Types.NEURO.types
+        }
+        lor -> {
+            return Types.LOR.types
+        }
+        urology -> {
+            return Types.UROLOGY.types
+        }
+        ophthalmology -> {
+            return Types.OPHTHALMOLOGY.types
+        }
+        else -> {
+            return Types.ANESTHESIOLOGY.types
+        }
+    }
+}
+
+fun getColorMiniCategories(type: String): Int {
+    when (type) {
+        surgery -> {
+            return TypesColor.SURGERY.color
+        }
+        stomatology -> {
+            return TypesColor.STOMATOLOGY.color
+        }
+        gynecology -> {
+            return TypesColor.GYNECOLOGY.color
+        }
+        neuro -> {
+            return TypesColor.NEURO.color
+        }
+        lor -> {
+            return TypesColor.LOR.color
+        }
+        urology -> {
+            return TypesColor.UROLOGY.color
+        }
+        ophthalmology -> {
+            return TypesColor.OPHTHALMOLOGY.color
+        }
+        else -> {
+            return TypesColor.ANESTHESIOLOGY.color
+        }
+    }
+}
+
+fun getColor25MiniCategories(type: String): Int {
+    when (type) {
+        surgery -> {
+            return TypesColor25.SURGERY.color
+        }
+        stomatology -> {
+            return TypesColor25.STOMATOLOGY.color
+        }
+        gynecology -> {
+            return TypesColor25.GYNECOLOGY.color
+        }
+        neuro -> {
+            return TypesColor25.NEURO.color
+        }
+        lor -> {
+            return TypesColor25.LOR.color
+        }
+        urology -> {
+            return TypesColor25.UROLOGY.color
+        }
+        ophthalmology -> {
+            return TypesColor25.OPHTHALMOLOGY.color
+        }
+        else -> {
+            return TypesColor25.ANESTHESIOLOGY.color
+        }
+    }
+}
