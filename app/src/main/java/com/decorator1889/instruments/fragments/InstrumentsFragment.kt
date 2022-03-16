@@ -166,7 +166,8 @@ class InstrumentsFragment : Fragment() {
                 type = instruments.type,
                 image = instruments.image,
                 full_text = instruments.full_text,
-                is_liked = instruments.is_liked
+                is_liked = instruments.is_liked,
+                is_surgery = instruments.is_surgery
             )
         }?.toList()
         newInstrumentsList?.firstOrNull { it.id == instrument_id }?.is_liked = !is_liked

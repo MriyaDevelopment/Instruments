@@ -18,6 +18,7 @@ import com.decorator1889.instruments.adapters.InstrumentsItem
 import com.decorator1889.instruments.databinding.FragmentFavoriteBinding
 import com.decorator1889.instruments.models.Instruments
 import com.decorator1889.instruments.util.DefaultNetworkEventObserver
+import com.decorator1889.instruments.util.OneTimeEvent
 import com.decorator1889.instruments.util.enums.State
 import com.decorator1889.instruments.util.gone
 import com.decorator1889.instruments.util.visible
@@ -69,6 +70,9 @@ class FavoriteFragment : Fragment() {
     private fun setObservers() {
         favoritesViewModel.run {
             favoritesResultEvent.observe(viewLifecycleOwner, onFavoriteEvent)
+            errorLikeEvent.observe(viewLifecycleOwner, OneTimeEvent.Observer {
+                loadFavorites()
+            })
         }
     }
 
@@ -123,6 +127,7 @@ class FavoriteFragment : Fragment() {
         favoritesViewModel.favorites.value?.let {
           if (it.isEmpty()) {
               binding.emptyView.visible()
+              binding.recycler.gone()
               return
           }
             data.add(InstrumentsItem.InstrumentsFavoriteButton)
@@ -134,6 +139,7 @@ class FavoriteFragment : Fragment() {
     }
 
     private val onClickDeleteLike: (Instruments) -> Unit = { item ->
+        favoritesViewModel.removeLike(instrument_id = item.id, is_surgery = item.is_surgery)
         val newFavoritesList: MutableList<Instruments>? = favoritesViewModel.favorites.value?.map { instruments ->
             Instruments(
                 id = instruments.id,
@@ -141,7 +147,8 @@ class FavoriteFragment : Fragment() {
                 type = instruments.type,
                 image = instruments.image,
                 full_text = instruments.full_text,
-                is_liked = instruments.is_liked
+                is_liked = instruments.is_liked,
+                is_surgery = instruments.is_surgery
             )
         }?.toMutableList()
         newFavoritesList?.remove(item)

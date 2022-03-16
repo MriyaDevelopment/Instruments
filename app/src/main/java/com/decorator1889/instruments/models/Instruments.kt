@@ -9,7 +9,8 @@ data class Instruments(
     val type: String,
     val image: String,
     val full_text: String,
-    var is_liked: Boolean
+    var is_liked: Boolean,
+    val is_surgery: Boolean
 )
 
 fun List<InstrumentsResponse.Instruments>.toInstruments(): List<Instruments> {
@@ -20,7 +21,8 @@ fun List<InstrumentsResponse.Instruments>.toInstruments(): List<Instruments> {
             type = instruments.type ?: "",
             image = instruments.image ?: "",
             full_text = instruments.full_text ?: "",
-            is_liked = instruments.is_liked ?: false
+            is_liked = instruments.is_liked ?: false,
+            is_surgery = instruments.is_surgery ?: false
         )
     }
 }
@@ -33,7 +35,8 @@ fun List<FavoritesResponse.Instruments>.toFavorites(): List<Instruments> {
             type = favorites.type ?: "",
             image = favorites.image ?: "",
             full_text = favorites.full_text ?: "",
-            is_liked = favorites.is_liked ?: true
+            is_liked = favorites.is_liked ?: true,
+            is_surgery = favorites.is_surgery ?: false
         )
     }
 }

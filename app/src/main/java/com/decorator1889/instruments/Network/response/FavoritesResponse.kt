@@ -11,6 +11,7 @@ data class FavoritesResponse(
         val type: String?,
         val image: String?,
         val full_text: String?,
-        var is_liked: Boolean?
+        var is_liked: Boolean?,
+        val is_surgery: Boolean?
     )
 }
