@@ -49,22 +49,28 @@ class InstrumentsGalleryFragment : Fragment() {
     }
 
     private fun loadGalleryAdapter() {
-        galleryViewModel.galleryImageList.value?.let { galleryList ->
-            val galleryAdapter = InstrumentsGalleryAdapter(onClickLeft = onClickLeft, onClickRight = onClickRight)
-            binding.viewPager.adapter = galleryAdapter
-            binding.viewPager.offscreenPageLimit = 3
-            galleryAdapter.submitList(galleryList)
-            binding.viewPager.setCurrentItem(arg.position, false)
+        binding.run {
+            galleryViewModel.galleryImageList.value?.let { galleryList ->
+                val galleryAdapter = InstrumentsGalleryAdapter(onClickLeft = onClickLeft, onClickRight = onClickRight)
+                viewPager.adapter = galleryAdapter
+                viewPager.offscreenPageLimit = 3
+                galleryAdapter.submitList(galleryList)
+                viewPager.setCurrentItem(arg.position, false)
+            }
         }
     }
 
     private val onClickLeft:() -> Unit = {
-        val currentItem = binding.viewPager.currentItem
-        binding.viewPager.setCurrentItem(currentItem - 1, true)
+        binding.run {
+            val currentItem = viewPager.currentItem
+            viewPager.setCurrentItem(currentItem - 1, true)
+        }
     }
 
     private val onClickRight:() -> Unit = {
-        val currentItem = binding.viewPager.currentItem
-        binding.viewPager.setCurrentItem(currentItem + 1, true)
+        binding.run {
+            val currentItem = viewPager.currentItem
+            viewPager.setCurrentItem(currentItem + 1, true)
+        }
     }
 }

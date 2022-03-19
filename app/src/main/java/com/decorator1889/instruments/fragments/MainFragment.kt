@@ -17,7 +17,9 @@ import com.decorator1889.instruments.adapters.CategoriesAdapter
 import com.decorator1889.instruments.databinding.FragmentMainBinding
 import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.util.enums.State
+import com.decorator1889.instruments.util.enums.TypesCategories
 import com.decorator1889.instruments.viewModels.MainViewModel
+import java.lang.reflect.Type
 
 class MainFragment : Fragment() {
 
@@ -157,7 +159,7 @@ class MainFragment : Fragment() {
     }
 
     private val onClickCatalog: (type: String, name: String) -> Unit = { type, name ->
-        if (type == surgery) {
+        if (type == TypesCategories.SURGERY.types) {
             findNavController().navigate(
                 MainFragmentDirections.actionMainFragmentToSubCategoriesFragment(
                     type,

@@ -2,9 +2,6 @@ package com.decorator1889.instruments.models
 
 import com.decorator1889.instruments.Network.response.FavoritesResponse
 import com.decorator1889.instruments.Network.response.LevelsResponse
-import com.decorator1889.instruments.util.easy
-import com.decorator1889.instruments.util.hard
-import com.decorator1889.instruments.util.middle
 
 data class Levels(
     val id: Long,

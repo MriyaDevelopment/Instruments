@@ -129,6 +129,7 @@ class TestFragment : Fragment() {
                             setProgressTest()
                             setCompleteTest()
                         } else {
+                            select.isEnabled = false
                             currentQuestion = question.size
                             onTimerCancel()
                             val questionId = arrayListOf<String>()
@@ -149,7 +150,7 @@ class TestFragment : Fragment() {
     private fun setCompleteTest() {
         testViewModel.run {
             questionList.value?.let { question ->
-                if (currentQuestion == question.size-1) {
+                if (currentQuestion == question.size) {
                     binding.select.text = str(R.string.testExit)
                 }
             }

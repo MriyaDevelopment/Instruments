@@ -22,6 +22,7 @@ import com.bumptech.glide.GenericTransitionOptions
 import com.bumptech.glide.Glide
 import com.decorator1889.instruments.App
 import com.decorator1889.instruments.R
+import com.decorator1889.instruments.util.enums.*
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
 import com.google.android.material.snackbar.Snackbar
@@ -110,28 +111,42 @@ fun resInteger(@IntegerRes id: Int) = App.getInstance().resources.getInteger(id)
 
 fun getInstrumentsIcon(type: String): Int {
     when (type) {
-        surgery -> {
-            return R.drawable.ic_surgery
+        TypesCategories.SURGERY.types -> {
+            return TypesIconCategories.SURGERY.icon
         }
-        neuro -> {
-            return R.drawable.ic_neurosurgery
+        TypesCategories.NEURO.types -> {
+            return TypesIconCategories.NEURO.icon
         }
-        stomatology -> {
-            return R.drawable.ic_dentistry
+        TypesCategories.STOMATOLOGY.types -> {
+            return TypesIconCategories.STOMATOLOGY.icon
         }
-        gynecology -> {
-            return R.drawable.ic_obstetrics_gynecology
+        TypesCategories.GYNECOLOGY.types -> {
+            return TypesIconCategories.GYNECOLOGY.icon
         }
-        ophthalmology -> {
-            return R.drawable.ic_ophthalmology
+        TypesCategories.OPHTHALMOLOGY.types -> {
+            return TypesIconCategories.OPHTHALMOLOGY.icon
         }
-        lor -> {
-            return R.drawable.ic_otorhinolaryngology
+        TypesCategories.LOR.types -> {
+            return TypesIconCategories.LOR.icon
         }
-        anesthesiology -> {
-            return R.drawable.ic_anesthesiology
+        TypesCategories.ANESTHESIOLOGY.types -> {
+            return TypesIconCategories.ANESTHESIOLOGY.icon
         }
-        else -> return R.drawable.ic_urology
+        TypesCategories.SEPARATION.types -> {
+            return TypesIconCategories.SEPARATION.icon
+        }
+        TypesCategories.CONNECTION.types -> {
+            return TypesIconCategories.CONNECTION.icon
+        }
+        TypesCategories.SPREADING.types -> {
+            return TypesIconCategories.SPREADING.icon
+        }
+        TypesCategories.HOLD.types -> {
+            return TypesIconCategories.HOLD.icon
+        }
+        else -> {
+            return TypesIconCategories.STABBING.icon
+        }
     }
 }
 
@@ -165,44 +180,35 @@ class GridDecorations(
 
 fun getInstrumentsBgr(type: String): Int {
     when (type) {
-        surgery -> {
+        TypesCategories.SURGERY.types -> {
             return TypesBackgroundInstruments.SURGERY.bgr
         }
-        neuro -> {
+        TypesCategories.NEURO.types -> {
             return TypesBackgroundInstruments.NEURO.bgr
         }
-        stomatology -> {
+        TypesCategories.STOMATOLOGY.types -> {
             return TypesBackgroundInstruments.STOMATOLOGY.bgr
         }
-        gynecology -> {
+        TypesCategories.GYNECOLOGY.types -> {
             return TypesBackgroundInstruments.GYNECOLOGY.bgr
         }
-        ophthalmology -> {
+        TypesCategories.OPHTHALMOLOGY.types -> {
             return TypesBackgroundInstruments.OPHTHALMOLOGY.bgr
         }
-        lor -> {
+        TypesCategories.LOR.types -> {
             return TypesBackgroundInstruments.LOR.bgr
         }
-        urology -> {
+        TypesCategories.UROLOGY.types -> {
             return TypesBackgroundInstruments.UROLOGY.bgr
         }
-        anesthesiology -> {
+        TypesCategories.ANESTHESIOLOGY.types -> {
             return TypesBackgroundInstruments.ANESTHESIOLOGY.bgr
         }
         else -> return TypesBackgroundInstruments.SURGERY.bgr
     }
 }
 
-enum class TypesBackgroundInstruments(val bgr: Int) {
-    SURGERY(R.drawable.bgr_surgery),
-    STOMATOLOGY(R.drawable.bgr_dentistry),
-    GYNECOLOGY(R.drawable.bgr_obstetrics_gynecology),
-    NEURO(R.drawable.bgr_neurosurgery),
-    LOR(R.drawable.bgr_otorhinolaryngology),
-    UROLOGY(R.drawable.bgr_urology),
-    OPHTHALMOLOGY(R.drawable.bgr_ophthalmology),
-    ANESTHESIOLOGY(R.drawable.bgr_anesthesiology)
-}
+
 
 fun View.visible() {
     this.visibility = View.VISIBLE
@@ -218,24 +224,24 @@ fun View.gone() {
 
 fun getLevelIcon(type: String): Int {
     return when (type) {
-        easy -> {
-            R.drawable.ic_easy
+        TypesTest.EASY.level -> {
+            TypesLevelIcon.EASY.level
         }
-        middle -> {
-            R.drawable.ic_middle
+        TypesTest.MIDDLE.level -> {
+            TypesLevelIcon.MIDDLE.level
         }
         else -> {
-            R.drawable.ic_hard
+            TypesLevelIcon.HARD.level
         }
     }
 }
 
 fun getLevelBgr(type: String): Int {
     return when (type) {
-        easy -> {
+        TypesTest.EASY.level -> {
             R.color.blue_405B67CA
         }
-        middle -> {
+        TypesTest.MIDDLE.level -> {
             R.color.light_blue_407FC9E7
         }
         else -> {
@@ -246,10 +252,10 @@ fun getLevelBgr(type: String): Int {
 
 fun getColorLevel(type: String): Int {
     return when (type) {
-        easy -> {
+        TypesTest.EASY.level -> {
             R.color.blue_5B67CA
         }
-        middle -> {
+        TypesTest.MIDDLE.level -> {
             R.color.light_blue_7EC3DF
         }
         else -> {
@@ -260,85 +266,53 @@ fun getColorLevel(type: String): Int {
 
 fun getArrowTestCategory(type: String): Int {
     return when (type) {
-        easy -> {
-            R.drawable.ic_arrow_easy
+        TypesTest.EASY.level -> {
+            TypesTestArrow.EASY.level
         }
-        middle -> {
-            R.drawable.ic_arrow_middle
+        TypesTest.MIDDLE.level  -> {
+            TypesTestArrow.MIDDLE.level
         }
         else -> {
-            R.drawable.ic_arrow_hard
+            TypesTestArrow.HARD.level
         }
     }
 }
 
-const val easy = "Легкий уровень"
-const val middle = "Средний уровень"
-const val hard = "Сложный уровень"
-
-const val surgery = "surgery"
-const val stomatology = "stomatology"
-const val gynecology = "gynecology"
-const val neuro = "neuro"
-const val lor = "lor"
-const val urology = "urology"
-const val ophthalmology = "ophthalmology"
-const val anesthesiology = "anesthesiology"
-
-enum class Types(val types: String) {
-    SURGERY("Общая хирургия"),
-    STOMATOLOGY("Стоматология"),
-    GYNECOLOGY("Акушерство и гинекология"),
-    NEURO("Нейрохирургия"),
-    LOR("Оториноларингология"),
-    UROLOGY("Урология"),
-    OPHTHALMOLOGY("Офтальмология"),
-    ANESTHESIOLOGY("Анестезиология")
-}
-
-enum class TypesColor(val color: Int) {
-    SURGERY(R.color.surgery),
-    STOMATOLOGY(R.color.stomatology),
-    GYNECOLOGY(R.color.gynecology),
-    NEURO(R.color.neuro),
-    LOR(R.color.lor),
-    UROLOGY(R.color.urology),
-    OPHTHALMOLOGY(R.color.ophthalmology),
-    ANESTHESIOLOGY(R.color.anesthesiology)
-}
-
-enum class TypesColor25(val color: Int) {
-    SURGERY(R.color.surgery25),
-    STOMATOLOGY(R.color.stomatology25),
-    GYNECOLOGY(R.color.gynecology25),
-    NEURO(R.color.neuro25),
-    LOR(R.color.lor25),
-    UROLOGY(R.color.urology25),
-    OPHTHALMOLOGY(R.color.ophthalmology25),
-    ANESTHESIOLOGY(R.color.anesthesiology25)
-}
+//const val easy = "Легкий уровень"
+//const val middle = "Средний уровень"
+//const val hard = "Сложный уровень"
+//
+//const val surgery = "surgery"
+//const val stomatology = "stomatology"
+//const val gynecology = "gynecology"
+//const val neuro = "neuro"
+//const val lor = "lor"
+//const val urology = "urology"
+//const val ophthalmology = "ophthalmology"
+//const val anesthesiology = "anesthesiology"
+//const val separation = "separation"
 
 fun getNameMiniCategories(type: String): String {
     when (type) {
-        surgery -> {
+        TypesCategories.SURGERY.types -> {
             return Types.SURGERY.types
         }
-        stomatology -> {
+        TypesCategories.STOMATOLOGY.types -> {
             return Types.STOMATOLOGY.types
         }
-        gynecology -> {
+        TypesCategories.GYNECOLOGY.types -> {
             return Types.GYNECOLOGY.types
         }
-        neuro -> {
+        TypesCategories.NEURO.types -> {
             return Types.NEURO.types
         }
-        lor -> {
+        TypesCategories.LOR.types -> {
             return Types.LOR.types
         }
-        urology -> {
+        TypesCategories.UROLOGY.types -> {
             return Types.UROLOGY.types
         }
-        ophthalmology -> {
+        TypesCategories.OPHTHALMOLOGY.types -> {
             return Types.OPHTHALMOLOGY.types
         }
         else -> {
@@ -349,25 +323,25 @@ fun getNameMiniCategories(type: String): String {
 
 fun getColorMiniCategories(type: String): Int {
     when (type) {
-        surgery -> {
+        TypesCategories.SURGERY.types -> {
             return TypesColor.SURGERY.color
         }
-        stomatology -> {
+        TypesCategories.STOMATOLOGY.types -> {
             return TypesColor.STOMATOLOGY.color
         }
-        gynecology -> {
+        TypesCategories.GYNECOLOGY.types -> {
             return TypesColor.GYNECOLOGY.color
         }
-        neuro -> {
+        TypesCategories.NEURO.types -> {
             return TypesColor.NEURO.color
         }
-        lor -> {
+        TypesCategories.LOR.types -> {
             return TypesColor.LOR.color
         }
-        urology -> {
+        TypesCategories.UROLOGY.types -> {
             return TypesColor.UROLOGY.color
         }
-        ophthalmology -> {
+        TypesCategories.OPHTHALMOLOGY.types -> {
             return TypesColor.OPHTHALMOLOGY.color
         }
         else -> {
@@ -378,25 +352,25 @@ fun getColorMiniCategories(type: String): Int {
 
 fun getColor25MiniCategories(type: String): Int {
     when (type) {
-        surgery -> {
+        TypesCategories.SURGERY.types -> {
             return TypesColor25.SURGERY.color
         }
-        stomatology -> {
+        TypesCategories.STOMATOLOGY.types -> {
             return TypesColor25.STOMATOLOGY.color
         }
-        gynecology -> {
+        TypesCategories.GYNECOLOGY.types -> {
             return TypesColor25.GYNECOLOGY.color
         }
-        neuro -> {
+        TypesCategories.NEURO.types -> {
             return TypesColor25.NEURO.color
         }
-        lor -> {
+        TypesCategories.LOR.types -> {
             return TypesColor25.LOR.color
         }
-        urology -> {
+        TypesCategories.UROLOGY.types -> {
             return TypesColor25.UROLOGY.color
         }
-        ophthalmology -> {
+        TypesCategories.OPHTHALMOLOGY.types -> {
             return TypesColor25.OPHTHALMOLOGY.color
         }
         else -> {
@@ -406,11 +380,15 @@ fun getColor25MiniCategories(type: String): Int {
 }
 
 fun getTitleToolbar(level: Long): String {
-    return if (level == 1L) {
-        easy
-    } else if (level == 2L) {
-        middle
-    } else {
-        hard
+    return when (level) {
+        1L -> {
+            TypesTest.EASY.level
+        }
+        2L -> {
+            TypesTest.MIDDLE.level
+        }
+        else -> {
+            TypesTest.HARD.level
+        }
     }
 }

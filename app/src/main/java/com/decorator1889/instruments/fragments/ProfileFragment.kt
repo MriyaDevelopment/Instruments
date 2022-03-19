@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.ProgressBarAnimation
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.MiniCategoriesAdapter
 import com.decorator1889.instruments.databinding.FragmentProfileBinding
 import com.decorator1889.instruments.dialogs.ExitDialog
+import com.decorator1889.instruments.models.Result
 import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.util.enums.State
 import com.decorator1889.instruments.viewModels.MainViewModel
@@ -97,40 +97,38 @@ class ProfileFragment : Fragment() {
         )
     }
 
-    @SuppressLint("SetTextI18n")
+
     private fun bindResultData() {
         binding.run {
             mainViewModel.result.value?.let { resultProfile ->
-                if (resultProfile.isEmpty()) {
-                    resultBlock.gone()
-                    headerBlock.visible()
-                    return
-                }
+                checkResultProfile()
                 val result = resultProfile[0]
-                when (result.level) {
-                    1L -> {
-                        level.text = easy
-                    }
-                    2L -> {
-                        level.text = middle
-                    }
-                    else -> {
-                        level.text = hard
-                    }
-                }
-                answers.text = "${result.number_of_correct_answers}/${result.number_of_questions}"
-                val percent = (result.number_of_correct_answers.toInt() * 100)/result.number_of_questions.toInt()
-                percents.text = "$percent%"
-                val anim = ProgressBarAnimation(progress, 0f, percent.toFloat())
-                anim.duration = 1000
-                progress.startAnimation(anim)
-                val lst: List<String> = ArrayList(result.categories.split(","))
-                val adapter = MiniCategoriesAdapter()
-                recycler.adapter = adapter
-                adapter.submitList(lst)
-                headerBlock.gone()
-                resultBlock.visible()
+                setLevel(result)
+                setProgress(result)
+                loadAdapter(result)
+
             }
+        }
+    }
+
+    private fun loadAdapter(result: Result) {
+        binding.run {
+            val lst: List<String> = ArrayList(result.categories.split(","))
+            val adapter = MiniCategoriesAdapter()
+            recycler.adapter = adapter
+            adapter.submitList(lst)
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setProgress(result: Result) {
+        binding.run {
+            answers.text = "${result.number_of_correct_answers}/${result.number_of_questions}"
+            val percent = (result.number_of_correct_answers.toInt() * 100)/result.number_of_questions.toInt()
+            percents.text = "$percent%"
+            val anim = ProgressBarAnimation(progress, 0f, percent.toFloat())
+            anim.duration = 1000
+            progress.startAnimation(anim)
         }
     }
 
@@ -148,6 +146,12 @@ class ProfileFragment : Fragment() {
             containerProfile.visible()
             swipeRefresh.isRefreshing = false
             containerProfile.animate().alpha(1f)
+            checkResultProfile()
+        }
+    }
+
+    private fun checkResultProfile() {
+        binding.run {
             mainViewModel.result.value?.let { resultProfile ->
                 if (resultProfile.isEmpty()) {
                     resultBlock.gone()
@@ -157,6 +161,12 @@ class ProfileFragment : Fragment() {
                     resultBlock.visible()
                 }
             }
+        }
+    }
+
+    private fun setLevel(result: Result) {
+        binding.run {
+            level.text = getTitleToolbar(result.level)
         }
     }
 
