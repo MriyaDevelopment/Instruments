@@ -19,12 +19,14 @@ import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.util.enums.State
 import com.decorator1889.instruments.util.enums.TypesCategories
 import com.decorator1889.instruments.viewModels.MainViewModel
+import com.decorator1889.instruments.viewModels.ResultViewModel
 import java.lang.reflect.Type
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private val mainViewModel: MainViewModel by activityViewModels()
+    private val resultViewModel: ResultViewModel by activityViewModels()
     private lateinit var onCategoriesEvent: DefaultNetworkEventObserver
     private lateinit var onProfileEvent: DefaultNetworkEventObserver
     private lateinit var onMainPageEvent: DefaultNetworkEventObserver

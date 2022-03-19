@@ -2,6 +2,7 @@ package com.decorator1889.instruments.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +19,9 @@ import com.decorator1889.instruments.dialogs.ExitDialog
 import com.decorator1889.instruments.models.Result
 import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.util.enums.State
+import com.decorator1889.instruments.util.enums.TypesCategories
 import com.decorator1889.instruments.viewModels.MainViewModel
+import com.decorator1889.instruments.viewModels.ResultViewModel
 
 class ProfileFragment : Fragment() {
 
@@ -27,6 +30,11 @@ class ProfileFragment : Fragment() {
     private lateinit var onProfileEvent: DefaultNetworkEventObserver
     private lateinit var onMainPageEvent: DefaultNetworkEventObserver
     private lateinit var onResultEvent: DefaultNetworkEventObserver
+    private val resultViewModel: ResultViewModel by activityViewModels()
+
+    private val miniCategoriesAdapter by lazy {
+        MiniCategoriesAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,13 +44,18 @@ class ProfileFragment : Fragment() {
         initializeObservers()
         setObservers()
         itemDecorator()
+        setAdapter()
         setListeners()
     }.root
+
+    private fun setAdapter() {
+        binding.recycler.adapter = miniCategoriesAdapter
+    }
 
     private fun itemDecorator() {
         binding.recycler.addItemDecoration(
             GridDecorations(
-                sideMargins = R.dimen.margin0,
+                sideMargins = R.dimen.margin10,
                 elementsMargins = R.dimen.margin8,
                 horizontalMargins = R.dimen.margin0
             )
@@ -75,6 +88,9 @@ class ProfileFragment : Fragment() {
             resultResultEvent.observe(viewLifecycleOwner, onResultEvent)
             mainPageLoading.observe(viewLifecycleOwner, onMainPageEvent)
         }
+        resultViewModel.onUpdateResult.observe(viewLifecycleOwner, OneTimeEvent.Observer {
+            mainViewModel.loadMainData()
+        })
     }
 
     private fun initializeObservers() {
@@ -121,10 +137,8 @@ class ProfileFragment : Fragment() {
 
     private fun loadAdapter(result: Result) {
         binding.run {
-            val lst: List<String> = ArrayList(result.categories.split(","))
-            val adapter = MiniCategoriesAdapter()
-            recycler.adapter = adapter
-            adapter.submitList(lst)
+            val list: List<String> = ArrayList(result.categories.split(","))
+            miniCategoriesAdapter.submitList(list)
         }
     }
 
@@ -151,18 +165,9 @@ class ProfileFragment : Fragment() {
 
     private fun showProfile() {
         binding.run {
-            containerProfile.visible()
             swipeRefresh.isRefreshing = false
+            containerProfile.visible()
             containerProfile.animate().alpha(1f)
-            checkResultProfile()
-        }
-    }
-
-    private fun checkResultProfile() {
-        binding.run {
-            mainViewModel.result.value?.let { resultProfile ->
-
-            }
         }
     }
 

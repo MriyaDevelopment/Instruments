@@ -13,6 +13,7 @@ import android.view.Window
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.ProgressBarAnimation
@@ -23,6 +24,7 @@ import com.decorator1889.instruments.databinding.DialogResultBinding
 import com.decorator1889.instruments.fragments.TestCategoriesFragmentDirections
 import com.decorator1889.instruments.fragments.TestFragmentDirections
 import com.decorator1889.instruments.util.GridDecorations
+import com.decorator1889.instruments.util.OneTimeEvent
 import com.decorator1889.instruments.util.getTitleToolbar
 import com.decorator1889.instruments.util.str
 import com.decorator1889.instruments.viewModels.MainViewModel
@@ -64,8 +66,10 @@ class ResultDialog: DialogFragment() {
                         findNavController().navigate(TestFragmentDirections.actionTestFragmentToTestFragment(repeat = true))
                     }
                 }
+                setResultData()
             }
             ok.setOnClickListener {
+                resultViewModel.returnOnce = false
                 dismiss()
             }
         }
@@ -85,12 +89,12 @@ class ResultDialog: DialogFragment() {
                                     categories = typesCategories,
                                     questions = questions
                                 )
-                                findNavController().navigate(TestFragmentDirections.actionTestFragmentToProfileFragment())
                             }
                         }
                     }
                 }
             }
+            onUpdateProfileResult()
         }
     }
 
@@ -162,6 +166,7 @@ class ResultDialog: DialogFragment() {
         super.onDismiss(dialog)
         if (!resultViewModel.returnOnce) {
             setResultData()
+            findNavController().navigate(TestFragmentDirections.actionTestFragmentToProfileFragment())
         }
     }
 }

@@ -144,6 +144,9 @@ fun getInstrumentsIcon(type: String): Int {
         TypesCategories.HOLD.types -> {
             return TypesIconCategories.HOLD.icon
         }
+        TypesCategories.UROLOGY.types -> {
+            return TypesIconCategories.UROLOGY.icon
+        }
         else -> {
             return TypesIconCategories.STABBING.icon
         }

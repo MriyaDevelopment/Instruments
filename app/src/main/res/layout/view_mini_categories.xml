@@ -12,13 +12,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/red_40E77D7D">
+        tools:background="@color/red_40E77D7D">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             style="@style/TextStyleMiniCategory"
             android:layout_marginHorizontal="@dimen/margin7"
+            android:maxLines="1"
+            android:lines="1"
             android:layout_marginVertical="@dimen/margin4"
             tools:textColor="@color/red_E77D7D"
             tools:text="Акушерство и гинекология"

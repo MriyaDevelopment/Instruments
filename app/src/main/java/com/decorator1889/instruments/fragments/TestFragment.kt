@@ -3,6 +3,7 @@ package com.decorator1889.instruments.fragments
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,12 +59,16 @@ class TestFragment : Fragment() {
                 loadAdapter()
                 bindData()
                 showQuestion()
-                testViewModel.startTimer()
+                onFirstStartTimer()
             },
             doOnFailure = {
                 findNavController().popBackStack()
             }
         )
+    }
+
+    private fun onFirstStartTimer() {
+        testViewModel.startTimer()
     }
 
     @SuppressLint("SetTextI18n")
@@ -77,28 +82,21 @@ class TestFragment : Fragment() {
 
     private fun hideQuestion() {
         binding.run {
-            select.gone()
-            progressContainer.visible()
             containerTimerProgress.alpha = 0f
-            containerTimerProgress.gone()
             viewPager.alpha = 0f
-            viewPager.gone()
             select.alpha = 0f
-            select.gone()
-            progressContainer.alpha = 1f
-            progress.visible()
+            progress.alpha = 0f
+            progressContainer.animate().alpha(1f)
         }
     }
 
     private fun showQuestion() {
         binding.run {
-            select.visible()
             select.animate().alpha(1f)
-            containerTimerProgress.visible()
             containerTimerProgress.animate().alpha(1f)
-            progressContainer.animate().alpha(0f)
-            viewPager.visible()
+            progress.animate().alpha(1f)
             viewPager.animate().alpha(1f)
+            progressContainer.animate().alpha(0f)
         }
     }
 
@@ -125,8 +123,8 @@ class TestFragment : Fragment() {
                 findNavController().popBackStack()
             }
             select.setOnClickListener {
-                val currentItem = viewPager.currentItem
-                viewPager.setCurrentItem(currentItem + 1, true)
+                bindData()
+                setCurrentItem()
                 testViewModel.run {
                     questionList.value?.let { question ->
                         if (question.size > currentQuestion) {
@@ -141,13 +139,26 @@ class TestFragment : Fragment() {
                                 questionId.add(question[i].id.toString())
                             }
                             val questions = questionId.joinToString(",")
-                            resultViewModel.setResultDataQuest(args.typesCategories, args.level, testViewModel.allQuestion, testViewModel.correctAnswer, binding.timer.text.toString(), questions)
+                            resultViewModel.setResultDataQuest(
+                                args.typesCategories,
+                                args.level,
+                                testViewModel.allQuestion,
+                                testViewModel.correctAnswer,
+                                binding.timer.text.toString(),
+                                questions
+                            )
                             ResultDialog().show(childFragmentManager, "ResultDialog")
                         }
                     }
                 }
-                bindData()
             }
+        }
+    }
+
+    private fun setCurrentItem() {
+        binding.run {
+            val currentItem = viewPager.currentItem
+            viewPager.setCurrentItem(currentItem + 1, true)
         }
     }
 
@@ -164,9 +175,9 @@ class TestFragment : Fragment() {
     private fun setProgressTest() {
         testViewModel.run {
             questionList.value?.let { question ->
-                val from = (currentQuestion * 100)/question.size
+                val from = (currentQuestion * 100) / question.size
                 currentQuestion++
-                val to = (currentQuestion * 100)/question.size
+                val to = (currentQuestion * 100) / question.size
                 val anim = ProgressBarAnimation(binding.progress, from.toFloat(), to.toFloat())
                 anim.duration = 100
                 binding.progress.startAnimation(anim)
@@ -178,7 +189,7 @@ class TestFragment : Fragment() {
         binding.toolbar.title = str(R.string.testLevel, getTitleToolbar(args.level))
     }
 
-    private val onClickAnswer:(Long, Boolean) -> Unit = { itemId, check ->
+    private val onClickAnswer: (Long, Boolean) -> Unit = { itemId, check ->
         if (check) {
             testViewModel.setCorrectAnswers()
         }
@@ -212,8 +223,7 @@ class TestFragment : Fragment() {
                     getQuestionRepeat()
                 }
                 resultViewModel.setRepeatTest(args.repeat)
-            }
-            else loadAdapter()
+            } else loadAdapter()
         }
     }
 

@@ -32,14 +32,9 @@ class MiniCategoriesAdapter(
 
         fun bind(item: String) {
             binding.run {
+                name.setTextColor(ContextCompat.getColor(root.context, getColorMiniCategories(item)))
                 name.text = getNameMiniCategories(item)
                 container.background = ContextCompat.getDrawable(root.context, getColor25MiniCategories(item))
-                name.setTextColor(getColorMiniCategories(item))
-                if (name.length() > 15) {
-                    name.setTextSize(
-                        TypedValue.COMPLEX_UNIT_PX, App.getInstance().resources.getDimension(
-                            R.dimen.size11))
-                }
             }
         }
 

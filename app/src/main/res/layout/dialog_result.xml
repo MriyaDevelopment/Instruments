@@ -103,10 +103,9 @@
             android:id="@+id/containerRv"
             android:layout_width="@dimen/margin0"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_marginTop="@dimen/margin40"
             android:layout_marginBottom="@dimen/margin40"
-            android:paddingHorizontal="@dimen/padding24"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +115,7 @@
                 android:id="@+id/recycler"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:paddingHorizontal="@dimen/padding16"
                 android:clipToPadding="false"
                 android:splitMotionEvents="false"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -143,9 +142,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin5"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:text="@string/resultReturn"
-                android:textSize="@dimen/size16"
-                android:textStyle="bold"
+                android:textSize="@dimen/size14"
                 app:rippleColor="@color/blue_5B67CA" />
 
             <com.google.android.material.button.MaterialButton
@@ -155,9 +154,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin5"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:text="@string/resultOk"
-                android:textSize="@dimen/size16"
-                android:textStyle="bold"
+                android:textSize="@dimen/size14"
                 app:rippleColor="@color/white_FFFFFFFF" />
 
         </LinearLayout>

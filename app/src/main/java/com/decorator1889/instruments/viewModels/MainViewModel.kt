@@ -147,7 +147,7 @@ class MainViewModel : ViewModel() {
                     number_of_questions = number_of_questions,
                     questions = questions
                 ).await()
-                loadMainData()
+
                 _sentResultResultEvent.value = NetworkEvent(State.SUCCESS)
             } catch (e: Exception) {
                 _sentResultResultEvent.value = NetworkEvent(State.FAILURE, e.message)

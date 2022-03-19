@@ -41,7 +41,7 @@ class TestCategoriesViewModel: ViewModel() {
     }
 
     private val stringList = mutableListOf<String>()
-
+    var start = false
     var select = false
 
     fun addListCategoriesForTest(name: String) {

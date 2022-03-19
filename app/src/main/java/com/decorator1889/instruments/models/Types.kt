@@ -7,6 +7,10 @@ data class Types(
     val name: String
 )
 
+data class Start(
+    var start: Boolean
+)
+
 fun List<TypesResponse.Types>.toTypes() : List<Types> {
     return this.map { types ->
         Types(

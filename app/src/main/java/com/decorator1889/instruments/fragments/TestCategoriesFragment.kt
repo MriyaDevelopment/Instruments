@@ -11,8 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
+import com.decorator1889.instruments.adapters.InstrumentsItem
 import com.decorator1889.instruments.adapters.TestCategoriesAdapter
+import com.decorator1889.instruments.adapters.TestCategoriesItem
 import com.decorator1889.instruments.databinding.FragmentTestCategoriesBinding
+import com.decorator1889.instruments.models.Start
 import com.decorator1889.instruments.util.DefaultNetworkEventObserver
 import com.decorator1889.instruments.util.enums.State
 import com.decorator1889.instruments.util.gone
@@ -28,7 +31,7 @@ class TestCategoriesFragment : Fragment() {
     private val args: TestCategoriesFragmentArgs by navArgs()
 
     private val testCategoriesAdapter by lazy {
-        TestCategoriesAdapter(onClickSelector = onClickSelector)
+        TestCategoriesAdapter(onClickSelector = onClickSelector, onClickStart = onClickStart)
     }
 
     override fun onCreateView(
@@ -52,18 +55,6 @@ class TestCategoriesFragment : Fragment() {
             }
             toolbar.setNavigationOnClickListener {
                 findNavController().popBackStack()
-            }
-            start.setOnClickListener {
-                testCategoriesViewModel.typesForTest.value?.let {
-                    val typesCategories = it.joinToString(",")
-                    testCategoriesViewModel.select = true
-                    findNavController().navigate(
-                        TestCategoriesFragmentDirections.actionTestCategoriesFragmentToTestFragment(
-                            typesCategories = typesCategories,
-                            level = args.level
-                        )
-                    )
-                }
             }
         }
     }
@@ -108,9 +99,14 @@ class TestCategoriesFragment : Fragment() {
     }
 
     private fun loadAdapter() {
-        testCategoriesViewModel.types.value?.let { types ->
-            testCategoriesAdapter.submitList(types)
+        val data = mutableListOf<TestCategoriesItem>()
+        testCategoriesViewModel.types.value?.let { typesList ->
+            data.addAll(typesList.map { types ->
+                TestCategoriesItem.TestCategoriesWrap(types)
+            })
+            data.add(TestCategoriesItem.StartButton(Start(testCategoriesViewModel.start)))
         }
+        testCategoriesAdapter.submitList(data)
     }
 
     private fun hideTypes() {
@@ -140,13 +136,24 @@ class TestCategoriesFragment : Fragment() {
         }
     }
 
+    private val onClickStart:() -> Unit = {
+        testCategoriesViewModel.typesForTest.value?.let {
+            val typesCategories = it.joinToString(",")
+            testCategoriesViewModel.select = true
+            testCategoriesViewModel.start = false
+            findNavController().navigate(
+                TestCategoriesFragmentDirections.actionTestCategoriesFragmentToTestFragment(
+                    typesCategories = typesCategories,
+                    level = args.level
+                )
+            )
+        }
+    }
+
     private fun checkForTestEmpty(value: MutableList<String>?) {
         binding.run {
-            if (value?.isEmpty() == true) {
-                binding.start.invisible()
-            } else {
-                binding.start.visible()
-            }
+            testCategoriesViewModel.start = value?.isEmpty() != true
+            loadAdapter()
         }
     }
 }

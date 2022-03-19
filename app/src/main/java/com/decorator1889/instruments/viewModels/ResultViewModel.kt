@@ -3,6 +3,7 @@ package com.decorator1889.instruments.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.decorator1889.instruments.util.OneTimeEvent
 
 class ResultViewModel: ViewModel() {
 
@@ -42,5 +43,11 @@ class ResultViewModel: ViewModel() {
 
     fun setRepeatTest(repeat: Boolean) {
         _repeatTest.value = repeat
+    }
+
+    val onUpdateResult = MutableLiveData<OneTimeEvent>()
+
+    fun onUpdateProfileResult() {
+        onUpdateResult.value = OneTimeEvent()
     }
 }

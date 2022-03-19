@@ -11,12 +11,14 @@
     <string name="onBoardingSingIn">Войти</string>
     <string name="onBoardingSingUp">Еще нет аккаунта? <b><u>Зарегистрироваться</u></b></string>
     <!-- SignIn_Screen-->
-    <string name="signInTitle">Вход</string>
+    <string name="signInTitle">Войти</string>
+    <string name="signInTitleToolbar">Вход</string>
     <string name="signInEmail">E-mail</string>
     <string name="signInPassword">Пароль</string>
     <string name="signInPasswordPassword">Забыли пароль?</string>
     <!-- SignUp_Screen -->
-    <string name="signUpTitle">Регистрация</string>
+    <string name="signUpTitle">Зарегистрироваться</string>
+    <string name="signUpTitleToolbar">Регистрация</string>
     <string name="singUpName">Имя пользователя</string>
     <string name="singUpEmail">E-mail</string>
     <string name="singUpSignIn">Уже есть аккаунт? <b><u>Войти</u></b></string>

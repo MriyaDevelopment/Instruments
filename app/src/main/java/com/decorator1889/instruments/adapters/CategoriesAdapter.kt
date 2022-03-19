@@ -35,9 +35,6 @@ class CategoriesAdapter(
                 name.text = item.name
                 bgr.setImageResource(getInstrumentsBgr(item.type))
                 icon.setImageResource(getInstrumentsIcon(item.type))
-                if (item.name.length > 15) {
-                    name.setTextSize(TypedValue.COMPLEX_UNIT_PX, App.getInstance().resources.getDimension(R.dimen.size11))
-                }
                 count.text = str(R.string.mainCount, item.number_of_questions)
                 if (item.lock) arrowLock.setImageResource(R.drawable.ic_arrow_catalog)
                 else arrowLock.setImageResource(R.drawable.ic_lock_catalog)

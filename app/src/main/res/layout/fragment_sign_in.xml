@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             app:layout_collapseMode="pin"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/signInTitle"
+            app:title="@string/signInTitleToolbar"
             app:titleTextColor="@color/blue_5B67CA" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -107,7 +107,8 @@
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="@string/signInTitle"
-                android:textStyle="bold"
+                android:textStyle="normal"
+                android:textSize="@dimen/size16"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

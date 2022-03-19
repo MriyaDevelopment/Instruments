@@ -70,7 +70,8 @@
             android:id="@+id/send"
             style="@style/DefaultBlueButton"
             android:text="@string/recoverySend"
-            android:textStyle="bold"
+            android:textStyle="normal"
+            android:textSize="@dimen/size16"
             android:layout_marginTop="@dimen/margin40"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
