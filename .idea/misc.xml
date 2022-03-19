@@ -4,35 +4,47 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.171875" />
+        <entry key="app/src/main/res/drawable-hdpi/bgr_dialog_result.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable-hdpi/bgr_white_circle_favorite.xml" value="0.211" />
         <entry key="app/src/main/res/drawable-v24/tab_image_background.xml" value="0.155" />
+        <entry key="app/src/main/res/drawable/background_bottom_divider.xml" value="0.2185" />
+        <entry key="app/src/main/res/drawable/background_bottom_divider_active.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/background_circle_small.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/background_input_layout.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/background_surgery.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/bgr_dentistry.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/bgr_dialog.xml" value="0.2185" />
+        <entry key="app/src/main/res/drawable/bgr_dialog_result.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/bgr_easy.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/bgr_hard.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/bgr_profile_img.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/bgr_view_line_blue.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/bgr_white_circle_favorite.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/chk_active.xml" value="0.2185" />
+        <entry key="app/src/main/res/drawable/chk_selector.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/drawable_cursor.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/favorite_selector.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/hint_selector.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/ic_arrow_back.xml" value="0.1555" />
+        <entry key="app/src/main/res/drawable/ic_arrow_catalog.xml" value="0.1555" />
+        <entry key="app/src/main/res/drawable/ic_arrow_easy.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/on_boarding_image.xml" value="0.13957824707031252" />
         <entry key="app/src/main/res/drawable/profile_selector.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/selector_chk_divider.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.1505" />
         <entry key="app/src/main/res/drawable/tab_image_indicator.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/test_selector.xml" value="0.211" />
         <entry key="app/src/main/res/layout-v28/fragment_on_boarding.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4451114558181651" />
         <entry key="app/src/main/res/layout/dialog_exit.xml" value="0.3106743411741395" />
+        <entry key="app/src/main/res/layout/dialog_result.xml" value="0.2913284301757813" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/fragment_detail_catalog.xml" value="0.29972249744007884" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.326015527697577" />
         <entry key="app/src/main/res/layout/fragment_instruments.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/fragment_instruments_gallery.xml" value="0.2622505740842958" />
+        <entry key="app/src/main/res/layout/fragment_levels.xml" value="0.17798913043478262" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.3844200296604887" />
         <entry key="app/src/main/res/layout/fragment_on_boarding.xml" value="0.3786354617796082" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.35669790074445173" />
@@ -40,6 +52,8 @@
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.5149863760217984" />
         <entry key="app/src/main/res/layout/fragment_sing_up.xml" value="0.42930837437726455" />
         <entry key="app/src/main/res/layout/fragment_sub_categories.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/fragment_test.xml" value="0.33323974609374996" />
+        <entry key="app/src/main/res/layout/fragment_test_categories.xml" value="0.3248259860788863" />
         <entry key="app/src/main/res/layout/fragment_test_category.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/fragment_test_level.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/view_catalog.xml" value="0.4095419376454455" />
@@ -52,6 +66,8 @@
         <entry key="app/src/main/res/layout/view_instruments_favorite.xml" value="0.1453125" />
         <entry key="app/src/main/res/layout/view_mini_categories.xml" value="0.6140739993772645" />
         <entry key="app/src/main/res/layout/view_mini_category.xml" value="0.7195992068967958" />
+        <entry key="app/src/main/res/layout/view_test.xml" value="0.33107452392578135" />
+        <entry key="app/src/main/res/layout/view_test_categories.xml" value="0.4864433841428895" />
         <entry key="app/src/main/res/layout/view_test_level.xml" value="0.5839524517087668" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2953125" />
       </map>

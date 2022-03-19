@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".fragments.TestCategoriesFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_FFFFFFFF"
+        app:elevation="0dp"
+        app:liftOnScroll="false">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Default.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:subtitleTextColor="@color/blue_5B67CA"
+            app:title="@string/testCategoriesSelection"
+            app:titleTextColor="@color/blue_5B67CA" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingHorizontal="@dimen/padding18"
+            android:paddingBottom="@dimen/padding16"
+            android:splitMotionEvents="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/start"
+        style="@style/OnlyTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin8"
+        android:layout_marginBottom="@dimen/margin10"
+        android:text="@string/testCategoriesStart"
+        android:textColor="@color/blue_5B67CA"
+        android:textSize="@dimen/size16"
+        android:textStyle="normal"
+        android:visibility="invisible"
+        app:cornerRadius="@dimen/size10"
+        app:icon="@drawable/ic_arrow_begin"
+        app:iconGravity="end"
+        app:iconTint="@color/blue_5B67CA"
+        app:layout_anchor="@+id/swipeRefresh"
+        app:layout_anchorGravity="bottom|end"
+        app:rippleColor="@color/blue_5B67CA" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -34,16 +34,31 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/subscribe"
+                style="@style/TextBlueBold14Style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/padding8"
+                android:gravity="center"
+                android:visibility="invisible"
+                android:layout_marginTop="@dimen/margin30"
+                android:text="@string/profileSubscribe"
+                app:drawableStartCompat="@drawable/ic_diamond"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/exit" />
+
             <ImageView
                 android:id="@+id/circleImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin30"
                 android:background="@drawable/bgr_profile_img"
                 android:elevation="5dp"
+                android:layout_marginTop="@dimen/margin13"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/exit"
+                app:layout_constraintTop_toBottomOf="@+id/subscribe"
                 tools:ignore="ContentDescription" />
 
             <TextView

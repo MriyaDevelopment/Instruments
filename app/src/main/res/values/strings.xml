@@ -46,8 +46,19 @@
     <string name="profileExit">Выйти</string>
     <string name="profileResult">Ваш последний результат</string>
     <string name="profileNext">Пройти тест заново</string>
+    <string name="profileSubscribe">Подписка оформлена</string>
     <!-- Exit_Dialog-->
     <string name="exitTitle">Выйти из аккаунта?</string>
     <string name="exitNo">Нет</string>
     <string name="exitYes">Да</string>
+    <!-- TestCategories_Screen-->
+    <string name="testCategoriesSelection">Выбери категории</string>
+    <string name="testCategoriesStart">Начать</string>
+    <!-- Test_Screen -->
+    <string name="testSelect">Следующий вопрос</string>
+    <string name="testLevel">Уровень сложности: %s</string>
+    <!-- Result_Screen -->
+    <string name="resultTitle">Ваш результат</string>
+    <string name="resultOk">Ок</string>
+    <string name="resultReturn">Пройти еще раз</string>
 </resources>

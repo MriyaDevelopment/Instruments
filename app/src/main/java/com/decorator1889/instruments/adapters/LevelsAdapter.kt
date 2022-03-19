@@ -12,7 +12,7 @@ import com.decorator1889.instruments.models.Levels
 import com.decorator1889.instruments.util.*
 
 class LevelsAdapter(
-    private val onClickTestCategory: (String) -> Unit = {}
+    private val onClickTestCategory: (Long) -> Unit = {}
 ) : ListAdapter<Levels, LevelsAdapter.TestLevelViewHolder>(TestLevelDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestLevelViewHolder {
@@ -27,7 +27,7 @@ class LevelsAdapter(
         private val binding: ViewTestLevelBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Levels, onClickTestCategory: (String) -> Unit) {
+        fun bind(item: Levels, onClickTestCategory: (Long) -> Unit) {
             binding.run {
                 icon.setImageResource(getLevelIcon(item.name))
                 containerTest.background = ContextCompat.getDrawable(root.context, getLevelBgr(item.name))
@@ -36,7 +36,7 @@ class LevelsAdapter(
                 run.setTextColor(ContextCompat.getColor(root.context, getColorLevel(item.name)))
                 run.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, getArrowTestCategory(item.name), 0);
                 root.setOnClickListener {
-                    onClickTestCategory(item.name)
+                    onClickTestCategory(item.id)
                 }
             }
         }

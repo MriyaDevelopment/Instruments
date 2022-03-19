@@ -1,11 +1,14 @@
 package com.decorator1889.instruments.adapters
 
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.decorator1889.instruments.App
+import com.decorator1889.instruments.R
 import com.decorator1889.instruments.databinding.ViewMiniCategoriesBinding
 import com.decorator1889.instruments.util.getColor25MiniCategories
 import com.decorator1889.instruments.util.getColorMiniCategories
@@ -32,6 +35,11 @@ class MiniCategoriesAdapter(
                 name.text = getNameMiniCategories(item)
                 container.background = ContextCompat.getDrawable(root.context, getColor25MiniCategories(item))
                 name.setTextColor(getColorMiniCategories(item))
+                if (name.length() > 15) {
+                    name.setTextSize(
+                        TypedValue.COMPLEX_UNIT_PX, App.getInstance().resources.getDimension(
+                            R.dimen.size11))
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 package com.decorator1889.instruments.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -126,11 +127,12 @@ class FavoriteFragment : Fragment() {
         val data = mutableListOf<InstrumentsItem>()
         favoritesViewModel.favorites.value?.let {
           if (it.isEmpty()) {
-              binding.emptyView.visible()
-              binding.recycler.gone()
-              return
+              binding.run {
+                  emptyView.visible()
+                  recycler.gone()
+              }
+              return@let
           }
-            data.add(InstrumentsItem.InstrumentsFavoriteButton)
             data.addAll(it.map { detailCatalog ->
                 InstrumentsItem.InstrumentsWrap(detailCatalog)
             })

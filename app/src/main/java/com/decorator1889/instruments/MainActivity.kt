@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.decorator1889.instruments.databinding.ActivityMainBinding
 import com.decorator1889.instruments.databinding.FragmentOnBoardingBinding
+import com.decorator1889.instruments.fragments.OnBoardingFragmentDirections
 import com.decorator1889.instruments.util.gone
 import com.decorator1889.instruments.util.visible
 
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         if (App.getInstance().userToken?.isEmpty() == true) {
             findNavController(R.id.nav_host_fragment).navigate(R.id.onBoardingFragment)
         } else {
-            findNavController(R.id.nav_host_fragment).navigate(R.id.mainFragment)
+            findNavController(R.id.nav_host_fragment).navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToMainFragment())
         }
     }
 

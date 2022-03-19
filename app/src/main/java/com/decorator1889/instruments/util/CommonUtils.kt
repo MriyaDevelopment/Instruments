@@ -166,27 +166,43 @@ class GridDecorations(
 fun getInstrumentsBgr(type: String): Int {
     when (type) {
         surgery -> {
-            return R.drawable.bgr_surgery
+            return TypesBackgroundInstruments.SURGERY.bgr
         }
         neuro -> {
-            return R.drawable.bgr_neurosurgery
+            return TypesBackgroundInstruments.NEURO.bgr
         }
         stomatology -> {
-            return R.drawable.bgr_dentistry
+            return TypesBackgroundInstruments.STOMATOLOGY.bgr
         }
         gynecology -> {
-            return R.drawable.bgr_obstetrics_gynecology
+            return TypesBackgroundInstruments.GYNECOLOGY.bgr
         }
         ophthalmology -> {
-            return R.drawable.bgr_ophthalmology
+            return TypesBackgroundInstruments.OPHTHALMOLOGY.bgr
         }
         lor -> {
-            return R.drawable.bgr_otorhinolaryngology
+            return TypesBackgroundInstruments.LOR.bgr
         }
-        else -> return R.drawable.bgr_surgery
+        urology -> {
+            return TypesBackgroundInstruments.UROLOGY.bgr
+        }
+        anesthesiology -> {
+            return TypesBackgroundInstruments.ANESTHESIOLOGY.bgr
+        }
+        else -> return TypesBackgroundInstruments.SURGERY.bgr
     }
 }
 
+enum class TypesBackgroundInstruments(val bgr: Int) {
+    SURGERY(R.drawable.bgr_surgery),
+    STOMATOLOGY(R.drawable.bgr_dentistry),
+    GYNECOLOGY(R.drawable.bgr_obstetrics_gynecology),
+    NEURO(R.drawable.bgr_neurosurgery),
+    LOR(R.drawable.bgr_otorhinolaryngology),
+    UROLOGY(R.drawable.bgr_urology),
+    OPHTHALMOLOGY(R.drawable.bgr_ophthalmology),
+    ANESTHESIOLOGY(R.drawable.bgr_anesthesiology)
+}
 
 fun View.visible() {
     this.visibility = View.VISIBLE
@@ -386,5 +402,15 @@ fun getColor25MiniCategories(type: String): Int {
         else -> {
             return TypesColor25.ANESTHESIOLOGY.color
         }
+    }
+}
+
+fun getTitleToolbar(level: Long): String {
+    return if (level == 1L) {
+        easy
+    } else if (level == 2L) {
+        middle
+    } else {
+        hard
     }
 }

@@ -115,7 +115,7 @@ class LevelsFragment : Fragment() {
         }
     }
 
-    private val onClickTestCategory: (String) -> Unit = {
-
+    private val onClickTestCategory: (Long) -> Unit = { level ->
+        findNavController().navigate(LevelsFragmentDirections.actionLevelsFragmentToTestCategoriesFragment(level = level))
     }
 }
