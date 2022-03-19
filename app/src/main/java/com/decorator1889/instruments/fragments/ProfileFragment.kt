@@ -62,6 +62,12 @@ class ProfileFragment : Fragment() {
             headerBlock.setOnClickListener {
                 (activity as MainActivity).selectLevels()
             }
+            returnOnce.setOnClickListener {
+                createSnackbar(
+                    root,
+                    getString(R.string.functionalityIsInDevelopment)
+                ).show()
+            }
         }
     }
 
