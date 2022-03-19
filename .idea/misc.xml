@@ -73,6 +73,8 @@
         <entry key="app/src/main/res/layout/view_test_categories.xml" value="0.4864433841428895" />
         <entry key="app/src/main/res/layout/view_test_level.xml" value="0.5839524517087668" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2953125" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2185" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2185" />
       </map>
     </option>
   </component>

@@ -7,7 +7,7 @@
     <style name="TextWhiteNormalStyle">
         <item name="android:textColor">@color/white_FFFFFFFF</item>
         <item name="fontWeight">500</item>
-        <item name="lineHeight">19dp</item>
+        <item name="lineHeight">@dimen/height19</item>
         <item name="fontStyle">normal</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -15,12 +15,12 @@
     <style name="TextStyleMiniCategory">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">@dimen/size12</item>
-        <item name="lineHeight">14dp</item>
+        <item name="lineHeight">@dimen/height14</item>
         <item name="fontWeight">500</item>
     </style>
 
     <style name="TextBlueNormalStyle">
-        <item name="lineHeight">17dp</item>
+        <item name="lineHeight">@dimen/height17</item>
         <item name="android:textColor">@color/blue_5B67CA</item>
         <item name="android:textStyle">normal</item>
         <item name="fontStyle">normal</item>
@@ -28,7 +28,7 @@
     </style>
 
     <style name="TextBlueBoldStyle">
-        <item name="lineHeight">19dp</item>
+        <item name="lineHeight">@dimen/height19</item>
         <item name="android:textColor">@color/blue_5B67CA</item>
         <item name="android:textStyle">bold</item>
         <item name="fontStyle">normal</item>
@@ -36,7 +36,7 @@
     </style>
 
     <style name="TextDarkNormalStyle">
-        <item name="lineHeight">17dp</item>
+        <item name="lineHeight">@dimen/height17</item>
         <item name="android:textColor">@color/dark_1E1F25</item>
         <item name="android:textStyle">normal</item>
         <item name="fontStyle">normal</item>
@@ -44,7 +44,7 @@
     </style>
 
     <style name="Text50DarkNormalStyle">
-        <item name="lineHeight">17dp</item>
+        <item name="lineHeight">@dimen/height17</item>
         <item name="android:textColor">@color/dark_801E1F25</item>
         <item name="android:textStyle">normal</item>
         <item name="fontStyle">normal</item>
@@ -52,7 +52,7 @@
     </style>
 
     <style name="TextDarkBoldStyle">
-        <item name="lineHeight">17dp</item>
+        <item name="lineHeight">@dimen/height17</item>
         <item name="android:textColor">@color/dark_1E1F25</item>
         <item name="android:textStyle">bold</item>
         <item name="fontStyle">normal</item>
@@ -61,23 +61,23 @@
 
     <style name="DefaultBlueButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:textColor">@color/white_FFFFFFFF</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">@dimen/padding0</item>
+        <item name="android:insetBottom">@dimen/padding0</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.03</item>
         <item name="android:textSize">@dimen/size16</item>
         <item name="android:backgroundTint">@color/background_default_button</item>
         <item name="cornerRadius">@dimen/corner14</item>
         <item name="fontWeight">500</item>
-        <item name="lineHeight">17dp</item>
+        <item name="lineHeight">@dimen/height17</item>
     </style>
 
     <style name="OnlyTextButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="iconTint">@color/black</item>
-        <item name="lineHeight">17dp</item>
+        <item name="lineHeight">@dimen/height17</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">@dimen/padding0</item>
+        <item name="android:insetBottom">@dimen/padding0</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.03</item>
         <item name="iconPadding">@dimen/padding8</item>
@@ -87,10 +87,10 @@
     <style name="OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textColor">@color/background_default_button</item>
         <item name="strokeColor">@color/background_default_button</item>
-        <item name="strokeWidth">2dp</item>
+        <item name="strokeWidth">@dimen/width2</item>
         <item name="rippleColor">@color/blue_5B67CA</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">@dimen/elevation0</item>
+        <item name="android:insetBottom">@dimen/elevation0</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.03</item>
         <item name="android:textSize">@dimen/size10</item>
@@ -102,8 +102,8 @@
         <item name="strokeColor">@color/background_default_button</item>
         <item name="strokeWidth">0.5dp</item>
         <item name="rippleColor">@color/blue_5B67CA</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">@dimen/elevation0</item>
+        <item name="android:insetBottom">@dimen/elevation0</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.03</item>
         <item name="android:textSize">@dimen/size12</item>
@@ -119,7 +119,7 @@
         <item name="android:button">@drawable/chk_selector</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:lineSpacingExtra">8sp</item>
-        <item name="lineHeight">17dp</item>
+        <item name="lineHeight">@dimen/height17</item>
         <item name="fontWeight">400</item>
         <item name="android:paddingLeft">@dimen/padding20</item>
         <item name="android:textColor">@color/dark_1E1F25</item>
@@ -135,7 +135,7 @@
 
     <style name="Default.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:background">@color/white_FFFFFFFF</item>
-        <item name="android:elevation">0dp</item>
+        <item name="android:elevation">@dimen/elevation0</item>
         <item name="titleTextAppearance">@style/ToolbarTextAppearance</item>
     </style>
 
@@ -143,7 +143,7 @@
         <item name="android:textColor">@color/blue_5B67CA</item>
         <item name="android:textSize">@dimen/size18</item>
         <item name="android:textStyle">bold</item>
-        <item name="lineHeight">17dp</item>
+        <item name="lineHeight">@dimen/height17</item>
         <item name="fontWeight">500</item>
         <item name="fontStyle">normal</item>
     </style>
@@ -163,27 +163,27 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textAppearance">@style/TextHintAppearance</item>
         <item name="android:textColorHint">@color/light_blue_B2B7E4</item>
-        <item name="android:paddingStart">0dp</item>
-        <item name="android:paddingEnd">0dp</item>
+        <item name="android:paddingStart">@dimen/padding0</item>
+        <item name="android:paddingEnd">@dimen/padding0</item>
         <item name="android:textCursorDrawable">@drawable/cursor_color</item>
     </style>
 
     <style name="Widget.AppCompat.Button.TextButton.IconOnly" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="iconPadding">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:paddingLeft">2dp</item>
-        <item name="android:paddingRight">2dp</item>
-        <item name="android:minWidth">24dp</item>
-        <item name="android:minHeight">24dp</item>
+        <item name="iconPadding">@dimen/padding0</item>
+        <item name="android:insetTop">@dimen/padding0</item>
+        <item name="android:insetBottom">@dimen/padding0</item>
+        <item name="android:paddingLeft">@dimen/padding2</item>
+        <item name="android:paddingRight">@dimen/padding2</item>
+        <item name="android:minWidth">@dimen/width24</item>
+        <item name="android:minHeight">@dimen/height24</item>
         <item name="iconGravity">textStart</item>
         <item name="background">@android:color/transparent</item>
-        <item name="cornerRadius">6dp</item>
+        <item name="cornerRadius">@dimen/corner6</item>
         <item name="iconTint">@color/black</item>
     </style>
 
     <style name="TextHintAppearance">
         <item name="android:textSize">@dimen/size16</item>
-        <item name="lineHeight">17dp</item>
+        <item name="lineHeight">@dimen/height17</item>
     </style>
 </resources>
