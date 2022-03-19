@@ -50,8 +50,4 @@ class TestCategoriesAdapter(
         override fun areItemsTheSame(oldItem: Types, newItem: Types): Boolean = oldItem == newItem
         override fun areContentsTheSame(oldItem: Types, newItem: Types): Boolean = oldItem.id == newItem.id
     }
-
-    interface ITestCategoriesCallback {
-        fun setClickSelect(name: String, isChecked: Boolean)
-    }
 }

@@ -20,6 +20,8 @@ class ResultViewModel: ViewModel() {
     val timer: LiveData<String> = _timer
     val questions: LiveData<String> = _questions
 
+    var returnOnce = false
+
     fun setResultDataQuest(
         typesCategories: String,
         level: Long,

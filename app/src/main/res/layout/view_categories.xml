@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="@dimen/corner14"
-    app:cardElevation="0dp"
+    app:cardElevation="@dimen/elevation0"
     app:rippleColor="@color/blue_5B67CA">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,7 @@
         <TextView
             android:id="@+id/name"
             style="@style/TextDarkBold12Style"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/width0"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin12"
             android:layout_marginTop="@dimen/margin5"
@@ -60,7 +60,7 @@
         <TextView
             android:id="@+id/count"
             style="@style/TextDarkNormal10Style"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/width0"
             android:layout_height="wrap_content"
             tools:text="Инструментарий: 18"
             app:layout_constraintBottom_toBottomOf="@+id/bgr"

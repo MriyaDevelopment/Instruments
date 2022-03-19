@@ -14,8 +14,7 @@ import com.decorator1889.instruments.util.glide
 
 class TestAdapter(
     private val onClickAnswer: (Long, Boolean) -> Unit = { itemId, check -> },
-
-    ) : ListAdapter<Question, TestAdapter.TestViewHolder>(TestDiffUtilCallback()) {
+) : ListAdapter<Question, TestAdapter.TestViewHolder>(TestDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestViewHolder {
         return TestViewHolder.getViewHolder(parent)
@@ -44,52 +43,111 @@ class TestAdapter(
                 answerTwo.text = item.answer_two
                 answerThree.text = item.answer_three
                 answerFour.text = item.answer_four
-                checkState(item.state, item.true_answer, item.answer_one, item.answer_two, item.answer_three, item.answer_four)
+                checkState(
+                    item.state,
+                    item.true_answer,
+                    item.answer_one,
+                    item.answer_two,
+                    item.answer_three,
+                    item.answer_four
+                )
                 answerOne.setOnClickListener {
                     if (item.true_answer == item.answer_one) {
                         item.state = 1
-                        checkState(item.state, item.true_answer, item.answer_one, item.answer_two, item.answer_three, item.answer_four)
+                        checkState(
+                            item.state,
+                            item.true_answer,
+                            item.answer_one,
+                            item.answer_two,
+                            item.answer_three,
+                            item.answer_four
+                        )
                         onClickAnswer(item.id, true)
-                    }
-                    else {
+                    } else {
                         item.state = 1
-                        checkState(item.state, item.true_answer, item.answer_one, item.answer_two, item.answer_three, item.answer_four)
+                        checkState(
+                            item.state,
+                            item.true_answer,
+                            item.answer_one,
+                            item.answer_two,
+                            item.answer_three,
+                            item.answer_four
+                        )
                         onClickAnswer(item.id, false)
                     }
                 }
                 answerTwo.setOnClickListener {
                     if (item.true_answer == item.answer_two) {
                         item.state = 2
-                        checkState(item.state, item.true_answer, item.answer_one, item.answer_two, item.answer_three, item.answer_four)
+                        checkState(
+                            item.state,
+                            item.true_answer,
+                            item.answer_one,
+                            item.answer_two,
+                            item.answer_three,
+                            item.answer_four
+                        )
                         onClickAnswer(item.id, true)
-                    }
-                    else {
+                    } else {
                         item.state = 2
-                        checkState(item.state, item.true_answer, item.answer_one, item.answer_two, item.answer_three, item.answer_four)
+                        checkState(
+                            item.state,
+                            item.true_answer,
+                            item.answer_one,
+                            item.answer_two,
+                            item.answer_three,
+                            item.answer_four
+                        )
                         onClickAnswer(item.id, false)
                     }
                 }
                 answerThree.setOnClickListener {
                     if (item.true_answer == item.answer_three) {
                         item.state = 3
-                        checkState(item.state, item.true_answer, item.answer_one, item.answer_two, item.answer_three, item.answer_four)
+                        checkState(
+                            item.state,
+                            item.true_answer,
+                            item.answer_one,
+                            item.answer_two,
+                            item.answer_three,
+                            item.answer_four
+                        )
                         onClickAnswer(item.id, true)
-                    }
-                    else {
+                    } else {
                         item.state = 3
-                        checkState(item.state, item.true_answer, item.answer_one, item.answer_two, item.answer_three, item.answer_four)
+                        checkState(
+                            item.state,
+                            item.true_answer,
+                            item.answer_one,
+                            item.answer_two,
+                            item.answer_three,
+                            item.answer_four
+                        )
                         onClickAnswer(item.id, false)
                     }
                 }
                 answerFour.setOnClickListener {
                     if (item.true_answer == item.answer_four) {
                         item.state = 4
-                        checkState(item.state, item.true_answer, item.answer_one, item.answer_two, item.answer_three, item.answer_four)
+                        checkState(
+                            item.state,
+                            item.true_answer,
+                            item.answer_one,
+                            item.answer_two,
+                            item.answer_three,
+                            item.answer_four
+                        )
                         onClickAnswer(item.id, true)
-                    }
-                    else {
+                    } else {
                         item.state = 4
-                        checkState(item.state, item.true_answer, item.answer_one, item.answer_two, item.answer_three, item.answer_four)
+                        checkState(
+                            item.state,
+                            item.true_answer,
+                            item.answer_one,
+                            item.answer_two,
+                            item.answer_three,
+                            item.answer_four
+                        )
                         onClickAnswer(item.id, false)
                     }
                 }
@@ -236,10 +294,7 @@ class TestAdapter(
     }
 
     class TestDiffUtilCallback : DiffUtil.ItemCallback<Question>() {
-        override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean =
-            oldItem.id == newItem.id
-
-        override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean =
-            oldItem == newItem
+        override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean = oldItem == newItem
     }
 }

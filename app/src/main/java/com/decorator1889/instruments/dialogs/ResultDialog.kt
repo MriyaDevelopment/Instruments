@@ -44,10 +44,15 @@ class ResultDialog: DialogFragment() {
         setListener()
     }.root
 
+    override fun onStart() {
+        super.onStart()
+        resultViewModel.returnOnce = false
+    }
+
     private fun setListener() {
         binding.run {
             returnOnce.setOnClickListener {
-                dismiss()
+                resultViewModel.returnOnce = true
                 resultViewModel.level.value?.let { level ->
                     resultViewModel.typesCategories.value?.let { types ->
                         findNavController().navigate(TestFragmentDirections.actionTestFragmentToTestFragment(level = level, typesCategories = types))
@@ -149,6 +154,8 @@ class ResultDialog: DialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        setResultData()
+        if (!resultViewModel.returnOnce) {
+            setResultData()
+        }
     }
 }

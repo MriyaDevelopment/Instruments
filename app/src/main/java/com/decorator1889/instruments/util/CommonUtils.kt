@@ -278,20 +278,6 @@ fun getArrowTestCategory(type: String): Int {
     }
 }
 
-//const val easy = "Легкий уровень"
-//const val middle = "Средний уровень"
-//const val hard = "Сложный уровень"
-//
-//const val surgery = "surgery"
-//const val stomatology = "stomatology"
-//const val gynecology = "gynecology"
-//const val neuro = "neuro"
-//const val lor = "lor"
-//const val urology = "urology"
-//const val ophthalmology = "ophthalmology"
-//const val anesthesiology = "anesthesiology"
-//const val separation = "separation"
-
 fun getNameMiniCategories(type: String): String {
     when (type) {
         TypesCategories.SURGERY.types -> {

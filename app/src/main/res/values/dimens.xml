@@ -66,10 +66,12 @@
     <dimen name="corner16">16dp</dimen>
     <dimen name="corner18">18dp</dimen>
     <dimen name="corner20">20dp</dimen>
+    <dimen name="corner100">100dp</dimen>
     <!-- Padding -->
     <dimen name="padding3">3dp</dimen>
     <dimen name="padding5">5dp</dimen>
     <dimen name="padding8">8dp</dimen>
+    <dimen name="paddingMinus8">-8dp</dimen>
     <dimen name="padding14">14dp</dimen>
     <dimen name="padding16">16dp</dimen>
     <dimen name="padding18">18dp</dimen>
@@ -80,6 +82,7 @@
     <dimen name="padding70">70dp</dimen>
     <dimen name="padding80">80dp</dimen>
     <!-- Height -->
+    <dimen name="height0">0dp</dimen>
     <dimen name="height10">10dp</dimen>
     <dimen name="height25">25dp</dimen>
     <dimen name="height30">30dp</dimen>
@@ -90,11 +93,20 @@
     <dimen name="height65">65dp</dimen>
     <dimen name="height80">80dp</dimen>
     <dimen name="height100">100dp</dimen>
+    <dimen name="height150">150dp</dimen>
     <dimen name="height155">155dp</dimen>
     <dimen name="height250">250dp</dimen>
+    <dimen name="height300">300dp</dimen>
     <!-- Width -->
+    <dimen name="width0">0dp</dimen>
+    <dimen name="width2">2dp</dimen>
     <dimen name="width32">32dp</dimen>
     <dimen name="width40">40dp</dimen>
     <dimen name="width65">65dp</dimen>
     <dimen name="width80">80dp</dimen>
+    <dimen name="width145">145dp</dimen>
+    <dimen name="width150">150dp</dimen>
+    <!-- Elevation -->
+    <dimen name="elevation0">0dp</dimen>
+    <dimen name="elevation5">5dp</dimen>
 </resources>

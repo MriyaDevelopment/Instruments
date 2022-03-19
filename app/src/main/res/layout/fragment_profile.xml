@@ -54,7 +54,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/bgr_profile_img"
-                android:elevation="5dp"
+                android:elevation="@dimen/elevation5"
                 android:src="@drawable/img_profile"
                 android:scaleType="centerCrop"
                 android:layout_marginTop="@dimen/margin13"
@@ -66,7 +66,7 @@
             <TextView
                 android:id="@+id/name"
                 style="@style/TextBlueBold20Style"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width0"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin30"
                 android:layout_marginTop="@dimen/margin16"
@@ -79,7 +79,7 @@
             <TextView
                 android:id="@+id/email"
                 style="@style/TextDarkNormal14Style"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width0"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 app:layout_constraintEnd_toEndOf="@+id/name"
@@ -94,7 +94,7 @@
                 android:layout_marginHorizontal="@dimen/margin16"
                 android:layout_marginTop="@dimen/margin16"
                 app:cardCornerRadius="@dimen/corner8"
-                app:cardElevation="5dp"
+                app:cardElevation="@dimen/elevation5"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -185,7 +185,7 @@
 
                     <LinearLayout
                         android:id="@+id/containerRv"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/width0"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:layout_marginTop="@dimen/margin38"
@@ -234,7 +234,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:cardElevation="0dp"
+                app:cardElevation="@dimen/elevation0"
                 android:visibility="gone"
                 app:cardCornerRadius="@dimen/corner8"
                 app:rippleColor="@color/white_FFFFFFFF"
@@ -271,7 +271,7 @@
                 <TextView
                     android:id="@+id/headerTitle"
                     style="@style/TextWhiteNormal14Style"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width0"
                     android:layout_marginTop="@dimen/margin16"
                     android:layout_marginEnd="@dimen/margin20"
                     android:layout_height="wrap_content"

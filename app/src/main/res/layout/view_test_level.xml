@@ -7,7 +7,7 @@
     android:layout_marginHorizontal="@dimen/margin16"
     app:rippleColor="@color/blue_5B67CA"
     android:layout_marginBottom="@dimen/margin24"
-    app:cardElevation="0dp"
+    app:cardElevation="@dimen/elevation0"
     app:cardCornerRadius="@dimen/corner15">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +30,7 @@
         <TextView
             android:id="@+id/nameTest"
             style="@style/TextDarkNormal16Style"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/width0"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/size17"
             android:layout_marginTop="@dimen/size18"
@@ -42,7 +42,7 @@
         <TextView
             android:id="@+id/count"
             style="@style/Text50DarkNormal14Style"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/width0"
             android:layout_height="wrap_content"
             tools:text="15 вопросов"
             app:layout_constraintEnd_toEndOf="@+id/nameTest"

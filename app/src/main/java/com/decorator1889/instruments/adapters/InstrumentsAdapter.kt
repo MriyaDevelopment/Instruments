@@ -22,7 +22,7 @@ sealed class InstrumentsItem(val itemId: Long) {
 
 class InstrumentsAdapter(
     private val typeInstruments: (String),
-    private val onClickLike: (Long, Boolean) -> Unit = { instrument_is, is_liked -> },
+    private val onClickLike: (Long, Boolean, Boolean) -> Unit = { instrument_is, is_liked, is_surgery -> },
     private val onClickTestFavorite: () -> Unit = {},
     private val onClickImage: (Int, ImageView) -> Unit = { position: Int, imageView: ImageView -> },
     private val onClickDeleteLike: (Instruments) -> Unit = {}
@@ -70,7 +70,7 @@ class InstrumentsAdapter(
         fun bind(
             item: Instruments,
             onClickImage: (Int, ImageView) -> Unit,
-            onClickLike: (Long, Boolean) -> Unit,
+            onClickLike: (Long, Boolean, Boolean) -> Unit,
             onClickDeleteLike: (Instruments) -> Unit,
             typeInstruments: String
         ) {
@@ -87,7 +87,8 @@ class InstrumentsAdapter(
                 favorite.setOnClickListener {
                     if (typeInstruments == InstrumentsFragment.INSTRUMENTS) onClickLike(
                         item.id,
-                        item.is_liked
+                        item.is_liked,
+                        item.is_surgery
                     )
                     else {
                         favorite.icon = ContextCompat.getDrawable(root.context, R.drawable.ic_favorite_inactive)
@@ -131,13 +132,8 @@ class InstrumentsAdapter(
     }
 
     class DetailCatalogDiffUtilCallback : DiffUtil.ItemCallback<InstrumentsItem>() {
-        override fun areItemsTheSame(oldItem: InstrumentsItem, newItem: InstrumentsItem): Boolean =
-            oldItem.itemId == newItem.itemId
-
-        override fun areContentsTheSame(
-            oldItem: InstrumentsItem,
-            newItem: InstrumentsItem
-        ): Boolean = oldItem == newItem
+        override fun areItemsTheSame(oldItem: InstrumentsItem, newItem: InstrumentsItem): Boolean = oldItem.itemId == newItem.itemId
+        override fun areContentsTheSame(oldItem: InstrumentsItem, newItem: InstrumentsItem): Boolean = oldItem == newItem
     }
 
     companion object {

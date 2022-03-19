@@ -19,7 +19,7 @@
         <TextView
             android:id="@+id/title"
             style="@style/TextBlueBold24Style"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/width0"
             android:text="@string/resultTitle"
             android:layout_marginTop="@dimen/margin20"
             android:gravity="center"
@@ -34,7 +34,7 @@
             style="@style/TextBlueBold14Style"
             android:gravity="center"
             android:layout_marginTop="@dimen/margin4"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/margin0"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin16"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +101,7 @@
 
         <LinearLayout
             android:id="@+id/containerRv"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/margin0"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="@dimen/margin40"
@@ -139,7 +139,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/returnOnce"
                 style="@style/OutlinedButton"
-                android:layout_width="145dp"
+                android:layout_width="@dimen/width145"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin5"
                 android:layout_weight="1"
@@ -151,7 +151,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/ok"
                 style="@style/DefaultBlueButton"
-                android:layout_width="145dp"
+                android:layout_width="@dimen/width145"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin5"
                 android:layout_weight="1"

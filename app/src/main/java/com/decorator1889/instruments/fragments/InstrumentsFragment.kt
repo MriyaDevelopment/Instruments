@@ -1,7 +1,6 @@
 package com.decorator1889.instruments.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.decorator1889.instruments.App
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.InstrumentsAdapter
@@ -156,9 +154,9 @@ class InstrumentsFragment : Fragment() {
         )
     }
 
-    private val onClickLike: (Long, Boolean) -> Unit = { instrument_id, is_liked ->
-        if (is_liked) removeLike(instrument_id)
-        else setLike(instrument_id)
+    private val onClickLike: (Long, Boolean, Boolean) -> Unit = { instrument_id, is_liked, is_surgery ->
+        if (is_liked) removeLike(instrument_id, is_surgery)
+        else setLike(instrument_id, is_surgery)
         val newInstrumentsList = instrumentsViewModel.instruments.value?.map { instruments ->
             Instruments(
                 id = instruments.id,
@@ -177,17 +175,15 @@ class InstrumentsFragment : Fragment() {
         loadAdapter()
     }
 
-    private fun removeLike(instrumentId: Long) {
+    private fun removeLike(instrumentId: Long, is_surgery: Boolean) {
         instrumentsViewModel.run {
-            if (args.surgery) removeLike(instrumentId, true)
-            else removeLike(instrumentId, false)
+            removeLike(instrumentId, is_surgery)
         }
     }
 
-    private fun setLike(instrument_id: Long) {
+    private fun setLike(instrument_id: Long, is_surgery: Boolean) {
         instrumentsViewModel.run {
-            if (args.surgery) setLike(instrument_id, true)
-            else setLike(instrument_id, false)
+            setLike(instrument_id, is_surgery)
         }
     }
 

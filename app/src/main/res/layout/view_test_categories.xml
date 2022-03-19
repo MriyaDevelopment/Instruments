@@ -9,7 +9,7 @@
     <CheckBox
         android:id="@+id/selection"
         style="@style/BaseCheckBoxStyle"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/width0"
         android:layout_height="wrap_content"
         android:background="@drawable/selector_chk_divider"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -9,9 +9,11 @@
         <entry key="app/src/main/res/drawable-v24/tab_image_background.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/background_bottom_divider.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/background_bottom_divider_active.xml" value="0.2185" />
+        <entry key="app/src/main/res/drawable/background_bottom_divider_inactive.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/background_circle_small.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/background_input_layout.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/background_surgery.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/bgr_anesthesiology.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/bgr_dentistry.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/bgr_dialog.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/bgr_dialog_result.xml" value="0.2185" />
