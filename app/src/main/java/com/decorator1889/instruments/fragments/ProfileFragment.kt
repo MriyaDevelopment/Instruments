@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.ProgressBarAnimation
 import com.decorator1889.instruments.R
@@ -62,11 +63,8 @@ class ProfileFragment : Fragment() {
             headerBlock.setOnClickListener {
                 (activity as MainActivity).selectLevels()
             }
-            returnOnce.setOnClickListener {
-                createSnackbar(
-                    root,
-                    getString(R.string.functionalityIsInDevelopment)
-                ).show()
+            again.setOnClickListener {
+                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToTestFragment(repeat = true))
             }
         }
     }
@@ -107,12 +105,16 @@ class ProfileFragment : Fragment() {
     private fun bindResultData() {
         binding.run {
             mainViewModel.result.value?.let { resultProfile ->
-                checkResultProfile()
+                if (resultProfile.isEmpty()) {
+                    resultBlock.gone()
+                    headerBlock.visible()
+                    return
+                }
                 val result = resultProfile[0]
+                resultBlock.visible()
                 setLevel(result)
                 setProgress(result)
                 loadAdapter(result)
-
             }
         }
     }
@@ -159,13 +161,7 @@ class ProfileFragment : Fragment() {
     private fun checkResultProfile() {
         binding.run {
             mainViewModel.result.value?.let { resultProfile ->
-                if (resultProfile.isEmpty()) {
-                    resultBlock.gone()
-                    headerBlock.visible()
-                    return
-                } else {
-                    resultBlock.visible()
-                }
+
             }
         }
     }

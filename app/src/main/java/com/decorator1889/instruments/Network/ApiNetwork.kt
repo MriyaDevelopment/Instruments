@@ -9,9 +9,7 @@ import kotlinx.coroutines.Deferred
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface ApiNetwork {
@@ -109,6 +107,18 @@ interface ApiNetwork {
         @Field("number_of_questions") number_of_questions: Long?,
         @Field("questions") questions: String
     ): Deferred<SentResultResponse>
+
+    @FormUrlEncoded
+    @POST("public/api/getLastTest")
+    fun getLastTestAsync(
+        @Field("user_token") user_token: String?
+    ): Deferred<QuestionResponse>
+
+    @GET("public/mail/send")
+    fun sendMailAsync(
+        @Query("user_token") user_token: String?,
+        @Query("email") email: String?,
+    ): Deferred<SendMainResponse>
 
     companion object {
         const val baseUrl = "http://ovz2.j04713753.pqr7m.vps.myjino.ru/"

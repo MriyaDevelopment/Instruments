@@ -12,6 +12,7 @@ class ResultViewModel: ViewModel() {
     private val _correctAnswer = MutableLiveData<Int>()
     private val _timer = MutableLiveData<String>()
     private val _questions = MutableLiveData<String>()
+    private val _repeatTest = MutableLiveData<Boolean>()
 
     val typesCategories: LiveData<String> = _typesCategories
     val level: LiveData<Long> = _level
@@ -19,6 +20,7 @@ class ResultViewModel: ViewModel() {
     val correctAnswer: LiveData<Int> = _correctAnswer
     val timer: LiveData<String> = _timer
     val questions: LiveData<String> = _questions
+    val repeatTest: LiveData<Boolean> = _repeatTest
 
     var returnOnce = false
 
@@ -36,5 +38,9 @@ class ResultViewModel: ViewModel() {
         _correctAnswer.value = correctAnswer
         _timer.value = timer
         _questions.value = questions
+    }
+
+    fun setRepeatTest(repeat: Boolean) {
+        _repeatTest.value = repeat
     }
 }

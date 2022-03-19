@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.decorator1889.instruments.App
 import com.decorator1889.instruments.Network.ApiNetwork
 import com.decorator1889.instruments.models.Question
 import com.decorator1889.instruments.models.toQuestion
@@ -32,6 +33,25 @@ class TestViewModel : ViewModel() {
                 val response =
                     ApiNetwork.API.getQuestionByTypeAndLevelAsync(type = type, level = level)
                         .await()
+                if (response.result == "success") {
+                    _questionList.value = response.questions?.toQuestion()
+                    _questionResultEvent.value = NetworkEvent(State.SUCCESS)
+                } else {
+                    _questionList.value = listOf()
+                    _questionResultEvent.value = NetworkEvent(State.ERROR, response.error)
+                }
+            } catch (e: Exception) {
+                _questionList.value = listOf()
+                _questionResultEvent.value = NetworkEvent(State.FAILURE, e.message)
+            }
+        }
+    }
+
+    fun getQuestionRepeat() {
+        viewModelScope.launch {
+            _questionResultEvent.value = NetworkEvent(State.LOADING)
+            try {
+                val response = ApiNetwork.API.getLastTestAsync(user_token = App.getInstance().userToken).await()
                 if (response.result == "success") {
                     _questionList.value = response.questions?.toQuestion()
                     _questionResultEvent.value = NetworkEvent(State.SUCCESS)

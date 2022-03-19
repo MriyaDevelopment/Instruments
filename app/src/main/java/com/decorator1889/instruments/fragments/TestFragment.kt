@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.ProgressBarAnimation
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.TestAdapter
@@ -58,6 +59,9 @@ class TestFragment : Fragment() {
                 bindData()
                 showQuestion()
                 testViewModel.startTimer()
+            },
+            doOnFailure = {
+                findNavController().popBackStack()
             }
         )
     }
@@ -183,22 +187,46 @@ class TestFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         checkIsLoadData()
-        testViewModel.onStartTimer()
+        onStartTimer()
         getStatusBarColor(STATUS_BAR_BLUE)
+        hideBottomNavigationView()
+    }
+
+    private fun hideBottomNavigationView() {
+        (activity as MainActivity).hideBottomNavigationView()
+    }
+
+    private fun onStartTimer() {
+        testViewModel.onStartTimer()
     }
 
     private fun checkIsLoadData() {
         testViewModel.run {
-            if (questionResultEvent.value?.peekContent() != State.SUCCESS) getQuestion(
-                type = args.typesCategories,
-                level = args.level
-            )
+            if (questionResultEvent.value?.peekContent() != State.SUCCESS) {
+                if (!args.repeat) {
+                    getQuestion(
+                        type = args.typesCategories,
+                        level = args.level
+                    )
+                } else {
+                    getQuestionRepeat()
+                }
+                resultViewModel.setRepeatTest(args.repeat)
+            }
             else loadAdapter()
         }
     }
 
     private fun loadAdapter() {
         testViewModel.questionList.value?.let { question ->
+            if (question.isEmpty()) {
+                createSnackbar(
+                    binding.root,
+                    getString(R.string.networkErrorMessage)
+                ).show()
+                findNavController().popBackStack()
+                return
+            }
             testViewModel.allQuestion = question.size
             testAdapter.submitList(question)
         }

@@ -24,11 +24,13 @@ import com.decorator1889.instruments.util.enums.State
 import com.decorator1889.instruments.util.gone
 import com.decorator1889.instruments.util.visible
 import com.decorator1889.instruments.viewModels.FavoritesViewModel
+import com.decorator1889.instruments.viewModels.GalleryViewModel
 
 class FavoriteFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoriteBinding
     private val favoritesViewModel: FavoritesViewModel by viewModels()
+    private val galleryViewModel: GalleryViewModel by activityViewModels()
     private lateinit var onFavoriteEvent: DefaultNetworkEventObserver
     private val favoritesAdapter by lazy {
         InstrumentsAdapter(onClickDeleteLike = onClickDeleteLike, onClickImage = onClickImage, typeInstruments = FAVORITES)
@@ -125,17 +127,18 @@ class FavoriteFragment : Fragment() {
 
     private fun loadAdapter() {
         val data = mutableListOf<InstrumentsItem>()
-        favoritesViewModel.favorites.value?.let {
-          if (it.isEmpty()) {
+        favoritesViewModel.favorites.value?.let { listFavorites ->
+          if (listFavorites.isEmpty()) {
               binding.run {
                   emptyView.visible()
                   recycler.gone()
               }
               return@let
           }
-            data.addAll(it.map { detailCatalog ->
+            data.addAll(listFavorites.map { detailCatalog ->
                 InstrumentsItem.InstrumentsWrap(detailCatalog)
             })
+            galleryViewModel.setInstrumentsGalleryList(listFavorites)
         }
         favoritesAdapter.submitList(data)
     }

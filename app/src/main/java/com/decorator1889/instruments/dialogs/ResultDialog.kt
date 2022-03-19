@@ -51,11 +51,17 @@ class ResultDialog: DialogFragment() {
 
     private fun setListener() {
         binding.run {
-            returnOnce.setOnClickListener {
-                resultViewModel.returnOnce = true
-                resultViewModel.level.value?.let { level ->
-                    resultViewModel.typesCategories.value?.let { types ->
-                        findNavController().navigate(TestFragmentDirections.actionTestFragmentToTestFragment(level = level, typesCategories = types))
+            repeatTest.setOnClickListener {
+                resultViewModel.run {
+                    returnOnce = true
+                    if (repeatTest.value == false) {
+                        level.value?.let { level ->
+                            typesCategories.value?.let { types ->
+                                findNavController().navigate(TestFragmentDirections.actionTestFragmentToTestFragment(level = level, typesCategories = types))
+                            }
+                        }
+                    } else {
+                        findNavController().navigate(TestFragmentDirections.actionTestFragmentToTestFragment(repeat = true))
                     }
                 }
             }

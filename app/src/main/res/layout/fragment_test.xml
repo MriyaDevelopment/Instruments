@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/blue_5B67CA"
                 android:elevation="@dimen/elevation0"
-                app:navigationIcon="@drawable/ic_arrow_white"
+                app:navigationIcon="@drawable/ic_arrow_back_white"
                 app:titleTextColor="@color/white_FFFFFFFF"
                 tools:title="Уровень сложности: Сложный" />
 

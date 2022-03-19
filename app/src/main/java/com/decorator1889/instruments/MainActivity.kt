@@ -1,17 +1,17 @@
 package com.decorator1889.instruments
 
-import android.animation.ValueAnimator
 import android.os.Bundle
-import android.view.ViewGroup.MarginLayoutParams
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.decorator1889.instruments.databinding.ActivityMainBinding
-import com.decorator1889.instruments.databinding.FragmentOnBoardingBinding
 import com.decorator1889.instruments.fragments.OnBoardingFragmentDirections
+import com.decorator1889.instruments.util.createSnackbar
 import com.decorator1889.instruments.util.gone
 import com.decorator1889.instruments.util.visible
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
