@@ -1,0 +1,18 @@
+android {
+    signingConfigs {
+        release {
+            storeFile file('../instruments.jks')
+            storePassword 'neket030798'
+            keyAlias 'Key0'
+            keyPassword 'neket030798'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}

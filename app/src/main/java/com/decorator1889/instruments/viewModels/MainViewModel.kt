@@ -135,6 +135,7 @@ class MainViewModel : ViewModel() {
         number_of_questions: Long,
         questions: String
     ) {
+        //Todo после правки сервера поправить метод
         viewModelScope.launch {
             _sentResultResultEvent.value = NetworkEvent(State.LOADING)
             try {
