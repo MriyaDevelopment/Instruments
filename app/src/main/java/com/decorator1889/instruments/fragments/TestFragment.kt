@@ -110,8 +110,8 @@ class TestFragment : Fragment() {
     private fun setAdapter() {
         binding.run {
             viewPager.isUserInputEnabled = false
-            viewPager.offscreenPageLimit = 100
             viewPager.adapter = testAdapter
+            viewPager.offscreenPageLimit = 100
         }
     }
 
@@ -126,21 +126,45 @@ class TestFragment : Fragment() {
                 testViewModel.run {
                     questionList.value?.let { question ->
                         if (question.size > currentQuestion) {
-                            val from = (currentQuestion * 100)/question.size
-                            currentQuestion++
-                            val to = (currentQuestion * 100)/question.size
-                            val anim = ProgressBarAnimation(progress, from.toFloat(), to.toFloat())
-                            anim.duration = 100
-                            progress.startAnimation(anim)
+                            setProgressTest()
+                            setCompleteTest()
                         } else {
                             currentQuestion = question.size
                             onTimerCancel()
-                            resultViewModel.setResultDataQuest(args.typesCategories, args.level, testViewModel.allQuestion, testViewModel.correctAnswer, binding.timer.text.toString())
+                            val questionId = arrayListOf<String>()
+                            for (i in question.indices) {
+                                questionId.add(question[i].id.toString())
+                            }
+                            val questions = questionId.joinToString(",")
+                            resultViewModel.setResultDataQuest(args.typesCategories, args.level, testViewModel.allQuestion, testViewModel.correctAnswer, binding.timer.text.toString(), questions)
                             ResultDialog().show(childFragmentManager, "ResultDialog")
                         }
                     }
                 }
                 bindData()
+            }
+        }
+    }
+
+    private fun setCompleteTest() {
+        testViewModel.run {
+            questionList.value?.let { question ->
+                if (currentQuestion == question.size-1) {
+                    binding.select.text = str(R.string.testExit)
+                }
+            }
+        }
+    }
+
+    private fun setProgressTest() {
+        testViewModel.run {
+            questionList.value?.let { question ->
+                val from = (currentQuestion * 100)/question.size
+                currentQuestion++
+                val to = (currentQuestion * 100)/question.size
+                val anim = ProgressBarAnimation(binding.progress, from.toFloat(), to.toFloat())
+                anim.duration = 100
+                binding.progress.startAnimation(anim)
             }
         }
     }

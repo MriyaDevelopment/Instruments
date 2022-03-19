@@ -101,14 +101,14 @@ interface ApiNetwork {
 
     @FormUrlEncoded
     @POST("public/api/setResult")
-    fun setResult(
+    fun setResultAsync(
         @Field("user_token") user_token: String?,
         @Field("level") level: Long?,
         @Field("categories") categories: String?,
         @Field("number_of_correct_answers") number_of_correct_answers: Long?,
         @Field("number_of_questions") number_of_questions: Long?,
         @Field("questions") questions: String
-    )
+    ): Deferred<SentResultResponse>
 
     companion object {
         const val baseUrl = "http://ovz2.j04713753.pqr7m.vps.myjino.ru/"

@@ -25,12 +25,14 @@ import com.decorator1889.instruments.fragments.TestFragmentDirections
 import com.decorator1889.instruments.util.GridDecorations
 import com.decorator1889.instruments.util.getTitleToolbar
 import com.decorator1889.instruments.util.str
+import com.decorator1889.instruments.viewModels.MainViewModel
 import com.decorator1889.instruments.viewModels.ResultViewModel
 
 class ResultDialog: DialogFragment() {
 
     private lateinit var binding: DialogResultBinding
     private val resultViewModel: ResultViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +51,28 @@ class ResultDialog: DialogFragment() {
                 resultViewModel.level.value?.let { level ->
                     resultViewModel.typesCategories.value?.let { types ->
                         findNavController().navigate(TestFragmentDirections.actionTestFragmentToTestFragment(level = level, typesCategories = types))
+                    }
+                }
+            }
+            ok.setOnClickListener {
+                resultViewModel.run {
+                    level.value?.let { level ->
+                        allQuestion.value?.let { allQuestion->
+                            correctAnswer.value?.let { correctAnswer ->
+                                typesCategories.value?.let { typesCategories ->
+                                    questions.value?.let { questions ->
+                                        mainViewModel.setResultData(
+                                            level = level,
+                                            number_of_questions = allQuestion.toLong(),
+                                            number_of_correct_answers = correctAnswer.toLong(),
+                                            categories = typesCategories,
+                                            questions = questions
+                                        )
+                                        findNavController().navigate(TestFragmentDirections.actionTestFragmentToProfileFragment())
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

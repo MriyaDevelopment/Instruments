@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.ProgressBarAnimation
 import com.decorator1889.instruments.R
@@ -58,6 +59,9 @@ class ProfileFragment : Fragment() {
             swipeRefresh.setColorSchemeColors(
                 ContextCompat.getColor(requireContext(), R.color.blue_5B67CA)
             )
+            headerBlock.setOnClickListener {
+                (activity as MainActivity).selectLevels()
+            }
         }
     }
 
@@ -98,7 +102,8 @@ class ProfileFragment : Fragment() {
         binding.run {
             mainViewModel.result.value?.let { resultProfile ->
                 if (resultProfile.isEmpty()) {
-                    blockTest.gone()
+                    resultBlock.gone()
+                    headerBlock.visible()
                     return
                 }
                 val result = resultProfile[0]
@@ -123,6 +128,8 @@ class ProfileFragment : Fragment() {
                 val adapter = MiniCategoriesAdapter()
                 recycler.adapter = adapter
                 adapter.submitList(lst)
+                headerBlock.gone()
+                resultBlock.visible()
             }
         }
     }
@@ -131,6 +138,7 @@ class ProfileFragment : Fragment() {
         binding.run {
             swipeRefresh.isRefreshing = true
             containerProfile.alpha = 0f
+            headerBlock.gone()
             containerProfile.gone()
         }
     }
@@ -140,6 +148,15 @@ class ProfileFragment : Fragment() {
             containerProfile.visible()
             swipeRefresh.isRefreshing = false
             containerProfile.animate().alpha(1f)
+            mainViewModel.result.value?.let { resultProfile ->
+                if (resultProfile.isEmpty()) {
+                    resultBlock.gone()
+                    headerBlock.visible()
+                    return
+                } else {
+                    resultBlock.visible()
+                }
+            }
         }
     }
 

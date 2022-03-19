@@ -28,6 +28,10 @@
         <item name="android:textSize">@dimen/size16</item>
     </style>
 
+    <style name="TextWhiteNormal14Style" parent="TextWhiteNormalStyle">
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+
     <style name="TextBlueNormal16Style" parent="TextBlueNormalStyle">
         <item name="android:textSize">@dimen/size16</item>
     </style>

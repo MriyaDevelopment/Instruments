@@ -196,6 +196,13 @@
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
             app:popExitAnim="@anim/fragment_exit" />
+        <action
+            android:id="@+id/action_profileFragment_to_testCategoriesFragment"
+            app:destination="@id/testCategoriesFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter"
+            app:popExitAnim="@anim/fragment_exit"/>
     </fragment>
     <fragment
         android:id="@+id/testCategoriesFragment"
@@ -237,6 +244,15 @@
         <action
             android:id="@+id/action_testFragment_to_testFragment"
             app:destination="@id/testFragment"
+            app:popUpTo="@+id/testFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_testFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter"
+            app:popExitAnim="@anim/fragment_exit"
             app:popUpTo="@+id/testFragment"
             app:popUpToInclusive="true"/>
 

@@ -81,4 +81,8 @@ class MainActivity : AppCompatActivity() {
     fun checkBnvMenuItem(itemId: Int) {
         binding.bnv.menu.findItem(itemId).isChecked = true
     }
+
+    fun selectLevels() {
+        findNavController(R.id.nav_host_fragment).navigate(R.id.levelsFragment)
+    }
 }

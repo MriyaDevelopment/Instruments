@@ -44,7 +44,9 @@
     <string name="testCategoryFavorite">Тест по избранному</string>
     <!-- Profile_Screen -->
     <string name="profileExit">Выйти</string>
+    <string name="profileHeaderTitle">Проверь свои знания и пройди тестирование! Это поможет лучше усвоить темы. </string>
     <string name="profileResult">Ваш последний результат</string>
+    <string name="profileReturn">Пройти тестирование</string>
     <string name="profileNext">Пройти тест заново</string>
     <string name="profileSubscribe">Подписка оформлена</string>
     <!-- Exit_Dialog-->
@@ -57,6 +59,7 @@
     <!-- Test_Screen -->
     <string name="testSelect">Следующий вопрос</string>
     <string name="testLevel">Уровень сложности: %s</string>
+    <string name="testExit">Завершить тестирование</string>
     <!-- Result_Screen -->
     <string name="resultTitle">Ваш результат</string>
     <string name="resultOk">Ок</string>

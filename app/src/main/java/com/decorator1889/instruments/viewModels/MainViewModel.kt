@@ -29,6 +29,11 @@ class MainViewModel : ViewModel() {
     private val _resultResultEvent = MutableLiveData<NetworkEvent<State>>()
     val resultResultEvent: LiveData<NetworkEvent<State>> = _resultResultEvent
 
+    private val _sentResult = MutableLiveData<List<Result>>()
+    val sentResult: LiveData<List<Result>> = _sentResult
+    private val _sentResultResultEvent = MutableLiveData<NetworkEvent<State>>()
+    val sentResultResultEvent: LiveData<NetworkEvent<State>> = _sentResultResultEvent
+
     private val _mainPageLoading = MutableLiveData<NetworkEvent<State>>()
     val mainPageLoading: LiveData<NetworkEvent<State>> = _mainPageLoading
     private val mainPageLoadingMap = mutableMapOf<String, State>()
@@ -87,7 +92,8 @@ class MainViewModel : ViewModel() {
             _profileResultEvent.value = NetworkEvent(State.LOADING)
             mainPageLoadingMap[PROFILE] = State.LOADING
             try {
-                val response = ApiNetwork.API.getProfileDataAsync(App.getInstance().userToken).await()
+                val response =
+                    ApiNetwork.API.getProfileDataAsync(App.getInstance().userToken).await()
                 if (response.result == "success") {
                     _profile.value = response.user?.toListUser()
                     _profileResultEvent.value = NetworkEvent(State.SUCCESS)
@@ -119,6 +125,32 @@ class MainViewModel : ViewModel() {
                 mainPageLoadingMap[RESULT] = State.ERROR
             }
             checkIsMainPageReady()
+        }
+    }
+
+    fun setResultData(
+        level: Long,
+        categories: String,
+        number_of_correct_answers: Long,
+        number_of_questions: Long,
+        questions: String
+    ) {
+        viewModelScope.launch {
+            _sentResultResultEvent.value = NetworkEvent(State.LOADING)
+            try {
+                val response = ApiNetwork.API.setResultAsync(
+                    user_token = App.getInstance().userToken,
+                    level = level,
+                    categories = categories,
+                    number_of_correct_answers = number_of_correct_answers,
+                    number_of_questions = number_of_questions,
+                    questions = questions
+                ).await()
+                loadMainData()
+                _sentResultResultEvent.value = NetworkEvent(State.SUCCESS)
+            } catch (e: Exception) {
+                _sentResultResultEvent.value = NetworkEvent(State.FAILURE, e.message)
+            }
         }
     }
 

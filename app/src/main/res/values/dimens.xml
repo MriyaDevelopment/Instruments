@@ -32,6 +32,7 @@
     <dimen name="margin38">38dp</dimen>
     <dimen name="margin40">40dp</dimen>
     <dimen name="margin45">45dp</dimen>
+    <dimen name="margin55">55dp</dimen>
     <dimen name="margin170">170dp</dimen>
     <dimen name="margin250">250dp</dimen>
     <!-- Size -->
@@ -67,6 +68,7 @@
     <dimen name="corner20">20dp</dimen>
     <!-- Padding -->
     <dimen name="padding3">3dp</dimen>
+    <dimen name="padding5">5dp</dimen>
     <dimen name="padding8">8dp</dimen>
     <dimen name="padding14">14dp</dimen>
     <dimen name="padding16">16dp</dimen>
@@ -86,6 +88,7 @@
     <dimen name="height52">52dp</dimen>
     <dimen name="height60">60dp</dimen>
     <dimen name="height65">65dp</dimen>
+    <dimen name="height80">80dp</dimen>
     <dimen name="height100">100dp</dimen>
     <dimen name="height155">155dp</dimen>
     <dimen name="height250">250dp</dimen>
@@ -93,4 +96,5 @@
     <dimen name="width32">32dp</dimen>
     <dimen name="width40">40dp</dimen>
     <dimen name="width65">65dp</dimen>
+    <dimen name="width80">80dp</dimen>
 </resources>
