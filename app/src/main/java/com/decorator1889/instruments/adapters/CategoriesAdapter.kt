@@ -12,6 +12,7 @@ import com.decorator1889.instruments.databinding.ViewCategoriesBinding
 import com.decorator1889.instruments.models.Categories
 import com.decorator1889.instruments.util.getInstrumentsBgr
 import com.decorator1889.instruments.util.getInstrumentsIcon
+import com.decorator1889.instruments.util.getNameMiniCategories
 import com.decorator1889.instruments.util.str
 
 class CategoriesAdapter(
@@ -32,7 +33,7 @@ class CategoriesAdapter(
 
         fun bind(item: Categories, onClickCatalog: (type: String, name: String) -> Unit) {
             binding.run {
-                name.text = item.name
+                name.text = getNameMiniCategories(item.type)
                 bgr.setImageResource(getInstrumentsBgr(item.type))
                 icon.setImageResource(getInstrumentsIcon(item.type))
                 count.text = str(R.string.mainCount, item.number_of_questions)
