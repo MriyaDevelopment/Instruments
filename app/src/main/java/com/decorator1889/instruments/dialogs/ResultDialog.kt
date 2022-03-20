@@ -3,6 +3,7 @@ package com.decorator1889.instruments.dialogs
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.DialogInterface
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
@@ -23,12 +25,10 @@ import com.decorator1889.instruments.databinding.DialogExitBinding
 import com.decorator1889.instruments.databinding.DialogResultBinding
 import com.decorator1889.instruments.fragments.TestCategoriesFragmentDirections
 import com.decorator1889.instruments.fragments.TestFragmentDirections
-import com.decorator1889.instruments.util.GridDecorations
-import com.decorator1889.instruments.util.OneTimeEvent
-import com.decorator1889.instruments.util.getTitleToolbar
-import com.decorator1889.instruments.util.str
+import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.viewModels.MainViewModel
 import com.decorator1889.instruments.viewModels.ResultViewModel
+import com.google.android.material.chip.Chip
 
 class ResultDialog: DialogFragment() {
 
@@ -41,7 +41,7 @@ class ResultDialog: DialogFragment() {
         savedInstanceState: Bundle?
     ): View = DialogResultBinding.inflate(inflater, container, false).apply {
         binding = this
-        itemDecorator()
+//        itemDecorator()
         bindDataResult()
         setListener()
     }.root
@@ -70,6 +70,7 @@ class ResultDialog: DialogFragment() {
             }
             ok.setOnClickListener {
                 resultViewModel.returnOnce = false
+                resultViewModel.onUpdateProfileResult()
                 dismiss()
             }
         }
@@ -98,15 +99,15 @@ class ResultDialog: DialogFragment() {
         }
     }
 
-    private fun itemDecorator() {
-        binding.recycler.addItemDecoration(
-            GridDecorations(
-                sideMargins = R.dimen.margin0,
-                elementsMargins = R.dimen.margin8,
-                horizontalMargins = R.dimen.margin0
-            )
-        )
-    }
+//    private fun itemDecorator() {
+//        binding.recycler.addItemDecoration(
+//            GridDecorations(
+//                sideMargins = R.dimen.margin0,
+//                elementsMargins = R.dimen.margin8,
+//                horizontalMargins = R.dimen.margin0
+//            )
+//        )
+//    }
 
     @SuppressLint("SetTextI18n")
     private fun bindDataResult() {
@@ -128,10 +129,20 @@ class ResultDialog: DialogFragment() {
                 }
             }
             resultViewModel.typesCategories.value?.let { types ->
-                val lst: List<String> = ArrayList(types.split(","))
-                val adapter = MiniCategoriesAdapter()
-                recycler.adapter = adapter
-                adapter.submitList(lst)
+                val list: List<String> = ArrayList(types.split(","))
+                chips.removeAllViews()
+                list.let {
+                    for (index in it.indices) {
+                        val chip = Chip(chips.context)
+                        chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(root.context, getColor25MiniCategories(it[index])))
+                        chip.setTextColor(ContextCompat.getColor(root.context, getColorMiniCategories(it[index])))
+                        chip.chipCornerRadius = resources.getDimension(R.dimen.corner3)
+                        chip.text= getNameMiniCategories(it[index])
+                        chip.isClickable = false
+                        chip.isCheckable = true
+                        chips.addView(chip)
+                    }
+                }
             }
         }
     }

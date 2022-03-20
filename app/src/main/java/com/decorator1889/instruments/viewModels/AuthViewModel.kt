@@ -35,6 +35,7 @@ class AuthViewModel : ViewModel() {
                 ).await()
                 if (response.result == "success") {
                     _registerUser.value = response.register?.toRegister()
+                    registerUser.value?.api_token?.let { App.getInstance().logIn(it) }
                     _registerResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {
                     _registerResultEvent.value = NetworkEvent(State.ERROR, response.error)

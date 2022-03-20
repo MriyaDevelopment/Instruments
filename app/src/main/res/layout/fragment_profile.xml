@@ -194,16 +194,11 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler"
-                            android:layout_width="wrap_content"
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chips"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:clipToPadding="false"
-                            android:splitMotionEvents="false"
-                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                            app:spanCount="2"
-                            tools:ignore="RtlHardcoded" />
+                            app:singleSelection="true"/>
 
                     </LinearLayout>
 

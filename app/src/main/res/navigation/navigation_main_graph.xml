@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main_graph"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/onBoardingFragment"
@@ -56,7 +56,7 @@
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
             app:popExitAnim="@anim/fragment_exit"
-            app:popUpTo="@+id/mainFragment"
+            app:popUpTo="@+id/onBoardingFragment"
             app:popUpToInclusive="true"/>
     </fragment>
     <fragment
@@ -71,6 +71,15 @@
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
             app:popExitAnim="@anim/fragment_exit" />
+        <action
+            android:id="@+id/action_singUpFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter"
+            app:popExitAnim="@anim/fragment_exit"
+            app:popUpTo="@+id/onBoardingFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/recoveryFragment"
@@ -97,6 +106,15 @@
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
             app:popExitAnim="@anim/fragment_exit"/>
+        <action
+            android:id="@+id/action_mainFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter"
+            app:popExitAnim="@anim/fragment_exit"
+            app:popUpTo="@+id/mainFragment"
+            app:popUpToInclusive="true"/>
 
     </fragment>
     <fragment
@@ -195,7 +213,9 @@
             app:enterAnim="@anim/fragment_enter"
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
-            app:popExitAnim="@anim/fragment_exit" />
+            app:popExitAnim="@anim/fragment_exit"
+            app:popUpTo="@+id/mainFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_profileFragment_to_testCategoriesFragment"
             app:destination="@id/testCategoriesFragment"

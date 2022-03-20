@@ -83,7 +83,7 @@ class SingUpFragment : Fragment() {
             signUp.visible()
             loader.gone()
         }
-        findNavController().navigate(SingUpFragmentDirections.actionSingUpFragmentToSignInFragment())
+        findNavController().navigate(SingUpFragmentDirections.actionSingUpFragmentToMainFragment())
     }
 
     private fun loadingRegister() {

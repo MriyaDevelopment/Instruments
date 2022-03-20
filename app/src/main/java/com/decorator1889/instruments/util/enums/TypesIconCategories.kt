@@ -12,8 +12,8 @@ enum class TypesIconCategories(val icon: Int) {
     OPHTHALMOLOGY(R.drawable.ic_ophthalmology),
     ANESTHESIOLOGY(R.drawable.ic_anesthesiology),
     SEPARATION(R.drawable.ic_separation),
-    CONNECTION(R.drawable.ic_separation),
+    CONNECTION(R.drawable.ic_connection),
     SPREADING(R.drawable.ic_spreading),
-    HOLD(R.drawable.ic_spreading),
-    STABBING(R.drawable.ic_spreading)
+    HOLD(R.drawable.ic_hold),
+    STABBING(R.drawable.ic_stabbing)
 }

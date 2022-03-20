@@ -7,6 +7,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.decorator1889.instruments.databinding.ActivityMainBinding
+import com.decorator1889.instruments.fragments.MainFragmentDirections
 import com.decorator1889.instruments.fragments.OnBoardingFragmentDirections
 import com.decorator1889.instruments.util.createSnackbar
 import com.decorator1889.instruments.util.gone
@@ -27,22 +28,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBnv() {
-        binding.bnv.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.home -> findNavController(R.id.nav_host_fragment).navigate(R.id.mainFragment)
-                R.id.test -> findNavController(R.id.nav_host_fragment).navigate(R.id.levelsFragment)
-                R.id.favorite -> findNavController(R.id.nav_host_fragment).navigate(R.id.favoriteFragment)
-                R.id.profile -> findNavController(R.id.nav_host_fragment).navigate(R.id.profileFragment)
+        binding.run {
+            bnv.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.home -> findNavController(R.id.nav_host_fragment).navigate(R.id.mainFragment)
+                    R.id.test -> findNavController(R.id.nav_host_fragment).navigate(R.id.levelsFragment)
+                    R.id.favorite -> findNavController(R.id.nav_host_fragment).navigate(R.id.favoriteFragment)
+                    R.id.profile -> findNavController(R.id.nav_host_fragment).navigate(R.id.profileFragment)
+                }
+                true
             }
-            true
+            bnv.setOnItemReselectedListener {}
         }
     }
 
     private fun loginInOnce() {
         if (App.getInstance().userToken?.isEmpty() == true) {
             findNavController(R.id.nav_host_fragment).navigate(R.id.onBoardingFragment)
-        } else {
-            findNavController(R.id.nav_host_fragment).navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToMainFragment())
         }
     }
 
@@ -76,6 +78,7 @@ class MainActivity : AppCompatActivity() {
         val inflater = navHostFragment.navController.navInflater
         val navGraph = inflater.inflate(R.navigation.navigation_main_graph)
         navController.graph = navGraph
+        findNavController(R.id.nav_host_fragment).navigate(MainFragmentDirections.actionMainFragmentToOnBoardingFragment())
     }
 
     fun checkBnvMenuItem(itemId: Int) {

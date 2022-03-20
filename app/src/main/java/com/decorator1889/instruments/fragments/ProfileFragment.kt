@@ -1,6 +1,7 @@
 package com.decorator1889.instruments.fragments
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ import com.decorator1889.instruments.util.enums.State
 import com.decorator1889.instruments.util.enums.TypesCategories
 import com.decorator1889.instruments.viewModels.MainViewModel
 import com.decorator1889.instruments.viewModels.ResultViewModel
+import com.google.android.material.chip.Chip
 
 class ProfileFragment : Fragment() {
 
@@ -32,10 +34,6 @@ class ProfileFragment : Fragment() {
     private lateinit var onResultEvent: DefaultNetworkEventObserver
     private val resultViewModel: ResultViewModel by activityViewModels()
 
-    private val miniCategoriesAdapter by lazy {
-        MiniCategoriesAdapter()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,24 +41,8 @@ class ProfileFragment : Fragment() {
         binding = this
         initializeObservers()
         setObservers()
-        itemDecorator()
-        setAdapter()
         setListeners()
     }.root
-
-    private fun setAdapter() {
-        binding.recycler.adapter = miniCategoriesAdapter
-    }
-
-    private fun itemDecorator() {
-        binding.recycler.addItemDecoration(
-            GridDecorations(
-                sideMargins = R.dimen.margin10,
-                elementsMargins = R.dimen.margin8,
-                horizontalMargins = R.dimen.margin0
-            )
-        )
-    }
 
     private fun setListeners() {
         binding.run {
@@ -77,7 +59,10 @@ class ProfileFragment : Fragment() {
                 (activity as MainActivity).selectLevels()
             }
             again.setOnClickListener {
-                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToTestFragment(repeat = true))
+                mainViewModel.result.value?.let { resultProfile->
+                    val result = resultProfile[0]
+                    findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToTestFragment(repeat = true, typesCategories = result.categories, level = result.level))
+                }
             }
         }
     }
@@ -138,7 +123,19 @@ class ProfileFragment : Fragment() {
     private fun loadAdapter(result: Result) {
         binding.run {
             val list: List<String> = ArrayList(result.categories.split(","))
-            miniCategoriesAdapter.submitList(list)
+            chips.removeAllViews()
+            list.let {
+                for (index in it.indices) {
+                    val chip = Chip(chips.context)
+                    chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(root.context, getColor25MiniCategories(it[index])))
+                    chip.setTextColor(ContextCompat.getColor(root.context, getColorMiniCategories(it[index])))
+                    chip.chipCornerRadius = resources.getDimension(R.dimen.corner3)
+                    chip.text= getNameMiniCategories(it[index])
+                    chip.isClickable = false
+                    chip.isCheckable = true
+                    chips.addView(chip)
+                }
+            }
         }
     }
 

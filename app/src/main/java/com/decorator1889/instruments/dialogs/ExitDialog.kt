@@ -10,9 +10,11 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.databinding.DialogExitBinding
+import com.decorator1889.instruments.fragments.ProfileFragmentDirections
 
 class ExitDialog: DialogFragment() {
 
