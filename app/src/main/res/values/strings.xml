@@ -39,7 +39,7 @@
     <string name="detailCatalogTitle">Тема: %s</string>
     <string name="detailCatalogSubtitle">Раздел: %s</string>
     <!-- TestLevel_Screen-->
-    <string name="testLevelTitle">Проверь свои знания</string>
+    <string name="testLevelTitle">Проверь свои знания!</string>
     <string name="testLevelSubTitle">Выбери подходящий уровень сложности </string>
     <string name="testLevelChangeCategory">Выбрать категории и начать</string>
     <string name="testLevelQuestion">%s вопросов</string>

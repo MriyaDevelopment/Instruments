@@ -5,7 +5,7 @@ enum class Types(val types: String) {
     STOMATOLOGY("Стоматология"),
     GYNECOLOGY("Акушерство и гинекология"),
     NEURO("Нейрохирургия"),
-    LOR("Оториноларингология"),
+    LOR("ЛОР-инструменты"),
     UROLOGY("Урология"),
     OPHTHALMOLOGY("Офтальмология"),
     ANESTHESIOLOGY("Анестезиология")
