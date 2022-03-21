@@ -11,6 +11,7 @@ import com.decorator1889.instruments.R
 import com.decorator1889.instruments.databinding.FragmentOnBoardingBinding
 import com.decorator1889.instruments.databinding.FragmentRecoveryBinding
 import com.decorator1889.instruments.util.Constants
+import com.decorator1889.instruments.util.createSnackbar
 
 class RecoveryFragment : Fragment() {
 
@@ -29,6 +30,12 @@ class RecoveryFragment : Fragment() {
         binding.run {
             toolbar.setNavigationOnClickListener {
                 findNavController().popBackStack()
+            }
+            send.setOnClickListener {
+                createSnackbar(
+                    binding.root,
+                    getString(R.string.functionalityIsInDevelopment)
+                ).show()
             }
         }
     }
