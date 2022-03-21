@@ -1,6 +1,7 @@
 package com.decorator1889.instruments.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.decorator1889.instruments.App
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.databinding.FragmentOnBoardingBinding
+import com.decorator1889.instruments.util.Constants
 
 class OnBoardingFragment : Fragment() {
 
@@ -21,6 +23,7 @@ class OnBoardingFragment : Fragment() {
     ): View = FragmentOnBoardingBinding.inflate(inflater, container, false).apply {
         binding = this
         setListeners()
+        Log.d(Constants.ON_BOARDING_TAG, "OnBoardingFragment created")
     }.root
 
     override fun onStart() {
@@ -41,7 +44,7 @@ class OnBoardingFragment : Fragment() {
                 findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToSignInFragment())
             }
             signUp.setOnClickListener {
-                findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToSingUpFragment())
+                findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToSignUpFragment())
             }
         }
     }

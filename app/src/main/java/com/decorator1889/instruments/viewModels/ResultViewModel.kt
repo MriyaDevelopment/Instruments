@@ -44,10 +44,4 @@ class ResultViewModel: ViewModel() {
     fun setRepeatTest(repeat: Boolean) {
         _repeatTest.value = repeat
     }
-
-    val onUpdateResult = MutableLiveData<OneTimeEvent>()
-
-    fun onUpdateProfileResult() {
-        onUpdateResult.value = OneTimeEvent()
-    }
 }

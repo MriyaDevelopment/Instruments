@@ -23,14 +23,12 @@ fun List<ResultResponse.Result>.toResult(): List<Result> {
     }
 }
 
-fun List<SentResultResponse.Result>.toSentResult(): List<Result> {
-    return this.map { sentResult ->
-        Result(
-            level = sentResult.level ?: 0L,
-            categories = sentResult.categories ?: "",
-            number_of_correct_answers = sentResult.number_of_correct_answers ?: 0L,
-            number_of_questions = sentResult.number_of_questions ?: 0L,
-            questions = sentResult.questions ?: ""
-        )
-    }
+fun SentResultResponse.Result.toSentResult(): Result {
+    return Result(
+        level = this.level ?: 0L,
+        categories = this.categories ?: "",
+        number_of_correct_answers = this.number_of_correct_answers ?: 0L,
+        number_of_questions = this.number_of_questions ?: 0L,
+        questions = this.questions ?: ""
+    )
 }

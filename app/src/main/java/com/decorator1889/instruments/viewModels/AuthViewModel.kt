@@ -12,6 +12,7 @@ import com.decorator1889.instruments.models.toLogin
 import com.decorator1889.instruments.models.toRegister
 import com.decorator1889.instruments.util.NetworkEvent
 import com.decorator1889.instruments.util.OneTimeEvent
+import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
 
@@ -33,7 +34,7 @@ class AuthViewModel : ViewModel() {
                     password = password,
                     password_confirmation = password
                 ).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _registerUser.value = response.register?.toRegister()
                     registerUser.value?.api_token?.let { App.getInstance().logIn(it) }
                     _registerResultEvent.value = NetworkEvent(State.SUCCESS)
@@ -58,7 +59,7 @@ class AuthViewModel : ViewModel() {
             _loginResultEvent.value = NetworkEvent(State.LOADING)
             try {
                 val response = ApiNetwork.API.loginAsync(email = email, password = password).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _loginUser.value = response.user?.toLogin()
                     loginUser.value?.api_token?.let { App.getInstance().logIn(it) }
                     _loginResultEvent.value = NetworkEvent(State.SUCCESS)

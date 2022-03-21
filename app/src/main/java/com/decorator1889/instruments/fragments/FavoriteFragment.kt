@@ -18,11 +18,8 @@ import com.decorator1889.instruments.adapters.InstrumentsAdapter
 import com.decorator1889.instruments.adapters.InstrumentsItem
 import com.decorator1889.instruments.databinding.FragmentFavoriteBinding
 import com.decorator1889.instruments.models.Instruments
-import com.decorator1889.instruments.util.DefaultNetworkEventObserver
-import com.decorator1889.instruments.util.OneTimeEvent
+import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.util.enums.State
-import com.decorator1889.instruments.util.gone
-import com.decorator1889.instruments.util.visible
 import com.decorator1889.instruments.viewModels.FavoritesViewModel
 import com.decorator1889.instruments.viewModels.GalleryViewModel
 
@@ -46,6 +43,7 @@ class FavoriteFragment : Fragment() {
         setAdapter()
         setListeners()
         postponeTransition()
+        Log.d(Constants.FAVORITE_TAG, "FavoriteFragment created")
     }.root
 
     private fun postponeTransition() {
@@ -88,6 +86,12 @@ class FavoriteFragment : Fragment() {
             doOnSuccess = {
                 loadAdapter()
                 showFavorites()
+            },
+            doOnError = {
+                favoritesViewModel.loadFavorites()
+            },
+            doOnFailure = {
+                favoritesViewModel.loadFavorites()
             }
         )
     }

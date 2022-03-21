@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.databinding.DialogExitBinding
 import com.decorator1889.instruments.fragments.ProfileFragmentDirections
+import com.decorator1889.instruments.util.Constants
 
 class ExitDialog: DialogFragment() {
 
@@ -26,6 +28,7 @@ class ExitDialog: DialogFragment() {
     ): View = DialogExitBinding.inflate(inflater, container, false).apply {
         binding = this
         setListeners()
+        Log.d(Constants.EXIT_TAG, "ExitDialog created")
     }.root
 
     private fun setListeners() {

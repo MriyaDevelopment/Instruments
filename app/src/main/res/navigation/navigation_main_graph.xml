@@ -11,8 +11,8 @@
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding" >
         <action
-            android:id="@+id/action_onBoardingFragment_to_singUpFragment"
-            app:destination="@id/singUpFragment"
+            android:id="@+id/action_onBoardingFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
             app:enterAnim="@anim/fragment_enter"
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
@@ -37,7 +37,7 @@
         tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_signInFragment_to_singUpFragment"
-            app:destination="@id/singUpFragment"
+            app:destination="@id/signUpFragment"
             app:enterAnim="@anim/fragment_enter"
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
@@ -60,19 +60,19 @@
             app:popUpToInclusive="true"/>
     </fragment>
     <fragment
-        android:id="@+id/singUpFragment"
-        android:name="com.decorator1889.instruments.fragments.SingUpFragment"
+        android:id="@+id/signUpFragment"
+        android:name="com.decorator1889.instruments.fragments.SignUpFragment"
         android:label="fragment_sing_up"
         tools:layout="@layout/fragment_sing_up" >
         <action
-            android:id="@+id/action_singUpFragment_to_signInFragment"
+            android:id="@+id/action_signUpFragment_to_signInFragment"
             app:destination="@id/signInFragment"
             app:enterAnim="@anim/fragment_enter"
             app:exitAnim="@anim/fragment_exit"
             app:popEnterAnim="@anim/fragment_enter"
             app:popExitAnim="@anim/fragment_exit" />
         <action
-            android:id="@+id/action_singUpFragment_to_mainFragment"
+            android:id="@+id/action_signUpFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:enterAnim="@anim/fragment_enter"
             app:exitAnim="@anim/fragment_exit"

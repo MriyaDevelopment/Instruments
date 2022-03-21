@@ -1,6 +1,7 @@
 package com.decorator1889.instruments.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +48,7 @@ class InstrumentsFragment : Fragment() {
         setAdapter()
         setListeners()
         postponeTransition()
+        Log.d(Constants.INSTRUMENTS_TAG, "InstrumentsFragment created")
     }.root
 
     private fun setAdapter() {
@@ -79,6 +81,12 @@ class InstrumentsFragment : Fragment() {
             doOnSuccess = {
                 loadAdapter()
                 showInstruments()
+            },
+            doOnError = {
+                loadInstruments()
+            },
+            doOnFailure = {
+                loadInstruments()
             }
         )
     }

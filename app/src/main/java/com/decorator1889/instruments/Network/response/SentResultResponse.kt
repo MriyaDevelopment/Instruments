@@ -1,8 +1,9 @@
 package com.decorator1889.instruments.Network.response
 
 data class SentResultResponse(
-    val result: Result?,
-    val error: String,
+    val result: String?,
+    val error: String?,
+    val data: Result?
 ) {
     data class Result(
         val level: Long?,

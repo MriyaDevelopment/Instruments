@@ -12,17 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.decorator1889.instruments.MainActivity
-import com.decorator1889.instruments.ProgressBarAnimation
+import com.decorator1889.instruments.util.ProgressBarAnimation
 import com.decorator1889.instruments.R
-import com.decorator1889.instruments.adapters.MiniCategoriesAdapter
 import com.decorator1889.instruments.databinding.FragmentProfileBinding
 import com.decorator1889.instruments.dialogs.ExitDialog
 import com.decorator1889.instruments.models.Result
 import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.util.enums.State
-import com.decorator1889.instruments.util.enums.TypesCategories
 import com.decorator1889.instruments.viewModels.MainViewModel
-import com.decorator1889.instruments.viewModels.ResultViewModel
 import com.google.android.material.chip.Chip
 
 class ProfileFragment : Fragment() {
@@ -32,7 +29,7 @@ class ProfileFragment : Fragment() {
     private lateinit var onProfileEvent: DefaultNetworkEventObserver
     private lateinit var onMainPageEvent: DefaultNetworkEventObserver
     private lateinit var onResultEvent: DefaultNetworkEventObserver
-    private val resultViewModel: ResultViewModel by activityViewModels()
+    private lateinit var onSentResultEvent: DefaultNetworkEventObserver
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +39,7 @@ class ProfileFragment : Fragment() {
         initializeObservers()
         setObservers()
         setListeners()
+        Log.d(Constants.PROFILE_TAG, "ProfileFragment created")
     }.root
 
     private fun setListeners() {
@@ -72,10 +70,8 @@ class ProfileFragment : Fragment() {
             profileResultEvent.observe(viewLifecycleOwner, onProfileEvent)
             resultResultEvent.observe(viewLifecycleOwner, onResultEvent)
             mainPageLoading.observe(viewLifecycleOwner, onMainPageEvent)
+            sentResultResultEvent.observe(viewLifecycleOwner, onSentResultEvent)
         }
-        resultViewModel.onUpdateResult.observe(viewLifecycleOwner, OneTimeEvent.Observer {
-            mainViewModel.loadMainData()
-        })
     }
 
     private fun initializeObservers() {
@@ -89,6 +85,18 @@ class ProfileFragment : Fragment() {
             anchorView = binding.root,
             doOnSuccess = {
                 bindResultData()
+            }
+        )
+        onSentResultEvent = DefaultNetworkEventObserver(
+            anchorView = binding.root,
+            doOnSuccess = {
+                mainViewModel.loadMainData()
+            },
+            doOnError = {
+                mainViewModel.loadMainData()
+            },
+            doOnFailure = {
+                mainViewModel.loadMainData()
             }
         )
         onMainPageEvent = DefaultNetworkEventObserver(
@@ -123,6 +131,12 @@ class ProfileFragment : Fragment() {
     private fun loadAdapter(result: Result) {
         binding.run {
             val list: List<String> = ArrayList(result.categories.split(","))
+            onCreateChips(list)
+        }
+    }
+
+    private fun onCreateChips(list: List<String>) {
+        binding.run {
             chips.removeAllViews()
             list.let {
                 for (index in it.indices) {

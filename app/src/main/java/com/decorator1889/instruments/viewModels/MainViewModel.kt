@@ -9,6 +9,7 @@ import com.decorator1889.instruments.Network.ApiNetwork
 import com.decorator1889.instruments.models.*
 import com.decorator1889.instruments.util.NetworkEvent
 import com.decorator1889.instruments.util.enums.State
+import com.decorator1889.instruments.util.enums.Load
 import kotlinx.coroutines.launch
 import kotlin.Exception
 
@@ -29,8 +30,8 @@ class MainViewModel : ViewModel() {
     private val _resultResultEvent = MutableLiveData<NetworkEvent<State>>()
     val resultResultEvent: LiveData<NetworkEvent<State>> = _resultResultEvent
 
-    private val _sentResult = MutableLiveData<List<Result>>()
-    val sentResult: LiveData<List<Result>> = _sentResult
+    private val _sentResult = MutableLiveData<Result>()
+    val sentResult: LiveData<Result> = _sentResult
     private val _sentResultResultEvent = MutableLiveData<NetworkEvent<State>>()
     val sentResultResultEvent: LiveData<NetworkEvent<State>> = _sentResultResultEvent
 
@@ -71,7 +72,7 @@ class MainViewModel : ViewModel() {
             mainPageLoadingMap[CATEGORIES] = State.LOADING
             try {
                 val response = ApiNetwork.API.getCategoriesAsync().await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _categoriesList.value = response.category?.toCategories()
                     _categoriesResultEvent.value = NetworkEvent(State.SUCCESS)
                     mainPageLoadingMap[CATEGORIES] = State.SUCCESS
@@ -94,7 +95,7 @@ class MainViewModel : ViewModel() {
             try {
                 val response =
                     ApiNetwork.API.getProfileDataAsync(App.getInstance().userToken).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _profile.value = response.user?.toListUser()
                     _profileResultEvent.value = NetworkEvent(State.SUCCESS)
                     mainPageLoadingMap[PROFILE] = State.SUCCESS
@@ -114,7 +115,7 @@ class MainViewModel : ViewModel() {
             mainPageLoadingMap[RESULT] = State.LOADING
             try {
                 val response = ApiNetwork.API.getResultAsync(App.getInstance().userToken).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _result.value = response.levels?.toResult()
                     _resultResultEvent.value = NetworkEvent(State.SUCCESS)
                     mainPageLoadingMap[RESULT] = State.SUCCESS
@@ -135,7 +136,6 @@ class MainViewModel : ViewModel() {
         number_of_questions: Long,
         questions: String
     ) {
-        //Todo после правки сервера поправить метод
         viewModelScope.launch {
             _sentResultResultEvent.value = NetworkEvent(State.LOADING)
             try {
@@ -147,8 +147,12 @@ class MainViewModel : ViewModel() {
                     number_of_questions = number_of_questions,
                     questions = questions
                 ).await()
-
-                _sentResultResultEvent.value = NetworkEvent(State.SUCCESS)
+                if (response.result == Load.SUCCESS.state) {
+                    _sentResult.value = response.data?.toSentResult()
+                    _sentResultResultEvent.value = NetworkEvent(State.SUCCESS)
+                } else {
+                    _sentResultResultEvent.value = NetworkEvent(State.ERROR, response.error)
+                }
             } catch (e: Exception) {
                 _sentResultResultEvent.value = NetworkEvent(State.FAILURE, e.message)
             }

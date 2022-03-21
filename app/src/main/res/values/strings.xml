@@ -6,6 +6,9 @@
     <string name="emptyFavorites">Здесь пока пусто! \nВыбранные вами инструменты будут \nнаходится здесь.</string>
     <string name="functionalityIsInDevelopment">Functionality is in development</string>
     <string name="exit">Нажми</string>
+    <string name="success">success</string>
+    <string name="failure">failure</string>
+    <string name="error">error</string>
     <!-- OnBoarding_Screen -->
     <string name="onBoardingTitle">Начни изучать хирургию вместе с мобильным справочником медицинских инструментов</string>
     <string name="onBoardingSingIn">Войти</string>
@@ -67,4 +70,19 @@
     <string name="resultTitle">Ваш результат</string>
     <string name="resultOk">Ок</string>
     <string name="resultReturn">Пройти еще раз</string>
+
+    <!-- Categories -->
+    <string name="surgery">Общая хирургия</string>
+    <string name="anesthesiology">Анестезиология</string>
+    <string name="stomatology">Стоматология</string>
+    <string name="gynecology">Акушерство и гинекология</string>
+    <string name="neuro">Нейрохирургия</string>
+    <string name="lor">ЛОР-инструменты</string>
+    <string name="urology">Урология</string>
+    <string name="ophthalmology">Офтальмология</string>
+
+    <!-- Levels -->
+    <string name="easy">Легкий уровень</string>
+    <string name="middle">Средний уровень</string>
+    <string name="hard">Сложный уровень</string>
 </resources>

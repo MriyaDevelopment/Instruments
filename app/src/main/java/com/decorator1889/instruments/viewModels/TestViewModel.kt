@@ -9,6 +9,7 @@ import com.decorator1889.instruments.Network.ApiNetwork
 import com.decorator1889.instruments.models.Question
 import com.decorator1889.instruments.models.toQuestion
 import com.decorator1889.instruments.util.NetworkEvent
+import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -33,7 +34,7 @@ class TestViewModel : ViewModel() {
                 val response =
                     ApiNetwork.API.getQuestionByTypeAndLevelAsync(type = type, level = level)
                         .await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _questionList.value = response.questions?.toQuestion()
                     _questionResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {
@@ -52,7 +53,7 @@ class TestViewModel : ViewModel() {
             _questionResultEvent.value = NetworkEvent(State.LOADING)
             try {
                 val response = ApiNetwork.API.getLastTestAsync(user_token = App.getInstance().userToken).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _questionList.value = response.questions?.toQuestion()
                     _questionResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {

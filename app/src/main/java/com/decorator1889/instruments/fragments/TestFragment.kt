@@ -14,7 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.decorator1889.instruments.MainActivity
-import com.decorator1889.instruments.ProgressBarAnimation
+import com.decorator1889.instruments.util.ProgressBarAnimation
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.TestAdapter
 import com.decorator1889.instruments.databinding.FragmentTestBinding
@@ -47,6 +47,7 @@ class TestFragment : Fragment() {
         setAdapter()
         setTitleToolbar()
         setListeners()
+        Log.d(Constants.TEST_TAG, "TestFragment created")
     }.root
 
     private fun initializeObservers() {
@@ -58,8 +59,8 @@ class TestFragment : Fragment() {
             doOnSuccess = {
                 loadAdapter()
                 bindData()
-                showQuestion()
                 onFirstStartTimer()
+                showQuestion()
             },
             doOnFailure = {
                 findNavController().popBackStack()
@@ -125,30 +126,36 @@ class TestFragment : Fragment() {
             select.setOnClickListener {
                 bindData()
                 setCurrentItem()
-                testViewModel.run {
-                    questionList.value?.let { question ->
-                        if (question.size > currentQuestion) {
-                            setProgressTest()
-                            setCompleteTest()
-                        } else {
-                            select.isEnabled = false
-                            currentQuestion = question.size
-                            onTimerCancel()
-                            val questionId = arrayListOf<String>()
-                            for (i in question.indices) {
-                                questionId.add(question[i].id.toString())
-                            }
-                            val questions = questionId.joinToString(",")
-                            resultViewModel.setResultDataQuest(
-                                args.typesCategories,
-                                args.level,
-                                testViewModel.allQuestion,
-                                testViewModel.correctAnswer,
-                                binding.timer.text.toString(),
-                                questions
-                            )
-                            ResultDialog().show(childFragmentManager, "ResultDialog")
+                onSelectItem()
+            }
+        }
+    }
+
+    private fun onSelectItem() {
+        binding.run {
+            testViewModel.run {
+                questionList.value?.let { question ->
+                    if (question.size > currentQuestion) {
+                        setProgressTest()
+                        setCompleteTest()
+                    } else {
+                        select.isEnabled = false
+                        currentQuestion = question.size
+                        onTimerCancel()
+                        val questionId = arrayListOf<String>()
+                        for (i in question.indices) {
+                            questionId.add(question[i].id.toString())
                         }
+                        val questions = questionId.joinToString(",")
+                        resultViewModel.setResultDataQuest(
+                            args.typesCategories,
+                            args.level,
+                            testViewModel.allQuestion,
+                            testViewModel.correctAnswer,
+                            binding.timer.text.toString(),
+                            questions
+                        )
+                        ResultDialog().show(childFragmentManager, "ResultDialog")
                     }
                 }
             }

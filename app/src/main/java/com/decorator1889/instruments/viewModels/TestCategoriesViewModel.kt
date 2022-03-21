@@ -9,6 +9,7 @@ import com.decorator1889.instruments.Network.ApiNetwork
 import com.decorator1889.instruments.models.Types
 import com.decorator1889.instruments.models.toTypes
 import com.decorator1889.instruments.util.NetworkEvent
+import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
 
@@ -26,7 +27,7 @@ class TestCategoriesViewModel: ViewModel() {
             _typesResultEvent.value = NetworkEvent(State.LOADING)
             try {
                 val response = ApiNetwork.API.getTypesAsync().await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _types.value = response.types?.toTypes()
                     _typesResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {

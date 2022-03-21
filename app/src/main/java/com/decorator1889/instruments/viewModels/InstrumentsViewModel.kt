@@ -10,6 +10,7 @@ import com.decorator1889.instruments.Network.response.RemoveLikeResponse
 import com.decorator1889.instruments.models.*
 import com.decorator1889.instruments.util.NetworkEvent
 import com.decorator1889.instruments.util.OneTimeEvent
+import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
 
@@ -28,7 +29,7 @@ class InstrumentsViewModel : ViewModel() {
                     type = type,
                     user_token = App.getInstance().userToken
                 ).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _instruments.value = response.instruments?.toInstruments()
                     _instrumentsResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {
@@ -50,7 +51,7 @@ class InstrumentsViewModel : ViewModel() {
                     type = type,
                     user_token = App.getInstance().userToken
                 ).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _instruments.value = response.instruments?.toInstruments()
                     _instrumentsResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {
@@ -79,7 +80,7 @@ class InstrumentsViewModel : ViewModel() {
                     instrument_id = instrument_id,
                     is_surgery = is_surgery
                 ).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _like.value = response.like?.toLike()
                     _likeResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {
@@ -101,7 +102,7 @@ class InstrumentsViewModel : ViewModel() {
                     instrument_id = instrument_id,
                     is_surgery = is_surgery
                 ).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _removeLikeResponse.value = response
                     _likeResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {

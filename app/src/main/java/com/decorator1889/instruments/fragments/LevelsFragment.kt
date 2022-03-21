@@ -1,6 +1,7 @@
 package com.decorator1889.instruments.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.LevelsAdapter
 import com.decorator1889.instruments.databinding.FragmentLevelsBinding
+import com.decorator1889.instruments.util.Constants
 import com.decorator1889.instruments.util.DefaultNetworkEventObserver
 import com.decorator1889.instruments.util.enums.State
 import com.decorator1889.instruments.util.gone
@@ -39,6 +41,7 @@ class LevelsFragment : Fragment() {
         setObservers()
         setAdapter()
         setListeners()
+        Log.d(Constants.LEVELS_TAG, "LevelsFragment created")
     }.root
 
     private fun setAdapter() {
@@ -60,6 +63,12 @@ class LevelsFragment : Fragment() {
             doOnSuccess = {
                 loadAdapter()
                 showLevels()
+            },
+            doOnError = {
+                levelsViewModel.loadLevels()
+            },
+            doOnFailure = {
+                levelsViewModel.loadLevels()
             }
         )
     }

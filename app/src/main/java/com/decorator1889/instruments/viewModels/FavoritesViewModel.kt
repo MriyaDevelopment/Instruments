@@ -12,6 +12,7 @@ import com.decorator1889.instruments.models.Like
 import com.decorator1889.instruments.models.toFavorites
 import com.decorator1889.instruments.util.NetworkEvent
 import com.decorator1889.instruments.util.OneTimeEvent
+import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
 
@@ -27,7 +28,7 @@ class FavoritesViewModel : ViewModel() {
             _favoritesResultEvent.value = NetworkEvent(State.LOADING)
             try {
                 val response = ApiNetwork.API.getFavoritesAsync(App.getInstance().userToken).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _favorites.value = response.instruments?.toFavorites()
                     _favoritesResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {
@@ -60,7 +61,7 @@ class FavoritesViewModel : ViewModel() {
                     instrument_id = instrument_id,
                     is_surgery = is_surgery
                 ).await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _removeLikeResponse.value = response
                     _likeResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {

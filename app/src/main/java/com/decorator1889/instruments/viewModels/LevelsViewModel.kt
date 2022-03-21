@@ -8,6 +8,7 @@ import com.decorator1889.instruments.Network.ApiNetwork
 import com.decorator1889.instruments.models.Levels
 import com.decorator1889.instruments.models.toLevels
 import com.decorator1889.instruments.util.NetworkEvent
+import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
 
@@ -23,7 +24,7 @@ class LevelsViewModel: ViewModel() {
             try {
                 _levelsResultEvent.value = NetworkEvent(State.LOADING)
                 val response = ApiNetwork.API.getLevelsAsync().await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _levels.value = response.levels?.toLevels()
                     _levelsResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {

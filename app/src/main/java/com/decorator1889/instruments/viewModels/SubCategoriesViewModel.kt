@@ -10,6 +10,7 @@ import com.decorator1889.instruments.models.Categories
 import com.decorator1889.instruments.models.toCategories
 import com.decorator1889.instruments.models.toSubCategories
 import com.decorator1889.instruments.util.NetworkEvent
+import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
 
@@ -25,7 +26,7 @@ class SubCategoriesViewModel: ViewModel() {
             _subCategoriesResultEvent.value = NetworkEvent(State.LOADING)
             try {
                 val response = ApiNetwork.API.getSubCategoriesAsync().await()
-                if (response.result == "success") {
+                if (response.result == Load.SUCCESS.state) {
                     _subCategoriesList.value = response.subcategory?.toSubCategories()
                     _subCategoriesResultEvent.value = NetworkEvent(State.SUCCESS)
                 } else {

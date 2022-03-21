@@ -1,6 +1,7 @@
 package com.decorator1889.instruments.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +17,8 @@ import com.decorator1889.instruments.adapters.TestCategoriesAdapter
 import com.decorator1889.instruments.adapters.TestCategoriesItem
 import com.decorator1889.instruments.databinding.FragmentTestCategoriesBinding
 import com.decorator1889.instruments.models.Start
-import com.decorator1889.instruments.util.DefaultNetworkEventObserver
+import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.util.enums.State
-import com.decorator1889.instruments.util.gone
-import com.decorator1889.instruments.util.invisible
-import com.decorator1889.instruments.util.visible
 import com.decorator1889.instruments.viewModels.TestCategoriesViewModel
 
 class TestCategoriesFragment : Fragment() {
@@ -43,6 +41,7 @@ class TestCategoriesFragment : Fragment() {
         setObservers()
         setAdapter()
         setListeners()
+        Log.d(Constants.TEST_CATEGORIES_TAG, "TestCategoriesFragment created")
     }.root
 
     private fun setListeners() {
@@ -94,6 +93,12 @@ class TestCategoriesFragment : Fragment() {
             doOnSuccess = {
                 loadAdapter()
                 showTypes()
+            },
+            doOnError = {
+                testCategoriesViewModel.loadTypesTestCategories()
+            },
+            doOnFailure = {
+                testCategoriesViewModel.loadTypesTestCategories()
             }
         )
     }

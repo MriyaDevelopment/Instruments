@@ -1,8 +1,10 @@
 package com.decorator1889.instruments
 
 import android.app.Application
+import android.util.Log
 import androidx.preference.PreferenceManager
 import com.decorator1889.instruments.Network.ApiNetwork
+import com.decorator1889.instruments.util.Constants
 
 class App: Application()  {
 
@@ -14,6 +16,7 @@ class App: Application()  {
         reference = this
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         userToken = prefs.getString(PREF_USER_TOKEN, "")
+        Log.d(Constants.TOKEN_TAG, "userToken: $userToken")
     }
 
     fun logIn(userToken: String) {

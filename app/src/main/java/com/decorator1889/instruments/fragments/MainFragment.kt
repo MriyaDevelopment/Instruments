@@ -26,7 +26,6 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private val mainViewModel: MainViewModel by activityViewModels()
-    private val resultViewModel: ResultViewModel by activityViewModels()
     private lateinit var onCategoriesEvent: DefaultNetworkEventObserver
     private lateinit var onProfileEvent: DefaultNetworkEventObserver
     private lateinit var onMainPageEvent: DefaultNetworkEventObserver
@@ -40,7 +39,7 @@ class MainFragment : Fragment() {
         setObservers()
         itemDecorator()
         setListeners()
-        Log.d("Tag_Token", "token: "+App.getInstance().userToken)
+        Log.d(Constants.MAIN_TAG, "MainFragment created")
     }.root
 
     private fun initializeObservers() {

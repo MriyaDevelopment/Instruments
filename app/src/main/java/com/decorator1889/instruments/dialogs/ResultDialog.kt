@@ -7,6 +7,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,15 +16,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
-import com.decorator1889.instruments.MainActivity
-import com.decorator1889.instruments.ProgressBarAnimation
+import com.decorator1889.instruments.util.ProgressBarAnimation
 import com.decorator1889.instruments.R
-import com.decorator1889.instruments.adapters.MiniCategoriesAdapter
-import com.decorator1889.instruments.databinding.DialogExitBinding
 import com.decorator1889.instruments.databinding.DialogResultBinding
-import com.decorator1889.instruments.fragments.TestCategoriesFragmentDirections
 import com.decorator1889.instruments.fragments.TestFragmentDirections
 import com.decorator1889.instruments.util.*
 import com.decorator1889.instruments.viewModels.MainViewModel
@@ -41,9 +37,9 @@ class ResultDialog: DialogFragment() {
         savedInstanceState: Bundle?
     ): View = DialogResultBinding.inflate(inflater, container, false).apply {
         binding = this
-//        itemDecorator()
         bindDataResult()
         setListener()
+        Log.d(Constants.RESULT_TAG, "ResultDialog created")
     }.root
 
     override fun onStart() {
@@ -70,7 +66,6 @@ class ResultDialog: DialogFragment() {
             }
             ok.setOnClickListener {
                 resultViewModel.returnOnce = false
-                resultViewModel.onUpdateProfileResult()
                 dismiss()
             }
         }
@@ -95,53 +90,56 @@ class ResultDialog: DialogFragment() {
                     }
                 }
             }
-            onUpdateProfileResult()
         }
     }
 
-//    private fun itemDecorator() {
-//        binding.recycler.addItemDecoration(
-//            GridDecorations(
-//                sideMargins = R.dimen.margin0,
-//                elementsMargins = R.dimen.margin8,
-//                horizontalMargins = R.dimen.margin0
-//            )
-//        )
-//    }
 
-    @SuppressLint("SetTextI18n")
     private fun bindDataResult() {
-        binding.run {
-            resultViewModel.level.value?.let { number ->
-                level.text = str(R.string.testLevel, getTitleToolbar(number))
+        resultViewModel.run {
+            level.value?.let { number ->
+                binding.level.text = str(R.string.testLevel, getTitleToolbar(number))
             }
-            resultViewModel.timer.value?.let { time ->
-                timer.text = time
+            timer.value?.let { time ->
+                binding.timer.text = time
             }
-            resultViewModel.allQuestion.value?.let { all ->
+            allQuestion.value?.let { all ->
                 resultViewModel.correctAnswer.value?.let { correct ->
-                    answers.text = "${correct}/${all}"
-                    val percent = (correct * 100)/all
-                    percents.text = "$percent%"
-                    val anim = ProgressBarAnimation(progress, 0f, percent.toFloat())
-                    anim.duration = 1500
-                    progress.startAnimation(anim)
+                    onCreateProgress(all, correct)
+
                 }
             }
-            resultViewModel.typesCategories.value?.let { types ->
+            typesCategories.value?.let { types ->
                 val list: List<String> = ArrayList(types.split(","))
-                chips.removeAllViews()
-                list.let {
-                    for (index in it.indices) {
-                        val chip = Chip(chips.context)
-                        chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(root.context, getColor25MiniCategories(it[index])))
-                        chip.setTextColor(ContextCompat.getColor(root.context, getColorMiniCategories(it[index])))
-                        chip.chipCornerRadius = resources.getDimension(R.dimen.corner3)
-                        chip.text= getNameMiniCategories(it[index])
-                        chip.isClickable = false
-                        chip.isCheckable = true
-                        chips.addView(chip)
-                    }
+                onCreateChips(list)
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun onCreateProgress(all: Int, correct: Int) {
+        binding.run {
+            answers.text = "${correct}/${all}"
+            val percent = (correct * 100)/all
+            percents.text = "$percent%"
+            val anim = ProgressBarAnimation(progress, 0f, percent.toFloat())
+            anim.duration = 1500
+            progress.startAnimation(anim)
+        }
+    }
+
+    private fun onCreateChips(list: List<String>) {
+        binding.run {
+            chips.removeAllViews()
+            list.let {
+                for (index in it.indices) {
+                    val chip = Chip(chips.context)
+                    chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(root.context, getColor25MiniCategories(it[index])))
+                    chip.setTextColor(ContextCompat.getColor(root.context, getColorMiniCategories(it[index])))
+                    chip.chipCornerRadius = resources.getDimension(R.dimen.corner3)
+                    chip.text= getNameMiniCategories(it[index])
+                    chip.isClickable = false
+                    chip.isCheckable = true
+                    chips.addView(chip)
                 }
             }
         }

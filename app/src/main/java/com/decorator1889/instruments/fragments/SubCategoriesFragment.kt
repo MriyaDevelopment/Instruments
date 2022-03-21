@@ -14,6 +14,7 @@ import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.R
 import com.decorator1889.instruments.adapters.CategoriesAdapter
 import com.decorator1889.instruments.databinding.FragmentSubCategoriesBinding
+import com.decorator1889.instruments.util.Constants
 import com.decorator1889.instruments.util.DefaultNetworkEventObserver
 import com.decorator1889.instruments.util.GridDecorations
 import com.decorator1889.instruments.util.enums.State
@@ -37,6 +38,7 @@ class SubCategoriesFragment : Fragment() {
         setObservers()
         itemDecorator()
         setListeners()
+        Log.d(Constants.SUB_CATEGORIES_TAG, "SubCategoriesFragment created")
     }.root
 
     private fun setObservers() {
@@ -118,7 +120,6 @@ class SubCategoriesFragment : Fragment() {
         val adapter = CategoriesAdapter(onClickCatalog = onClickCatalog)
         binding.recycler.adapter = adapter
         subCategoriesViewModel.subCategoriesList.value?.let { categories ->
-            Log.d("TagTag", "tag " +categories)
             adapter.submitList(categories)
         }
     }

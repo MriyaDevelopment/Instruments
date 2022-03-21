@@ -2,6 +2,7 @@ package com.decorator1889.instruments.Network
 
 import com.decorator1889.instruments.Network.response.*
 import com.decorator1889.instruments.Network.response.RemoveLikeResponse
+import com.decorator1889.instruments.util.Constants
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -14,28 +15,28 @@ import java.util.concurrent.TimeUnit
 
 interface ApiNetwork {
 
-    @POST("public/api/getCategories")
+    @POST(getCategories)
     fun getCategoriesAsync(): Deferred<CategoriesResponse>
 
-    @POST("public/api/getSubCategories")
+    @POST(getSubCategories)
     fun getSubCategoriesAsync(): Deferred<SubCategoriesResponse>
 
     @FormUrlEncoded
-    @POST("public/api/getInstrumentsByType")
+    @POST(getInstrumentsByType)
     fun getInstrumentsByTypeAsync(
         @Field("user_token") user_token: String?,
         @Field("type") type: String?,
     ): Deferred<InstrumentsResponse>
 
     @FormUrlEncoded
-    @POST("public/api/getSurgeryInstrumentsByType")
+    @POST(getSurgeryInstrumentsByType)
     fun getSurgeryInstrumentsByTypeAsync(
         @Field("user_token") user_token: String?,
         @Field("type") type: String?,
     ): Deferred<InstrumentsResponse>
 
     @FormUrlEncoded
-    @POST("public/api/register")
+    @POST(register)
     fun registerAsync(
         @Field("name") name: String?,
         @Field("email") email: String?,
@@ -44,20 +45,20 @@ interface ApiNetwork {
     ): Deferred<RegisterResponse>
 
     @FormUrlEncoded
-    @POST("public/api/login")
+    @POST(login)
     fun loginAsync(
         @Field("email") email: String?,
         @Field("password") password: String?,
     ): Deferred<LoginResponse>
 
     @FormUrlEncoded
-    @POST("public/api/getProfileData")
+    @POST(getProfileData)
     fun getProfileDataAsync(
         @Field("user_token") user_token: String?,
     ): Deferred<ProfileResponse>
 
     @FormUrlEncoded
-    @POST("public/api/setLike")
+    @POST(setLike)
     fun setLikeAsync(
         @Field("user_token") user_token: String?,
         @Field("instrument_id") instrument_id: Long?,
@@ -65,40 +66,40 @@ interface ApiNetwork {
     ): Deferred<LikeResponse>
 
     @FormUrlEncoded
-    @POST("public/api/removeLike")
+    @POST(removeLike)
     fun removeLikeAsync(
         @Field("user_token") user_token: String?,
         @Field("instrument_id") instrument_id: Long?,
         @Field("is_surgery") is_surgery: Boolean?,
     ): Deferred<RemoveLikeResponse>
 
-    @POST("public/api/getLevels")
+    @POST(getLevels)
     fun getLevelsAsync(): Deferred<LevelsResponse>
 
     @FormUrlEncoded
-    @POST("public/api/getFavourites")
+    @POST(getFavourites)
     fun getFavoritesAsync(
         @Field("user_token") user_token: String?
     ): Deferred<FavoritesResponse>
 
     @FormUrlEncoded
-    @POST("public/api/getResult")
+    @POST(getResult)
     fun getResultAsync(
         @Field("user_token") user_token: String?
     ): Deferred<ResultResponse>
 
-    @POST("public/api/getTypes")
+    @POST(getTypes)
     fun getTypesAsync(): Deferred<TypesResponse>
 
     @FormUrlEncoded
-    @POST("public/api/getQuestionByTypeAndLevel")
+    @POST(getQuestionByTypeAndLevel)
     fun getQuestionByTypeAndLevelAsync(
         @Field("type") type: String?,
         @Field("level") level: Long?
     ): Deferred<QuestionResponse>
 
     @FormUrlEncoded
-    @POST("public/api/setResult")
+    @POST(setResult)
     fun setResultAsync(
         @Field("user_token") user_token: String?,
         @Field("level") level: Long?,
@@ -109,12 +110,12 @@ interface ApiNetwork {
     ): Deferred<SentResultResponse>
 
     @FormUrlEncoded
-    @POST("public/api/getLastTest")
+    @POST(getLastTest)
     fun getLastTestAsync(
         @Field("user_token") user_token: String?
     ): Deferred<QuestionResponse>
 
-    @GET("public/mail/send")
+    @GET(send)
     fun sendMailAsync(
         @Query("user_token") user_token: String?,
         @Query("email") email: String?,
@@ -122,6 +123,23 @@ interface ApiNetwork {
 
     companion object {
         const val baseUrl = "http://ovz2.j04713753.pqr7m.vps.myjino.ru/"
+        const val getCategories = "public/api/getCategories"
+        const val getSubCategories = "public/api/getSubCategories"
+        const val getInstrumentsByType = "public/api/getInstrumentsByType"
+        const val getSurgeryInstrumentsByType = "public/api/getSurgeryInstrumentsByType"
+        const val register = "public/api/register"
+        const val login = "public/api/login"
+        const val getProfileData = "public/api/getProfileData"
+        const val setLike = "public/api/setLike"
+        const val removeLike = "public/api/removeLike"
+        const val getLevels = "public/api/getLevels"
+        const val getFavourites = "public/api/getFavourites"
+        const val getResult = "public/api/getResult"
+        const val getTypes = "public/api/getTypes"
+        const val getQuestionByTypeAndLevel = "public/api/getQuestionByTypeAndLevel"
+        const val setResult = "public/api/setResult"
+        const val getLastTest = "public/api/getLastTest"
+        const val send = "public/mail/send"
 
         private val moshi: Moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
