@@ -12,7 +12,7 @@ import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
 
-class LevelsViewModel: ViewModel() {
+class LevelsViewModel : ViewModel() {
 
     private val _levels = MutableLiveData<List<Levels>>()
     val levels: LiveData<List<Levels>> = _levels

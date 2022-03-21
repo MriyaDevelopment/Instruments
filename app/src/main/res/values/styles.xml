@@ -3,7 +3,7 @@
     <style name="BnvTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/size12</item>
     </style>
-    
+
     <style name="TextWhiteNormalStyle">
         <item name="android:textColor">@color/white_FFFFFFFF</item>
         <item name="fontWeight">500</item>

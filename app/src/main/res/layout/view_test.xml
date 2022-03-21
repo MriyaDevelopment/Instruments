@@ -45,25 +45,25 @@
                 style="@style/OutlinedButtonTest"
                 android:layout_width="@dimen/width0"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/margin8"
                 android:layout_weight="1"
-                app:elevation="@dimen/elevation5"
-                app:backgroundTint="@color/white_FFFFFFFF"
                 android:gravity="center"
-                android:layout_gravity="center"
+                app:backgroundTint="@color/white_FFFFFFFF"
+                app:elevation="@dimen/elevation5"
                 tools:text="Лигатурная игла Дешана" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/answer_two"
                 style="@style/OutlinedButtonTest"
                 android:layout_width="@dimen/width0"
-                app:elevation="@dimen/elevation5"
                 android:layout_height="wrap_content"
-                app:backgroundTint="@color/white_FFFFFFFF"
+                android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin8"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_gravity="center"
+                app:backgroundTint="@color/white_FFFFFFFF"
+                app:elevation="@dimen/elevation5"
                 tools:text="Лигатурная игла Дешана" />
 
         </LinearLayout>
@@ -83,12 +83,12 @@
                 android:id="@+id/answer_three"
                 style="@style/OutlinedButtonTest"
                 android:layout_width="@dimen/width0"
-                app:backgroundTint="@color/white_FFFFFFFF"
                 android:layout_height="wrap_content"
-                app:elevation="@dimen/elevation5"
+                android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/margin8"
                 android:layout_weight="1"
-                android:layout_gravity="center"
+                app:backgroundTint="@color/white_FFFFFFFF"
+                app:elevation="@dimen/elevation5"
                 tools:text="Лигатурная игла Дешана" />
 
             <com.google.android.material.button.MaterialButton
@@ -96,11 +96,11 @@
                 style="@style/OutlinedButtonTest"
                 android:layout_width="@dimen/width0"
                 android:layout_height="wrap_content"
-                app:elevation="@dimen/elevation5"
-                app:backgroundTint="@color/white_FFFFFFFF"
+                android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin8"
                 android:layout_weight="1"
-                android:layout_gravity="center"
+                app:backgroundTint="@color/white_FFFFFFFF"
+                app:elevation="@dimen/elevation5"
                 tools:text="Лигатурная игла Дешана" />
 
         </LinearLayout>

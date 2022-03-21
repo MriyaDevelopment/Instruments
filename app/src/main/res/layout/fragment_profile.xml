@@ -39,11 +39,11 @@
                 style="@style/TextBlueBold14Style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin30"
                 android:drawablePadding="@dimen/padding8"
                 android:gravity="center"
-                android:visibility="invisible"
-                android:layout_marginTop="@dimen/margin30"
                 android:text="@string/profileSubscribe"
+                android:visibility="invisible"
                 app:drawableStartCompat="@drawable/ic_diamond"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,11 +53,11 @@
                 android:id="@+id/circleImg"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginTop="@dimen/margin13"
                 android:background="@drawable/bgr_profile_img"
                 android:elevation="@dimen/elevation5"
-                android:src="@drawable/img_profile"
                 android:scaleType="centerCrop"
-                android:layout_marginTop="@dimen/margin13"
+                android:src="@drawable/img_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/subscribe"
@@ -93,9 +93,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin16"
                 android:layout_marginTop="@dimen/margin16"
+                android:visibility="gone"
                 app:cardCornerRadius="@dimen/corner8"
                 app:cardElevation="@dimen/elevation5"
-                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email">
@@ -187,8 +187,8 @@
                         android:id="@+id/containerRv"
                         android:layout_width="@dimen/width0"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:layout_marginTop="@dimen/margin38"
+                        android:orientation="vertical"
                         android:paddingHorizontal="@dimen/margin14"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -198,7 +198,7 @@
                             android:id="@+id/chips"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:singleSelection="true"/>
+                            app:singleSelection="true" />
 
                     </LinearLayout>
 
@@ -211,9 +211,9 @@
                         android:layout_marginEnd="@dimen/margin10"
                         android:text="@string/profileNext"
                         android:textColor="@color/blue_5B67CA"
+                        android:textSize="@dimen/size14"
                         android:textStyle="normal"
                         app:cornerRadius="@dimen/corner15"
-                        android:textSize="@dimen/size14"
                         app:icon="@drawable/ic_arrow_again"
                         app:iconGravity="textEnd"
                         app:iconTint="@color/blue_5B67CA"
@@ -229,67 +229,67 @@
                 android:id="@+id/headerBlock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:cardElevation="@dimen/elevation0"
+                android:layout_marginTop="@dimen/margin55"
                 android:visibility="gone"
                 app:cardCornerRadius="@dimen/corner8"
-                app:rippleColor="@color/white_FFFFFFFF"
-                android:layout_marginTop="@dimen/margin55"
+                app:cardElevation="@dimen/elevation0"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email">
+                app:layout_constraintTop_toBottomOf="@+id/email"
+                app:rippleColor="@color/white_FFFFFFFF">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bgr_header"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints" />
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bgr_header"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin15"
-                    android:background="@drawable/ic_instruments"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-                    app:layout_constraintStart_toStartOf="@+id/imageView2"
-                    app:layout_constraintTop_toTopOf="@+id/imageView2" />
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin15"
+                        android:background="@drawable/ic_instruments"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                        app:layout_constraintStart_toStartOf="@+id/imageView2"
+                        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
-                <TextView
-                    android:id="@+id/headerTitle"
-                    style="@style/TextWhiteNormal14Style"
-                    android:layout_width="@dimen/width0"
-                    android:layout_marginTop="@dimen/margin16"
-                    android:layout_marginEnd="@dimen/margin20"
-                    android:layout_height="wrap_content"
-                    android:text="@string/profileHeaderTitle"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/headerTitle"
+                        style="@style/TextWhiteNormal14Style"
+                        android:layout_width="@dimen/width0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin16"
+                        android:layout_marginEnd="@dimen/margin20"
+                        android:text="@string/profileHeaderTitle"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                        app:layout_constraintStart_toEndOf="@+id/imageView3"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/returnOnce"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/padding5"
-                    style="@style/TextWhiteNormal14Style"
-                    android:text="@string/profileReturn"
-                    android:gravity="center"
-                    android:layout_marginEnd="@dimen/margin16"
-                    android:layout_marginBottom="@dimen/margin16"
-                    app:drawableEndCompat="@drawable/ic_arrow_white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView2" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/returnOnce"
+                        style="@style/TextWhiteNormal14Style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin16"
+                        android:layout_marginBottom="@dimen/margin16"
+                        android:drawablePadding="@dimen/padding5"
+                        android:gravity="center"
+                        android:text="@string/profileReturn"
+                        app:drawableEndCompat="@drawable/ic_arrow_white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView2" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 

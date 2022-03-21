@@ -17,6 +17,7 @@
         <item name="android:windowBackground">@color/white_ffffff</item>
         <item name="android:textColorHint">@color/light_blue_CCB2B7E4</item>
     </style>
+
     <style name="Instruments.Theme.Launch">
         <item name="android:windowBackground">@drawable/splash_screen</item>
         <item name="android:statusBarColor">@color/white_FFFFFFFF</item>

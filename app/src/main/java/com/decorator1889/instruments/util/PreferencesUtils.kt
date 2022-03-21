@@ -9,6 +9,7 @@ class StringPref private constructor(private val name: String) : Preference() {
     private val prefs by lazy {
         PreferenceManager.getDefaultSharedPreferences(App.getInstance().applicationContext)
     }
+
     operator fun invoke(): String {
         return prefs.getString(name, "") ?: ""
     }
@@ -34,6 +35,7 @@ class LongPref private constructor(private val name: String) : Preference() {
     private val prefs by lazy {
         PreferenceManager.getDefaultSharedPreferences(App.getInstance().applicationContext)
     }
+
     operator fun invoke(): Long {
         return prefs.getLong(name, 0)
     }
@@ -59,6 +61,7 @@ class BooleanPref private constructor(private val name: String) : Preference() {
     private val prefs by lazy {
         PreferenceManager.getDefaultSharedPreferences(App.getInstance().applicationContext)
     }
+
     operator fun invoke(): Boolean {
         return prefs.getBoolean(name, false)
     }

@@ -31,8 +31,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/margin18"
+        android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -69,10 +69,10 @@
             app:boxBackgroundColor="@android:color/transparent"
             app:boxBackgroundMode="filled"
             app:boxStrokeColor="@color/background_selector_line"
-            app:startIconDrawable="@drawable/ic_password"
-            app:startIconTint="@color/background_input"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/background_input">
+            app:endIconTint="@color/background_input"
+            app:startIconDrawable="@drawable/ic_password"
+            app:startIconTint="@color/background_input">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
@@ -88,12 +88,12 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/forgotPassword"
             style="@style/OnlyTextButton"
-            android:textColor="@color/blue_5B67CA"
-            android:textSize="@dimen/size14"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height25"
             android:layout_gravity="end"
             android:text="@string/signInPasswordPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/height25" />
+            android:textColor="@color/blue_5B67CA"
+            android:textSize="@dimen/size14" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -107,8 +107,8 @@
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="@string/signInTitle"
-                android:textStyle="normal"
                 android:textSize="@dimen/size16"
+                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

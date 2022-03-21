@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white_ffffff"
-    android:id="@+id/coordinator"
     tools:context=".fragments.RecoveryFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -31,17 +31,17 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/margin16"
+        android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <TextView
             android:id="@+id/subTitle"
             style="@style/TextDarkNormal12Style"
-            android:layout_marginTop="@dimen/margin18"
-            android:text="@string/recoverySubTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin18"
+            android:text="@string/recoverySubTitle" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputLayoutEmail"
@@ -69,12 +69,12 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/send"
             style="@style/DefaultBlueButton"
-            android:text="@string/recoverySend"
-            android:textStyle="normal"
-            android:textSize="@dimen/size16"
-            android:layout_marginTop="@dimen/margin40"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin40"
+            android:text="@string/recoverySend"
+            android:textSize="@dimen/size16"
+            android:textStyle="normal" />
 
     </LinearLayout>
 

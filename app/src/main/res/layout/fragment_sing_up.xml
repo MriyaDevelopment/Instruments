@@ -51,10 +51,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name"
                 style="@style/TextInputEditText"
-                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/singUpName"
+                android:imeOptions="actionNext"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -75,10 +75,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 style="@style/TextInputEditText"
-                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/singUpEmail"
+                android:imeOptions="actionNext"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -93,18 +93,18 @@
             app:boxBackgroundColor="@android:color/transparent"
             app:boxBackgroundMode="filled"
             app:boxStrokeColor="@color/background_selector_line"
-            app:startIconDrawable="@drawable/ic_password"
-            app:startIconTint="@color/background_input"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/background_input">
+            app:endIconTint="@color/background_input"
+            app:startIconDrawable="@drawable/ic_password"
+            app:startIconTint="@color/background_input">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 style="@style/TextInputEditText"
-                android:imeOptions="actionDone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signInPassword"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -132,11 +132,11 @@
                 style="@style/DefaultBlueButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signUpTitle"
-                android:textStyle="normal"
-                android:enabled="false"
-                android:textSize="@dimen/size16"
                 android:layout_marginTop="@dimen/margin40"
+                android:enabled="false"
+                android:text="@string/signUpTitle"
+                android:textSize="@dimen/size16"
+                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

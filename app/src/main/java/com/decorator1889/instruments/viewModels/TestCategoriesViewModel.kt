@@ -13,7 +13,7 @@ import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
 
-class TestCategoriesViewModel: ViewModel() {
+class TestCategoriesViewModel : ViewModel() {
 
     private val _types = MutableLiveData<List<Types>>()
     val types: LiveData<List<Types>> = _types

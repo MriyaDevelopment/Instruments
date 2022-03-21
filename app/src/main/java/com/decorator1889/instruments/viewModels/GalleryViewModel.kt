@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.decorator1889.instruments.models.Instruments
 
-class GalleryViewModel: ViewModel() {
+class GalleryViewModel : ViewModel() {
 
     private val _galleryImageList = MutableLiveData<List<Instruments>>()
     val galleryImageList: LiveData<List<Instruments>> = _galleryImageList

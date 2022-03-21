@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="@dimen/padding14"
-    android:background="@android:color/transparent">
+    android:background="@android:color/transparent"
+    android:padding="@dimen/padding14">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,11 +20,11 @@
             android:id="@+id/title"
             style="@style/TextBlueBold24Style"
             android:layout_width="@dimen/width0"
-            android:text="@string/resultTitle"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin16"
             android:layout_marginTop="@dimen/margin20"
             android:gravity="center"
-            android:layout_marginHorizontal="@dimen/margin16"
-            android:layout_height="wrap_content"
+            android:text="@string/resultTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,22 +32,22 @@
         <TextView
             android:id="@+id/level"
             style="@style/TextBlueBold14Style"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margin4"
             android:layout_width="@dimen/margin0"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin16"
+            android:layout_marginTop="@dimen/margin4"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Уровень: Легкий"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="Уровень: Легкий" />
 
         <TextView
             android:id="@+id/timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="@dimen/margin2"
             android:layout_marginTop="@dimen/margin4"
+            android:drawablePadding="@dimen/margin2"
             android:gravity="center"
             android:textColor="@color/blue_5B67CA"
             android:textSize="@dimen/size16"
@@ -103,10 +103,10 @@
             android:id="@+id/containerRv"
             android:layout_width="@dimen/margin0"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="@dimen/margin40"
-            android:paddingHorizontal="@dimen/padding14"
             android:layout_marginBottom="@dimen/margin40"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/padding14"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +116,7 @@
                 android:id="@+id/chips"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:singleSelection="true"/>
+                app:singleSelection="true" />
 
         </LinearLayout>
 
@@ -125,8 +125,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin14"
-            android:orientation="horizontal"
             android:layout_marginBottom="@dimen/margin20"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -136,9 +136,9 @@
                 style="@style/OutlinedButton"
                 android:layout_width="@dimen/width145"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/margin5"
                 android:layout_weight="1"
-                android:layout_gravity="center"
                 android:text="@string/resultReturn"
                 android:textSize="@dimen/size14"
                 app:rippleColor="@color/blue_5B67CA" />
@@ -148,9 +148,9 @@
                 style="@style/DefaultBlueButton"
                 android:layout_width="@dimen/width145"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin5"
                 android:layout_weight="1"
-                android:layout_gravity="center"
                 android:text="@string/resultOk"
                 android:textSize="@dimen/size14"
                 app:rippleColor="@color/white_FFFFFFFF" />

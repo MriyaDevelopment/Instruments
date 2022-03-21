@@ -4,27 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.171875" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/drawable/background_test_btn.xml" value="0.148" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/dialog_exit.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/dialog_result.xml" value="0.25" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_favorite.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_levels.xml" value="0.22" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_main.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_on_boarding.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_profile.xml" value="0.17831813576494426" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_recovery.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_sign_in.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_sing_up.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_test.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/fragment_test_categories.xml" value="0.17831813576494426" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/view_categories.xml" value="0.75" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/view_gallery.xml" value="0.23958333333333334" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/view_instruments.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/view_instruments_favorite.xml" value="0.23958333333333334" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/view_mini_categories.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/view_start.xml" value="0.25" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/view_test.xml" value="0.67" />
-        <entry key="..\:/Users/serge/StudioProjects/Instruments/app/src/main/res/layout/view_test_categories.xml" value="0.17831813576494426" />
         <entry key="app/src/main/res/drawable-hdpi/bgr_dialog_result.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable-hdpi/bgr_white_circle_favorite.xml" value="0.211" />
         <entry key="app/src/main/res/drawable-v24/tab_image_background.xml" value="0.155" />
@@ -90,6 +69,7 @@
         <entry key="app/src/main/res/layout/view_instruments_favorite.xml" value="0.1453125" />
         <entry key="app/src/main/res/layout/view_mini_categories.xml" value="0.6140739993772645" />
         <entry key="app/src/main/res/layout/view_mini_category.xml" value="0.7195992068967958" />
+        <entry key="app/src/main/res/layout/view_start.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/view_test.xml" value="0.33107452392578135" />
         <entry key="app/src/main/res/layout/view_test_categories.xml" value="0.4864433841428895" />
         <entry key="app/src/main/res/layout/view_test_level.xml" value="0.5839524517087668" />

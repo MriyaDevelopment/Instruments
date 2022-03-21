@@ -52,7 +52,9 @@ class TestViewModel : ViewModel() {
         viewModelScope.launch {
             _questionResultEvent.value = NetworkEvent(State.LOADING)
             try {
-                val response = ApiNetwork.API.getLastTestAsync(user_token = App.getInstance().userToken).await()
+                val response =
+                    ApiNetwork.API.getLastTestAsync(user_token = App.getInstance().userToken)
+                        .await()
                 if (response.result == Load.SUCCESS.state) {
                     _questionList.value = response.questions?.toQuestion()
                     _questionResultEvent.value = NetworkEvent(State.SUCCESS)

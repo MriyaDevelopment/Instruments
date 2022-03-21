@@ -1,11 +1,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item android:color="@color/light_blue_CCB2B7E4" android:state_enabled="false" />
-
     <item android:color="@color/blue_5B67CA" android:state_enabled="true" />
-
     <item android:color="@color/light_blue_CCB2B7E4"/>
-
 </selector>
 
 

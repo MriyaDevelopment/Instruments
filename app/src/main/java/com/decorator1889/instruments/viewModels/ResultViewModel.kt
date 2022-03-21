@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.decorator1889.instruments.util.OneTimeEvent
 
-class ResultViewModel: ViewModel() {
+class ResultViewModel : ViewModel() {
 
     private val _typesCategories = MutableLiveData<String>()
     private val _level = MutableLiveData<Long>()

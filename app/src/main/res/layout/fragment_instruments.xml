@@ -18,10 +18,10 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             style="@style/Default.Toolbar"
-            app:layout_scrollFlags="scroll|enterAlways"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_collapseMode="pin"
+            app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIcon="@drawable/ic_arrow_back"
             app:subtitleTextColor="@color/blue_5B67CA"
             app:titleTextColor="@color/blue_5B67CA"
@@ -40,10 +40,10 @@
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/padding16"
-            android:paddingHorizontal="@dimen/padding16"
-            android:paddingBottom="@dimen/padding16"
             android:clipToPadding="false"
+            android:paddingHorizontal="@dimen/padding16"
+            android:paddingTop="@dimen/padding16"
+            android:paddingBottom="@dimen/padding16"
             android:splitMotionEvents="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

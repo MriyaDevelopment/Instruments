@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/height100"
     android:layout_marginHorizontal="@dimen/margin16"
-    app:rippleColor="@color/blue_5B67CA"
     android:layout_marginBottom="@dimen/margin24"
+    app:cardCornerRadius="@dimen/corner15"
     app:cardElevation="@dimen/elevation0"
-    app:cardCornerRadius="@dimen/corner15">
+    app:rippleColor="@color/blue_5B67CA">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerTest"
@@ -44,21 +44,21 @@
             style="@style/Text50DarkNormal14Style"
             android:layout_width="@dimen/width0"
             android:layout_height="wrap_content"
-            tools:text="15 вопросов"
             app:layout_constraintEnd_toEndOf="@+id/nameTest"
             app:layout_constraintStart_toStartOf="@+id/nameTest"
-            app:layout_constraintTop_toBottomOf="@+id/nameTest" />
+            app:layout_constraintTop_toBottomOf="@+id/nameTest"
+            tools:text="15 вопросов" />
 
         <TextView
             android:id="@+id/run"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin20"
+            android:layout_marginBottom="@dimen/margin9"
             android:drawablePadding="@dimen/padding3"
             android:text="@string/testLevelChangeCategory"
             android:textSize="@dimen/size10"
             android:textStyle="normal"
-            android:layout_marginEnd="@dimen/margin20"
-            android:layout_marginBottom="@dimen/margin9"
             app:drawableEndCompat="@drawable/ic_arrow_easy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

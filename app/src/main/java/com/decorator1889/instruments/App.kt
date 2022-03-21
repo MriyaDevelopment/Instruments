@@ -6,10 +6,9 @@ import androidx.preference.PreferenceManager
 import com.decorator1889.instruments.Network.ApiNetwork
 import com.decorator1889.instruments.util.Constants
 
-class App: Application()  {
+class App : Application() {
 
     var userToken: String? = ""
-
 
     override fun onCreate() {
         super.onCreate()

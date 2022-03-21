@@ -14,7 +14,7 @@ import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
 import kotlinx.coroutines.launch
 
-class SubCategoriesViewModel: ViewModel() {
+class SubCategoriesViewModel : ViewModel() {
 
     private val _subCategoriesList = MutableLiveData<List<Categories>>()
     val subCategoriesList: LiveData<List<Categories>> = _subCategoriesList

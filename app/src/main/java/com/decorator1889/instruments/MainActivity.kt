@@ -48,11 +48,11 @@ class MainActivity : AppCompatActivity() {
     private fun loginInOnce() {
         if (App.getInstance().userToken?.isEmpty() == true) {
             findNavController(R.id.nav_host_fragment).navigate(R.id.onBoardingFragment)
-            Log.d(Constants.LOGIN_ONCE_TAG,"there is no token")
+            Log.d(Constants.LOGIN_ONCE_TAG, "there is no token")
         }
     }
 
-    fun hideBottomNavigationView(){
+    fun hideBottomNavigationView() {
         binding.run {
             val i = resources.getDimensionPixelSize(R.dimen.margin10)
             layoutBnv.animate().translationY(layoutBnv.height.toFloat() + i)

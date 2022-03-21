@@ -44,11 +44,11 @@
             style="@style/DefaultBlueButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/size16"
-            android:textStyle="normal"
             android:layout_marginHorizontal="@dimen/margin16"
             android:layout_marginTop="@dimen/margin16"
             android:text="@string/onBoardingSingIn"
+            android:textSize="@dimen/size16"
+            android:textStyle="normal"
             app:rippleColor="@color/white_FFFFFFFF" />
 
     </LinearLayout>
