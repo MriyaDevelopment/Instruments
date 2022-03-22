@@ -54,6 +54,7 @@ dependencies {
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'org.apache.commons:commons-lang3:3.4'
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

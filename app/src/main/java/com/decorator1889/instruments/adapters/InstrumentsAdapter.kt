@@ -14,6 +14,8 @@ import com.decorator1889.instruments.databinding.ViewInstrumentsFavoriteBinding
 import com.decorator1889.instruments.fragments.InstrumentsFragment
 import com.decorator1889.instruments.models.Instruments
 import com.decorator1889.instruments.util.glide
+import org.apache.commons.lang3.StringUtils
+import java.util.*
 
 sealed class InstrumentsItem(val itemId: Long) {
     data class InstrumentsWrap(val instruments: Instruments) : InstrumentsItem(instruments.id)
@@ -75,7 +77,7 @@ class InstrumentsAdapter(
             typeInstruments: String
         ) {
             binding.run {
-                title.text = item.title
+                title.text = StringUtils.capitalize(item.title.lowercase(Locale.getDefault()).trim())
                 description.text = item.full_text
                 image.transitionName = "transition_quick${item.id}"
                 image.glide(item.image)

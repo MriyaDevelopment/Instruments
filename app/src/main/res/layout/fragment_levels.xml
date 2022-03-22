@@ -54,6 +54,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:clipToPadding="false"
+            android:overScrollMode="never"
             android:paddingTop="@dimen/padding16"
             android:splitMotionEvents="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
