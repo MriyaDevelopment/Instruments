@@ -70,6 +70,7 @@
             android:id="@+id/send"
             style="@style/DefaultBlueButton"
             android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat_medium"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin40"
             android:text="@string/recoverySend"

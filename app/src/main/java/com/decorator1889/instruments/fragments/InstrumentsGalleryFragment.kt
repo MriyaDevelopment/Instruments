@@ -10,11 +10,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
+import androidx.viewpager2.widget.ViewPager2
 import com.decorator1889.instruments.MainActivity
 import com.decorator1889.instruments.adapters.InstrumentsGalleryAdapter
 import com.decorator1889.instruments.databinding.FragmentInstrumentsGalleryBinding
 import com.decorator1889.instruments.util.Constants
 import com.decorator1889.instruments.viewModels.GalleryViewModel
+import com.google.android.material.progressindicator.LinearProgressIndicator
 
 class InstrumentsGalleryFragment : Fragment() {
 
@@ -66,13 +68,20 @@ class InstrumentsGalleryFragment : Fragment() {
     private val onClickLeft:() -> Unit = {
         binding.run {
             val currentItem = viewPager.currentItem
+            if (currentItem == 0) {
+                findNavController().popBackStack()
+            }
             viewPager.setCurrentItem(currentItem - 1, true)
         }
     }
 
     private val onClickRight:() -> Unit = {
         binding.run {
+            val totalItems = binding.viewPager.adapter?.itemCount
             val currentItem = viewPager.currentItem
+            if (currentItem + 1 == totalItems) {
+                findNavController().popBackStack()
+            }
             viewPager.setCurrentItem(currentItem + 1, true)
         }
     }

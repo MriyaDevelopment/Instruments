@@ -19,7 +19,13 @@
         <entry key="app/src/main/res/drawable/bgr_dialog_result.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/bgr_easy.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/bgr_hard.xml" value="0.155" />
+        <entry key="app/src/main/res/drawable/bgr_neurosurgery.xml" value="0.208" />
+        <entry key="app/src/main/res/drawable/bgr_obstetrics_gynecology.xml" value="0.208" />
+        <entry key="app/src/main/res/drawable/bgr_ophthalmology.xml" value="0.208" />
+        <entry key="app/src/main/res/drawable/bgr_otorhinolaryngology.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/bgr_profile_img.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/bgr_surgery.xml" value="0.208" />
+        <entry key="app/src/main/res/drawable/bgr_urology.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/bgr_view_line_blue.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/bgr_white_circle_favorite.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/chk_active.xml" value="0.2185" />
@@ -28,10 +34,13 @@
         <entry key="app/src/main/res/drawable/favorite_selector.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/hint_selector.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.211" />
+        <entry key="app/src/main/res/drawable/ic_arrow_again.xml" value="0.216" />
         <entry key="app/src/main/res/drawable/ic_arrow_back.xml" value="0.1555" />
+        <entry key="app/src/main/res/drawable/ic_arrow_begin.xml" value="0.216" />
         <entry key="app/src/main/res/drawable/ic_arrow_catalog.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/ic_arrow_easy.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/ic_spreading.xml" value="0.2165" />
+        <entry key="app/src/main/res/drawable/ic_surgery.xml" value="0.208" />
         <entry key="app/src/main/res/drawable/on_boarding_image.xml" value="0.13957824707031252" />
         <entry key="app/src/main/res/drawable/profile_selector.xml" value="0.211" />
         <entry key="app/src/main/res/drawable/selector_chk_divider.xml" value="0.2185" />
@@ -45,7 +54,7 @@
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/fragment_detail_catalog.xml" value="0.29972249744007884" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.326015527697577" />
-        <entry key="app/src/main/res/layout/fragment_instruments.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/fragment_instruments.xml" value="0.3413567142210145" />
         <entry key="app/src/main/res/layout/fragment_instruments_gallery.xml" value="0.2622505740842958" />
         <entry key="app/src/main/res/layout/fragment_levels.xml" value="0.17798913043478262" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.3844200296604887" />
@@ -60,13 +69,13 @@
         <entry key="app/src/main/res/layout/fragment_test_category.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/fragment_test_level.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/view_catalog.xml" value="0.4095419376454455" />
-        <entry key="app/src/main/res/layout/view_categories.xml" value="0.27091146275617084" />
+        <entry key="app/src/main/res/layout/view_categories.xml" value="0.5326347903928896" />
         <entry key="app/src/main/res/layout/view_detail_catalog.xml" value="0.472937685762569" />
         <entry key="app/src/main/res/layout/view_detail_favorite.xml" value="0.2006340579710145" />
-        <entry key="app/src/main/res/layout/view_gallery.xml" value="0.19192281529523325" />
+        <entry key="app/src/main/res/layout/view_gallery.xml" value="0.23589864537335825" />
         <entry key="app/src/main/res/layout/view_header_categories.xml" value="0.2006340579710145" />
-        <entry key="app/src/main/res/layout/view_instruments.xml" value="0.2006340579710145" />
-        <entry key="app/src/main/res/layout/view_instruments_favorite.xml" value="0.1453125" />
+        <entry key="app/src/main/res/layout/view_instruments.xml" value="0.39852529332257697" />
+        <entry key="app/src/main/res/layout/view_instruments_favorite.xml" value="0.4751312255859375" />
         <entry key="app/src/main/res/layout/view_mini_categories.xml" value="0.6140739993772645" />
         <entry key="app/src/main/res/layout/view_mini_category.xml" value="0.7195992068967958" />
         <entry key="app/src/main/res/layout/view_start.xml" value="0.2006340579710145" />

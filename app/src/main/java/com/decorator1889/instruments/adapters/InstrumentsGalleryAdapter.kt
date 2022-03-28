@@ -10,6 +10,8 @@ import com.decorator1889.instruments.databinding.ViewGalleryBinding
 import com.decorator1889.instruments.databinding.ViewInstrumentsBinding
 import com.decorator1889.instruments.models.Instruments
 import com.decorator1889.instruments.util.glide
+import org.apache.commons.lang3.StringUtils
+import java.util.*
 
 class InstrumentsGalleryAdapter(
     private val onClickLeft:() -> Unit = {},
@@ -31,12 +33,13 @@ class InstrumentsGalleryAdapter(
         fun bind(item: Instruments, onClickLeft: () -> Unit, onClickRight: () -> Unit) {
             binding.run {
                 image.glide(item.image)
-                left.setOnClickListener {
+                back.setOnClickListener {
                     onClickLeft()
                 }
-                right.setOnClickListener {
+                select.setOnClickListener {
                     onClickRight()
                 }
+                name.text = StringUtils.capitalize(item.title.lowercase(Locale.getDefault()).trim())
                 description.text = item.full_text
             }
         }

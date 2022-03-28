@@ -182,23 +182,8 @@ class TestAdapter(
             binding.run {
                 blockButton()
                 answerOne.strokeWidth = width2
-                if (answerOneText == trueAnswer) {
-                    answerOne.setStrokeColorResource(R.color.green_81E89E)
-                    answerOne.setBackgroundColor(
-                        ContextCompat.getColor(
-                            root.context,
-                            R.color.green_4081E89E
-                        )
-                    )
-                } else {
-                    answerOne.setStrokeColorResource(R.color.red_E77D7D)
-                    answerOne.setBackgroundColor(
-                        ContextCompat.getColor(
-                            root.context,
-                            R.color.red_40E77D7D
-                        )
-                    )
-                }
+                if (answerOneText == trueAnswer) answerOne.setStrokeColorResource(R.color.green_81E89E)
+                else answerOne.setStrokeColorResource(R.color.red_E77D7D)
             }
         }
 
@@ -206,23 +191,8 @@ class TestAdapter(
             binding.run {
                 blockButton()
                 answerTwo.strokeWidth = width2
-                if (trueAnswer == answerTwoText) {
-                    answerTwo.setStrokeColorResource(R.color.green_81E89E)
-                    answerTwo.setBackgroundColor(
-                        ContextCompat.getColor(
-                            root.context,
-                            R.color.green_4081E89E
-                        )
-                    )
-                } else {
-                    answerTwo.setStrokeColorResource(R.color.red_E77D7D)
-                    answerTwo.setBackgroundColor(
-                        ContextCompat.getColor(
-                            root.context,
-                            R.color.red_40E77D7D
-                        )
-                    )
-                }
+                if (trueAnswer == answerTwoText) answerTwo.setStrokeColorResource(R.color.green_81E89E)
+                else answerTwo.setStrokeColorResource(R.color.red_E77D7D)
             }
         }
 
@@ -230,23 +200,8 @@ class TestAdapter(
             binding.run {
                 blockButton()
                 answerThree.strokeWidth = width2
-                if (trueAnswer == answerThreeText) {
-                    answerThree.setStrokeColorResource(R.color.green_81E89E)
-                    answerThree.setBackgroundColor(
-                        ContextCompat.getColor(
-                            root.context,
-                            R.color.green_4081E89E
-                        )
-                    )
-                } else {
-                    answerThree.setStrokeColorResource(R.color.red_E77D7D)
-                    answerThree.setBackgroundColor(
-                        ContextCompat.getColor(
-                            root.context,
-                            R.color.red_40E77D7D
-                        )
-                    )
-                }
+                if (trueAnswer == answerThreeText) answerThree.setStrokeColorResource(R.color.green_81E89E)
+                    else answerThree.setStrokeColorResource(R.color.red_E77D7D)
             }
         }
 
@@ -254,31 +209,18 @@ class TestAdapter(
             binding.run {
                 blockButton()
                 answerFour.strokeWidth = width2
-                if (trueAnswer == answerFourText) {
-                    answerFour.setStrokeColorResource(R.color.green_81E89E)
-                    answerFour.setBackgroundColor(
-                        ContextCompat.getColor(
-                            root.context,
-                            R.color.green_4081E89E
-                        )
-                    )
-                } else {
-                    answerFour.setStrokeColorResource(R.color.red_E77D7D)
-                    answerFour.setBackgroundColor(
-                        ContextCompat.getColor(
-                            root.context,
-                            R.color.red_40E77D7D
-                        )
-                    )
-                }
+                if (trueAnswer == answerFourText) answerFour.setStrokeColorResource(R.color.green_81E89E)
+                else answerFour.setStrokeColorResource(R.color.red_E77D7D)
             }
         }
 
         private fun blockButton() {
-            binding.answerOne.isEnabled = false
-            binding.answerTwo.isEnabled = false
-            binding.answerThree.isEnabled = false
-            binding.answerFour.isEnabled = false
+            binding.run {
+                answerOne.isEnabled = false
+                answerTwo.isEnabled = false
+                answerThree.isEnabled = false
+                answerFour.isEnabled = false
+            }
         }
 
         companion object {
@@ -294,7 +236,10 @@ class TestAdapter(
     }
 
     class TestDiffUtilCallback : DiffUtil.ItemCallback<Question>() {
-        override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean = oldItem == newItem
+        override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean =
+            oldItem.id == newItem.id
+
+        override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean =
+            oldItem == newItem
     }
 }

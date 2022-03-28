@@ -47,6 +47,7 @@ class TestFragment : Fragment() {
         setAdapter()
         setTitleToolbar()
         setListeners()
+        onFirstStartTimer()
         Log.d(Constants.TEST_TAG, "TestFragment created")
     }.root
 
@@ -59,7 +60,6 @@ class TestFragment : Fragment() {
             doOnSuccess = {
                 loadAdapter()
                 bindData()
-                onFirstStartTimer()
                 showQuestion()
             },
             doOnFailure = {

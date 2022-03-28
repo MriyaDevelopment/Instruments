@@ -12,7 +12,6 @@ data class User(
     val is_subscribed: Boolean?
 )
 
-
 fun RegisterResponse.User.toRegister() : User {
     return User(
         name = this.name ?: "",

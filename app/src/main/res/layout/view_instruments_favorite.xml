@@ -11,6 +11,7 @@
         android:layout_height="@dimen/height52"
         android:layout_marginVertical="@dimen/margin16"
         android:text="@string/testCategoryFavorite"
+        android:fontFamily="@font/montserrat_medium"
         app:icon="@drawable/ic_arrow_favorite"
         app:iconGravity="textEnd"
         app:layout_constraintBottom_toBottomOf="parent"

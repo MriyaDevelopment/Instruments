@@ -150,12 +150,6 @@ class MainFragment : Fragment() {
             swipeRefresh.setOnRefreshListener {
                 mainViewModel.loadMainData()
             }
-            subscribe.setOnClickListener {
-                createSnackbar(
-                    binding.root,
-                    getString(R.string.functionalityIsInDevelopment)
-                ).show()
-            }
         }
     }
 

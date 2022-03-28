@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin10"
                 android:layout_marginEnd="@dimen/margin15"
+                android:fontFamily="@font/montserrat_medium"
                 android:text="@string/profileExit"
                 android:textColor="@color/blue_5B67CA"
                 android:textSize="@dimen/size16"

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin5"
     app:cardCornerRadius="@dimen/corner14"
-    app:cardElevation="@dimen/elevation0"
+    app:cardElevation="@dimen/elevation5"
     app:rippleColor="@color/blue_5B67CA">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin12"
-            android:layout_marginTop="@dimen/margin15"
+            android:layout_marginTop="@dimen/margin10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
@@ -47,9 +48,10 @@
 
         <TextView
             android:id="@+id/name"
-            style="@style/TextDarkBold11Style"
+            style="@style/TextDarkBold12Style"
             android:layout_width="@dimen/width0"
             android:layout_height="wrap_content"
+            android:lines="2"
             android:layout_marginHorizontal="@dimen/margin12"
             android:layout_marginTop="@dimen/margin5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,11 +63,11 @@
             android:id="@+id/count"
             style="@style/TextDarkNormal10Style"
             android:layout_width="@dimen/width0"
+            android:layout_marginBottom="@dimen/margin10"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/bgr"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/name"
             app:layout_constraintStart_toStartOf="@+id/name"
-            app:layout_constraintTop_toBottomOf="@+id/name"
             tools:text="Инструментарий: 18" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

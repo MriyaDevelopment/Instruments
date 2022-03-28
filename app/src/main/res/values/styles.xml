@@ -2,6 +2,7 @@
 
     <style name="BnvTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/size12</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="TextWhiteNormalStyle">
@@ -10,6 +11,7 @@
         <item name="lineHeight">@dimen/height19</item>
         <item name="fontStyle">normal</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="TextStyleMiniCategory">
@@ -17,6 +19,7 @@
         <item name="android:textSize">@dimen/size12</item>
         <item name="lineHeight">@dimen/height14</item>
         <item name="fontWeight">500</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="TextBlueNormalStyle">
@@ -25,6 +28,7 @@
         <item name="android:textStyle">normal</item>
         <item name="fontStyle">normal</item>
         <item name="fontWeight">500</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="TextBlueBoldStyle">
@@ -33,6 +37,7 @@
         <item name="android:textStyle">bold</item>
         <item name="fontStyle">normal</item>
         <item name="fontWeight">700</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
     <style name="TextDarkNormalStyle">
@@ -41,6 +46,7 @@
         <item name="android:textStyle">normal</item>
         <item name="fontStyle">normal</item>
         <item name="fontWeight">400</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="Text50DarkNormalStyle">
@@ -49,6 +55,7 @@
         <item name="android:textStyle">normal</item>
         <item name="fontStyle">normal</item>
         <item name="fontWeight">400</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
 
     <style name="TextDarkBoldStyle">
@@ -57,6 +64,7 @@
         <item name="android:textStyle">bold</item>
         <item name="fontStyle">normal</item>
         <item name="fontWeight">500</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
     <style name="DefaultBlueButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
@@ -152,6 +160,7 @@
         <item name="android:textSize">@dimen/size18</item>
         <item name="android:textStyle">bold</item>
         <item name="lineHeight">@dimen/height17</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
         <item name="fontWeight">500</item>
         <item name="fontStyle">normal</item>
     </style>
@@ -169,6 +178,7 @@
         <item name="android:imeOptions">actionNext</item>
         <item name="android:backgroundTint">@color/background_input</item>
         <item name="android:background">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
         <item name="android:textAppearance">@style/TextHintAppearance</item>
         <item name="android:textColorHint">@color/light_blue_B2B7E4</item>
         <item name="android:paddingStart">@dimen/padding0</item>

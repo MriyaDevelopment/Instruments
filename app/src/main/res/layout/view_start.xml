@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginVertical="@dimen/margin10"
-        android:layout_marginEnd="@dimen/margin16"
+        android:layout_marginEnd="@dimen/margin5"
         android:paddingHorizontal="@dimen/padding14"
         android:text="@string/testCategoriesStart"
         android:textColor="@color/blue_5B67CA"

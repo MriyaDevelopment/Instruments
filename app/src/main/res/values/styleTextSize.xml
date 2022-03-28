@@ -80,4 +80,8 @@
     <style name="TextDarkBold11Style" parent="TextDarkBoldStyle">
         <item name="android:textSize">@dimen/size11</item>
     </style>
+
+    <style name="TextDarkBold10Style" parent="TextDarkBoldStyle">
+        <item name="android:textSize">@dimen/size10</item>
+    </style>
 </resources>

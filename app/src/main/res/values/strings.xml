@@ -64,11 +64,14 @@
     <string name="testCategoriesStart">Начать</string>
     <!-- Test_Screen -->
     <string name="testSelect">Следующий вопрос</string>
+    <string name="testSelectGallery">Вперёд</string>
+    <string name="backSelectGallery">Назад</string>
     <string name="testLevel">Уровень сложности: %s</string>
     <string name="testExit">Завершить тестирование</string>
     <!-- Result_Screen -->
     <string name="resultTitle">Ваш результат</string>
     <string name="resultOk">Ок</string>
+    <string name="resultExit">Завершить</string>
     <string name="resultReturn">Пройти еще раз</string>
 
     <!-- Categories -->

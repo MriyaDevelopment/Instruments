@@ -154,6 +154,7 @@
         android:text="@string/testSelect"
         android:textColor="@color/blue_5B67CA"
         android:textSize="@dimen/size16"
+        android:fontFamily="@font/montserrat_medium"
         android:textStyle="normal"
         app:cornerRadius="@dimen/size10"
         app:icon="@drawable/ic_arrow_begin"

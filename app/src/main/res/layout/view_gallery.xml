@@ -17,29 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height0"
-        app:layout_constraintBottom_toBottomOf="@+id/image"
-        app:layout_constraintEnd_toEndOf="@+id/image"
-        app:layout_constraintStart_toStartOf="@+id/image"
-        app:layout_constraintTop_toTopOf="@+id/image"
-        tools:ignore="UselessLeaf">
-
-        <View
-            android:id="@+id/left"
-            android:layout_width="@dimen/width0"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <View
-            android:id="@+id/right"
-            android:layout_width="@dimen/width0"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
     <TextView
         android:id="@+id/description"
         style="@style/TextDarkNormal14Style"
@@ -52,5 +29,59 @@
         app:layout_constraintTop_toBottomOf="@+id/image"
         tools:text="Хирургический инструмент для проведения шовного материала под кровеносные сосуды" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/select"
+        style="@style/OnlyTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginEnd="@dimen/margin20"
+        android:text="@string/testSelectGallery"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/blue_5B67CA"
+        android:textSize="@dimen/size16"
+        android:textStyle="normal"
+        app:cornerRadius="@dimen/size10"
+        app:icon="@drawable/ic_arrow_begin"
+        app:iconGravity="end"
+        app:iconTint="@color/blue_5B67CA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/blue_5B67CA" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back"
+        style="@style/OnlyTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginStart="@dimen/margin20"
+        android:text="@string/backSelectGallery"
+        android:fontFamily="@font/montserrat_medium"
+        android:layout_marginTop="@dimen/margin10"
+        android:textColor="@color/blue_5B67CA"
+        android:textSize="@dimen/size16"
+        android:textStyle="normal"
+        app:cornerRadius="@dimen/size10"
+        app:icon="@drawable/ic_arrow_back"
+        app:iconGravity="start"
+        app:iconTint="@color/blue_5B67CA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/blue_5B67CA" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/TextBlueBold20Style"
+        android:layout_width="@dimen/width0"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin10"
+        android:layout_marginHorizontal="@dimen/margin30"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Ксения" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

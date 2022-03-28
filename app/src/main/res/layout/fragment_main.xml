@@ -49,18 +49,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginEnd="@dimen/margin8"
                             android:layout_weight="1"
                             tools:text="Привет, Ксения!" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/subscribe"
-                            style="@style/OutlinedButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/height30"
-                            android:layout_gravity="center"
-                            android:text="@string/mainSubscribe"
-                            android:visibility="invisible" />
 
                     </LinearLayout>
 

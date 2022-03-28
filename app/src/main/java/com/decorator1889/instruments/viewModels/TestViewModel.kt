@@ -1,8 +1,11 @@
 package com.decorator1889.instruments.viewModels
 
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.Job
 import androidx.lifecycle.viewModelScope
 import com.decorator1889.instruments.App
 import com.decorator1889.instruments.Network.ApiNetwork
@@ -11,10 +14,12 @@ import com.decorator1889.instruments.models.toQuestion
 import com.decorator1889.instruments.util.NetworkEvent
 import com.decorator1889.instruments.util.enums.Load
 import com.decorator1889.instruments.util.enums.State
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import java.lang.Runnable
 import java.util.*
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.TimeUnit
 
 class TestViewModel : ViewModel() {
 
@@ -74,29 +79,46 @@ class TestViewModel : ViewModel() {
     var second = 0
     var timerStop = false
     var minutePost = ""
+    private var job: Job? = null
+
+    private var executorService: ScheduledExecutorService? = null
+    private var updateTask: Runnable? = null
 
     fun startTimer() {
-        timer.schedule(object : TimerTask() {
-            override fun run() {
-                if (timerStop) {
-                    second++
-                    if (second == 60) {
-                        second = 0
-                        minute++
-                    }
-                    minutePost = if (minute.toString().length < 2) {
-                        "0$minute"
-                    } else {
-                        "$minute"
-                    }
-                    if (second.toString().length < 2) {
-                        timerTask.postValue("$minutePost:0$second")
-                    } else {
-                        timerTask.postValue("$minutePost:$second")
+        if (executorService == null) {
+            executorService = Executors.newSingleThreadScheduledExecutor()
+        }
+        updateTask = Runnable {
+            timer.schedule(object : TimerTask() {
+                override fun run() {
+                    if (timerStop) {
+                        second++
+                        if (second == 60) {
+                            second = 0
+                            minute++
+                        }
+                        minutePost = if (minute.toString().length < 2) {
+                            "0$minute"
+                        } else {
+                            "$minute"
+                        }
+                        Handler(Looper.getMainLooper()).post {
+                            if (second.toString().length < 2) {
+                                timerTask.postValue("$minutePost:0$second")
+                            } else {
+                                timerTask.postValue("$minutePost:$second")
+                            }
+                        }
                     }
                 }
-            }
-        }, 1, 1000)
+            }, 1, 1000)
+        }
+        executorService?.scheduleAtFixedRate(
+            updateTask,
+            0,
+            60 * 1000L,
+            TimeUnit.MILLISECONDS
+        )
     }
 
     fun onStartTimer() {

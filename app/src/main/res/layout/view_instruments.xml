@@ -10,24 +10,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin22">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/favorite"
             style="@style/Widget.AppCompat.Button.TextButton.IconOnly"
             android:layout_width="@dimen/width32"
             android:layout_height="@dimen/height32"
-            android:layout_marginTop="@dimen/margin17"
             android:layout_marginEnd="@dimen/margin9"
             android:backgroundTint="@color/white_FFFFFFFF"
             android:elevation="@dimen/margin5"
+            android:layout_marginBottom="@dimen/margin20"
             app:cornerRadius="@dimen/corner100"
             app:icon="@drawable/ic_heart_inactive"
             app:iconSize="@dimen/sizeFavorite16"
             app:iconTint="@color/blue_5B67CA"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:rippleColor="@color/blue_5B67CA" />
 
         <TextView
@@ -38,7 +37,7 @@
             android:layout_marginHorizontal="@dimen/margin20"
             android:layout_marginTop="@dimen/margin12"
             android:gravity="center"
-            app:layout_constraintEnd_toStartOf="@+id/favorite"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Лигатурная игла Купера" />
@@ -61,8 +60,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin8"
             android:layout_marginTop="@dimen/margin10"
-            android:layout_marginEnd="@dimen/margin40"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/margin22"
+            android:layout_marginEnd="@dimen/margin10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/favorite"
             app:layout_constraintStart_toEndOf="@+id/view"
             app:layout_constraintTop_toBottomOf="@+id/image"
             tools:text="Хирургический инструмент для проведения шовного материала под кровеносные сосуды" />

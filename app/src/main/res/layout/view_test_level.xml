@@ -55,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin20"
             android:layout_marginBottom="@dimen/margin9"
+            android:fontFamily="@font/montserrat_medium"
             android:drawablePadding="@dimen/padding3"
             android:text="@string/testLevelChangeCategory"
             android:textSize="@dimen/size10"

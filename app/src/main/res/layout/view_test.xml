@@ -48,6 +48,7 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/margin8"
                 android:layout_weight="1"
+                android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
                 app:backgroundTint="@color/white_FFFFFFFF"
                 app:elevation="@dimen/elevation5"
@@ -62,6 +63,7 @@
                 android:layout_marginStart="@dimen/margin8"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:fontFamily="@font/montserrat_medium"
                 app:backgroundTint="@color/white_FFFFFFFF"
                 app:elevation="@dimen/elevation5"
                 tools:text="Лигатурная игла Дешана" />
@@ -87,6 +89,7 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/margin8"
                 android:layout_weight="1"
+                android:fontFamily="@font/montserrat_medium"
                 app:backgroundTint="@color/white_FFFFFFFF"
                 app:elevation="@dimen/elevation5"
                 tools:text="Лигатурная игла Дешана" />
@@ -96,6 +99,7 @@
                 style="@style/OutlinedButtonTest"
                 android:layout_width="@dimen/width0"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin8"
                 android:layout_weight="1"

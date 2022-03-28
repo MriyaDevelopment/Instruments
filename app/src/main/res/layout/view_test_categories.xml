@@ -11,6 +11,7 @@
         style="@style/BaseCheckBoxStyle"
         android:layout_width="@dimen/width0"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
         android:background="@drawable/selector_chk_divider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
