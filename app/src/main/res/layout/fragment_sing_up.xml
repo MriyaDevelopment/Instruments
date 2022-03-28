@@ -149,6 +149,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signIn"
         style="@style/OnlyTextButton"
+        android:fontFamily="@font/montserrat_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

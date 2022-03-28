@@ -59,6 +59,7 @@
         style="@style/OnlyTextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
         android:layout_gravity="bottom"
         android:text="@string/onBoardingSingUp"
         android:textColor="@color/blue_5B67CA"

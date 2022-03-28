@@ -137,6 +137,7 @@
         android:id="@+id/signUp"
         style="@style/OnlyTextButton"
         android:layout_width="match_parent"
+        android:fontFamily="@font/montserrat_medium"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:text="@string/onBoardingSingUp"
