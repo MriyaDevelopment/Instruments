@@ -158,10 +158,6 @@ class ResultDialog : DialogFragment() {
                     )
                     chip.chipCornerRadius = resources.getDimension(R.dimen.corner3)
                     chip.text = getNameMiniCategories(it[index])
-                    chip.typeface = Typeface.create(
-                        ResourcesCompat.getFont(root.context, R.font.montserrat_medium),
-                        Typeface.NORMAL
-                    )
                     chip.isClickable = false
                     chip.isCheckable = true
                     chips.addView(chip)
