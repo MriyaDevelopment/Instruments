@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scalpel</string>
+    <string name="app_name">Медицинские инструменты</string>
     <string name="networkErrorMessage">Произошла неизвестная ошибка при взаимодействии с сервером.</string>
     <string name="networkFailureMessage">Не удалось загрузить данные. Проверьте соединение с интернетом и повторите попытку.</string>
     <string name="networkButtonOk">Ок</string>
