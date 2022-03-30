@@ -79,46 +79,29 @@ class TestViewModel : ViewModel() {
     var second = 0
     var timerStop = false
     var minutePost = ""
-    private var job: Job? = null
-
-    private var executorService: ScheduledExecutorService? = null
-    private var updateTask: Runnable? = null
 
     fun startTimer() {
-        if (executorService == null) {
-            executorService = Executors.newSingleThreadScheduledExecutor()
-        }
-        updateTask = Runnable {
-            timer.schedule(object : TimerTask() {
-                override fun run() {
-                    if (timerStop) {
-                        second++
-                        if (second == 60) {
-                            second = 0
-                            minute++
-                        }
-                        minutePost = if (minute.toString().length < 2) {
-                            "0$minute"
-                        } else {
-                            "$minute"
-                        }
-                        Handler(Looper.getMainLooper()).post {
-                            if (second.toString().length < 2) {
-                                timerTask.postValue("$minutePost:0$second")
-                            } else {
-                                timerTask.postValue("$minutePost:$second")
-                            }
-                        }
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                if (timerStop) {
+                    second++
+                    if (second == 60) {
+                        second = 0
+                        minute++
+                    }
+                    minutePost = if (minute.toString().length < 2) {
+                        "0$minute"
+                    } else {
+                        "$minute"
+                    }
+                    if (second.toString().length < 2) {
+                        timerTask.postValue("$minutePost:0$second")
+                    } else {
+                        timerTask.postValue("$minutePost:$second")
                     }
                 }
-            }, 1, 1000)
-        }
-        executorService?.scheduleAtFixedRate(
-            updateTask,
-            0,
-            60 * 1000L,
-            TimeUnit.MILLISECONDS
-        )
+            }
+        }, 1, 1000)
     }
 
     fun onStartTimer() {

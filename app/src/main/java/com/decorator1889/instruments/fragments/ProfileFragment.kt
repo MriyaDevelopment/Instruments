@@ -2,12 +2,14 @@ package com.decorator1889.instruments.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -57,9 +59,15 @@ class ProfileFragment : Fragment() {
                 (activity as MainActivity).selectLevels()
             }
             again.setOnClickListener {
-                mainViewModel.result.value?.let { resultProfile->
+                mainViewModel.result.value?.let { resultProfile ->
                     val result = resultProfile[0]
-                    findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToTestFragment(repeat = true, typesCategories = result.categories, level = result.level))
+                    findNavController().navigate(
+                        ProfileFragmentDirections.actionProfileFragmentToTestFragment(
+                            repeat = true,
+                            typesCategories = result.categories,
+                            level = result.level
+                        )
+                    )
                 }
             }
         }
@@ -141,10 +149,26 @@ class ProfileFragment : Fragment() {
             list.let {
                 for (index in it.indices) {
                     val chip = Chip(chips.context)
-                    chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(root.context, getColor25MiniCategories(it[index])))
-                    chip.setTextColor(ContextCompat.getColor(root.context, getColorMiniCategories(it[index])))
+                    chip.chipBackgroundColor = ColorStateList.valueOf(
+                        ContextCompat.getColor(
+                            root.context,
+                            getColor25MiniCategories(it[index])
+                        )
+                    )
+                    chip.setTextColor(
+                        ContextCompat.getColor(
+                            root.context,
+                            getColorMiniCategories(it[index])
+                        )
+                    )
                     chip.chipCornerRadius = resources.getDimension(R.dimen.corner3)
-                    chip.text= getNameMiniCategories(it[index])
+                    chip.text = getNameMiniCategories(it[index])
+                    chip.typeface = Typeface.create(
+                        ResourcesCompat.getFont(
+                            root.context,
+                            R.font.montserrat_medium
+                        ), Typeface.NORMAL
+                    )
                     chip.isClickable = false
                     chip.isCheckable = true
                     chips.addView(chip)
@@ -157,7 +181,8 @@ class ProfileFragment : Fragment() {
     private fun setProgress(result: Result) {
         binding.run {
             answers.text = "${result.number_of_correct_answers}/${result.number_of_questions}"
-            val percent = (result.number_of_correct_answers.toInt() * 100)/result.number_of_questions.toInt()
+            val percent =
+                (result.number_of_correct_answers.toInt() * 100) / result.number_of_questions.toInt()
             percents.text = "$percent%"
             val anim = ProgressBarAnimation(progress, 0f, percent.toFloat())
             anim.duration = 1000

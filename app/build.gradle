@@ -13,8 +13,8 @@ android {
         applicationId "com.decorator1889.instruments"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 17
-        versionName "3.0"
+        versionCode 19
+        versionName "5.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -87,4 +87,7 @@ dependencies {
     // Shimmer Effect Placeholder library by Facebook
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
+    implementation ('com.appodeal.ads:sdk:2.11.0.+') {
+        exclude group: 'com.appodeal.ads.sdk.networks', module: 'adcolony'
+    }
 }

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.appodeal.ads.Appodeal
 import com.decorator1889.instruments.databinding.ActivityMainBinding
 import com.decorator1889.instruments.fragments.MainFragmentDirections
 import com.decorator1889.instruments.fragments.OnBoardingFragmentDirections
@@ -19,6 +20,9 @@ import com.decorator1889.instruments.util.visible
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
+    private val adTypes = Appodeal.BANNER or Appodeal.INTERSTITIAL
+    private val consentValue = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Instruments_Theme)
         super.onCreate(savedInstanceState)
@@ -27,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initBnv()
         loginInOnce()
+        Appodeal.initialize(this, "3012314c3e0522f77ab2d7aa418829590c2c9aeed8c6f6a4", adTypes, consentValue)
+        Appodeal.setBannerViewId(R.id.appodealBannerView)
+        Appodeal.show(this, Appodeal.BANNER_VIEW)
         Log.d(Constants.MAIN_ACTIVITY_TAG, "MainActivity created")
     }
 

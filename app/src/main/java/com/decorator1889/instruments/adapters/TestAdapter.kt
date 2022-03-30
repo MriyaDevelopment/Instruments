@@ -1,8 +1,8 @@
 package com.decorator1889.instruments.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,23 +11,33 @@ import com.decorator1889.instruments.R
 import com.decorator1889.instruments.databinding.ViewTestBinding
 import com.decorator1889.instruments.models.Question
 import com.decorator1889.instruments.util.glide
+import com.decorator1889.instruments.util.str
 
 class TestAdapter(
     private val onClickAnswer: (Long, Boolean) -> Unit = { itemId, check -> },
+    private val onClickSelect: () -> Unit = {},
 ) : ListAdapter<Question, TestAdapter.TestViewHolder>(TestDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestViewHolder {
-        return TestViewHolder.getViewHolder(parent)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ViewTestBinding.inflate(
+            layoutInflater,
+            parent,
+            false
+        )
+        return TestViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TestViewHolder, position: Int) {
         holder.bind(
             getItem(position),
-            onClickAnswer
+            onClickAnswer,
+            onClickSelect,
+            position
         )
     }
 
-    class TestViewHolder(
+    inner class TestViewHolder(
         private val binding: ViewTestBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -36,6 +46,8 @@ class TestAdapter(
         fun bind(
             item: Question,
             onClickAnswer: (Long, Boolean) -> Unit,
+            onClickSelect: () -> Unit,
+            position: Int,
         ) {
             binding.run {
                 image.glide(item.question)
@@ -51,7 +63,11 @@ class TestAdapter(
                     item.answer_three,
                     item.answer_four
                 )
+                if (currentList.size-1 == position) {
+                    select.text = str(R.string.testExit)
+                }
                 answerOne.setOnClickListener {
+                    select.isEnabled = true
                     if (item.true_answer == item.answer_one) {
                         item.state = 1
                         checkState(
@@ -77,6 +93,7 @@ class TestAdapter(
                     }
                 }
                 answerTwo.setOnClickListener {
+                    select.isEnabled = true
                     if (item.true_answer == item.answer_two) {
                         item.state = 2
                         checkState(
@@ -102,6 +119,7 @@ class TestAdapter(
                     }
                 }
                 answerThree.setOnClickListener {
+                    select.isEnabled = true
                     if (item.true_answer == item.answer_three) {
                         item.state = 3
                         checkState(
@@ -127,6 +145,7 @@ class TestAdapter(
                     }
                 }
                 answerFour.setOnClickListener {
+                    select.isEnabled = true
                     if (item.true_answer == item.answer_four) {
                         item.state = 4
                         checkState(
@@ -150,6 +169,9 @@ class TestAdapter(
                         )
                         onClickAnswer(item.id, false)
                     }
+                }
+                select.setOnClickListener {
+                    onClickSelect()
                 }
             }
         }
@@ -201,7 +223,7 @@ class TestAdapter(
                 blockButton()
                 answerThree.strokeWidth = width2
                 if (trueAnswer == answerThreeText) answerThree.setStrokeColorResource(R.color.green_81E89E)
-                    else answerThree.setStrokeColorResource(R.color.red_E77D7D)
+                else answerThree.setStrokeColorResource(R.color.red_E77D7D)
             }
         }
 
@@ -220,17 +242,6 @@ class TestAdapter(
                 answerTwo.isEnabled = false
                 answerThree.isEnabled = false
                 answerFour.isEnabled = false
-            }
-        }
-
-        companion object {
-            fun getViewHolder(parent: ViewGroup): TestViewHolder {
-                val binding = ViewTestBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-                return TestViewHolder(binding)
             }
         }
     }

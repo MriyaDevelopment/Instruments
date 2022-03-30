@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin5"
     app:cardCornerRadius="@dimen/corner14"
-    app:cardElevation="@dimen/elevation5"
+    app:cardElevation="0dp"
     app:rippleColor="@color/blue_5B67CA">
 
     <androidx.constraintlayout.widget.ConstraintLayout

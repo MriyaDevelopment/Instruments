@@ -77,7 +77,6 @@
                 android:layout_marginHorizontal="@dimen/margin16"
                 android:layout_marginTop="@dimen/margin10"
                 android:alpha="0"
-                android:progress="1"
                 android:progressTint="@color/white_FFFFFFFF"
                 app:indicatorColor="@color/white_FFFFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -141,27 +140,5 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/select"
-        style="@style/OnlyTextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/margin10"
-        android:layout_marginBottom="@dimen/margin10"
-        android:alpha="0"
-        android:text="@string/testSelect"
-        android:textColor="@color/blue_5B67CA"
-        android:textSize="@dimen/size16"
-        android:fontFamily="@font/montserrat_medium"
-        android:textStyle="normal"
-        app:cornerRadius="@dimen/size10"
-        app:icon="@drawable/ic_arrow_begin"
-        app:iconGravity="end"
-        app:iconTint="@color/blue_5B67CA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="@color/blue_5B67CA" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

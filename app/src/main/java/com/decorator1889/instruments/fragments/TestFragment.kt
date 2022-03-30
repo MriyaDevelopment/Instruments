@@ -34,7 +34,7 @@ class TestFragment : Fragment() {
     private lateinit var onQuestionEvent: DefaultNetworkEventObserver
 
     private val testAdapter by lazy {
-        TestAdapter(onClickAnswer = onClickAnswer)
+        TestAdapter(onClickAnswer = onClickAnswer, onClickSelect = onClickSelect)
     }
 
     override fun onCreateView(
@@ -47,7 +47,6 @@ class TestFragment : Fragment() {
         setAdapter()
         setTitleToolbar()
         setListeners()
-        onFirstStartTimer()
         Log.d(Constants.TEST_TAG, "TestFragment created")
     }.root
 
@@ -77,6 +76,12 @@ class TestFragment : Fragment() {
         binding.run {
             testViewModel.let {
                 mission.text = "Задание: ${it.currentQuestion}/${it.allQuestion}"
+                it.questionList.value?.let { question ->
+                    val to = (it.currentQuestion * 100) / question.size
+                    val anim = ProgressBarAnimation(binding.progress, 0f, to.toFloat())
+                    anim.duration = 100
+                    binding.progress.startAnimation(anim)
+                }
             }
         }
     }
@@ -85,7 +90,6 @@ class TestFragment : Fragment() {
         binding.run {
             containerTimerProgress.alpha = 0f
             viewPager.alpha = 0f
-            select.alpha = 0f
             progress.alpha = 0f
             progressContainer.animate().alpha(1f)
         }
@@ -93,11 +97,11 @@ class TestFragment : Fragment() {
 
     private fun showQuestion() {
         binding.run {
-            select.animate().alpha(1f)
             containerTimerProgress.animate().alpha(1f)
             progress.animate().alpha(1f)
             viewPager.animate().alpha(1f)
             progressContainer.animate().alpha(0f)
+            onFirstStartTimer()
         }
     }
 
@@ -123,11 +127,6 @@ class TestFragment : Fragment() {
             toolbar.setNavigationOnClickListener {
                 findNavController().popBackStack()
             }
-            select.setOnClickListener {
-                bindData()
-                setCurrentItem()
-                onSelectItem()
-            }
         }
     }
 
@@ -137,9 +136,7 @@ class TestFragment : Fragment() {
                 questionList.value?.let { question ->
                     if (question.size > currentQuestion) {
                         setProgressTest()
-                        setCompleteTest()
                     } else {
-                        select.isEnabled = false
                         currentQuestion = question.size
                         onTimerCancel()
                         val questionId = arrayListOf<String>()
@@ -169,21 +166,13 @@ class TestFragment : Fragment() {
         }
     }
 
-    private fun setCompleteTest() {
-        testViewModel.run {
-            questionList.value?.let { question ->
-                if (currentQuestion == question.size) {
-                    binding.select.text = str(R.string.testExit)
-                }
-            }
-        }
-    }
-
+    @SuppressLint("SetTextI18n")
     private fun setProgressTest() {
         testViewModel.run {
             questionList.value?.let { question ->
                 val from = (currentQuestion * 100) / question.size
                 currentQuestion++
+                binding.mission.text = "Задание: ${currentQuestion}/${allQuestion}"
                 val to = (currentQuestion * 100) / question.size
                 val anim = ProgressBarAnimation(binding.progress, from.toFloat(), to.toFloat())
                 anim.duration = 100
@@ -200,6 +189,11 @@ class TestFragment : Fragment() {
         if (check) {
             testViewModel.setCorrectAnswers()
         }
+    }
+
+    private val onClickSelect: () -> Unit = {
+        setCurrentItem()
+        onSelectItem()
     }
 
     override fun onStart() {

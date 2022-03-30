@@ -91,6 +91,18 @@
         <item name="android:textSize">@dimen/size14</item>
     </style>
 
+    <style name="OnlyTextSelectButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="iconTint">@color/background_select_btn</item>
+        <item name="android:textColor">@color/background_select_btn</item>
+        <item name="lineHeight">@dimen/height17</item>
+        <item name="android:insetTop">@dimen/padding0</item>
+        <item name="android:insetBottom">@dimen/padding0</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="iconPadding">@dimen/padding8</item>
+        <item name="android:textSize">@dimen/size14</item>
+    </style>
+
     <style name="OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textColor">@color/background_default_button</item>
         <item name="strokeColor">@color/background_default_button</item>
@@ -103,6 +115,12 @@
         <item name="lineHeight">@dimen/height19</item>
         <item name="cornerRadius">@dimen/corner8</item>
     </style>
+
+    <style name="chipText" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">@dimen/size12</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+    </style>
+
 
     <style name="OutlinedButtonTest" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textColor">@color/dark_1E1F25</item>
