@@ -18,6 +18,7 @@
     <string name="signInTitleToolbar">Вход</string>
     <string name="signInEmail">E-mail</string>
     <string name="signInPassword">Пароль</string>
+    <string name="signInPasswordHint">Минимум 6 символов</string>
     <string name="signInPasswordPassword">Забыли пароль?</string>
     <!-- SignUp_Screen -->
     <string name="signUpTitle">Зарегистрироваться</string>

@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin18"
         android:orientation="vertical"
+        android:animateLayoutChanges="true"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -109,6 +110,17 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/hintPassword"
+            android:layout_marginTop="@dimen/margin2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin14"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/signInPasswordHint"
+            android:textSize="@dimen/size10"
+            android:textColor="@color/light_blue_CCB2B7E4"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -132,7 +144,7 @@
                 style="@style/DefaultBlueButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin40"
+                android:layout_marginTop="@dimen/margin30"
                 android:enabled="false"
                 android:fontFamily="@font/montserrat_medium"
                 android:text="@string/signUpTitle"

@@ -114,6 +114,8 @@ class SignUpFragment : Fragment() {
             }
             password.addTextChangedListener {
                 onEnabledSignUpButton()
+                if (password.length() >= 6) hintPassword.invisible()
+                else hintPassword.visible()
             }
             password.setOnEditorActionListener { v, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
