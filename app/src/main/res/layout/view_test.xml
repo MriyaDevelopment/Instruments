@@ -44,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin16"
                 android:layout_marginTop="@dimen/margin16"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView">
@@ -51,13 +52,11 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/answer_one"
                     style="@style/OutlinedButtonTest"
-                    android:layout_width="@dimen/width0"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/margin8"
-                    android:layout_weight="1"
                     android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center"
+                    android:gravity="start|center"
                     app:backgroundTint="@color/white_FFFFFFFF"
                     app:elevation="@dimen/elevation5"
                     tools:text="Лигатурная игла Дешана" />
@@ -65,37 +64,24 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/answer_two"
                     style="@style/OutlinedButtonTest"
-                    android:layout_width="@dimen/width0"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/margin8"
-                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/margin16"
                     android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center"
+                    android:gravity="start|center"
                     app:backgroundTint="@color/white_FFFFFFFF"
                     app:elevation="@dimen/elevation5"
                     tools:text="Лигатурная игла Дешана" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/containerBottomAnswer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin16"
-                android:layout_marginTop="@dimen/margin16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/containerTopAnswer">
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/answer_three"
                     style="@style/OutlinedButtonTest"
-                    android:layout_width="@dimen/width0"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/margin8"
-                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/margin16"
+                    android:gravity="start|center"
                     android:fontFamily="@font/montserrat_medium"
                     app:backgroundTint="@color/white_FFFFFFFF"
                     app:elevation="@dimen/elevation5"
@@ -104,17 +90,17 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/answer_four"
                     style="@style/OutlinedButtonTest"
-                    android:layout_width="@dimen/width0"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/margin8"
-                    android:layout_weight="1"
+                    android:gravity="start|center"
+                    android:layout_marginTop="@dimen/margin16"
                     android:fontFamily="@font/montserrat_medium"
                     app:backgroundTint="@color/white_FFFFFFFF"
                     app:elevation="@dimen/elevation5"
                     tools:text="Лигатурная игла Дешана" />
-
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.button.MaterialButton
